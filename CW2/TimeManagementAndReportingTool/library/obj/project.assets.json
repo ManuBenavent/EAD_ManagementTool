@@ -11,7 +11,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "NETStandard.Library/2.0.3": {
+      "NETStandard.Library/2.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -30,11 +30,10 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "a/iSwnRZb+LHFk49hQOyThh/ZNC3vsbZsF65XwQIb863qF6msmhdQtxGXFL28Ob2NsCz/drEj28BJd/YPpLRBg==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -44,12 +43,12 @@
         "runtime.json"
       ]
     },
-    "NETStandard.Library/2.0.3": {
-      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+    "NETStandard.Library/2.0.2": {
+      "sha512": "/C21I9UWRD38nCuJ2mm5mKsdvIHS/HKfJZTod8iyZIKCZ5tltlxvRtXmY1riTojblvTo+HPvAxMNNtso45DD1Q==",
       "type": "package",
-      "path": "netstandard.library/2.0.3",
+      "path": "netstandard.library/2.0.2",
       "files": [
-        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/netstandard2.0/NETStandard.Library.targets",
@@ -168,41 +167,35 @@
         "build/netstandard2.0/ref/netstandard.dll",
         "build/netstandard2.0/ref/netstandard.xml",
         "lib/netstandard1.0/_._",
-        "netstandard.library.2.0.3.nupkg.sha512",
+        "netstandard.library.2.0.2.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "NETStandard.Library >= 2.0.3"
+      "NETStandard.Library >= 2.0.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mbena\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/w1749459/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mbena\\OneDrive - UNIVERSIDAD ALICANTE\\3º\\Cuatrimestre I - University of Westminster\\Enterprise Application Develoment\\Coursework\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj",
+      "projectUniqueName": "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/library.csproj",
       "projectName": "library",
-      "projectPath": "C:\\Users\\mbena\\OneDrive - UNIVERSIDAD ALICANTE\\3º\\Cuatrimestre I - University of Westminster\\Enterprise Application Develoment\\Coursework\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj",
-      "packagesPath": "C:\\Users\\mbena\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mbena\\OneDrive - UNIVERSIDAD ALICANTE\\3º\\Cuatrimestre I - University of Westminster\\Enterprise Application Develoment\\Coursework\\CW2\\TimeManagementAndReportingTool\\library\\obj\\",
+      "projectPath": "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/library.csproj",
+      "packagesPath": "/Users/w1749459/.nuget/packages/",
+      "outputPath": "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/obj",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\mbena\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/w1749459/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -222,21 +215,15 @@
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.3, )",
+            "version": "[2.0.2, )",
             "autoReferenced": true
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }

@@ -1,72 +1,64 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.0": {}
+    ".NETCoreApp,Version=v3.0": {
+      "library/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/library.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "library/1.0.0": {
+      "type": "project",
+      "path": "../library/library.csproj",
+      "msbuildProject": "../library/library.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.0": []
+    ".NETCoreApp,Version=v3.0": [
+      "library >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\mbena\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/w1749459/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mbena\\OneDrive - UNIVERSIDAD ALICANTE\\3º\\Cuatrimestre I - University of Westminster\\Enterprise Application Develoment\\Coursework\\CW2\\TimeManagementAndReportingTool\\TimeManagementTool\\TimeManagementTool.csproj",
+      "projectUniqueName": "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/TimeManagementTool/TimeManagementTool.csproj",
       "projectName": "TimeManagementTool",
-      "projectPath": "C:\\Users\\mbena\\OneDrive - UNIVERSIDAD ALICANTE\\3º\\Cuatrimestre I - University of Westminster\\Enterprise Application Develoment\\Coursework\\CW2\\TimeManagementAndReportingTool\\TimeManagementTool\\TimeManagementTool.csproj",
-      "packagesPath": "C:\\Users\\mbena\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mbena\\OneDrive - UNIVERSIDAD ALICANTE\\3º\\Cuatrimestre I - University of Westminster\\Enterprise Application Develoment\\Coursework\\CW2\\TimeManagementAndReportingTool\\TimeManagementTool\\obj\\",
+      "projectPath": "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/TimeManagementTool/TimeManagementTool.csproj",
+      "packagesPath": "/Users/w1749459/.nuget/packages/",
+      "outputPath": "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/TimeManagementTool/obj",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\mbena\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/w1749459/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/library.csproj": {
+              "projectPath": "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/library.csproj"
+            }
+          }
         }
-      },
-      "warningProperties": {
-        "warnAsError": [
-          "NU1605"
-        ]
       }
     },
     "frameworks": {
-      "netcoreapp3.0": {
-        "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
-        ],
-        "assetTargetFallback": true,
-        "warn": true,
-        "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          },
-          "Microsoft.WindowsDesktop.App.WindowsForms": {
-            "privateAssets": "none"
-          }
-        },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
-      }
+      "netcoreapp3.0": {}
     }
   }
 }

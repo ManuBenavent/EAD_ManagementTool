@@ -1,0 +1,9 @@
+/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/obj/Debug/netstandard2.0/library.csprojAssemblyReference.cache
+/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/obj/Debug/netstandard2.0/library.csproj.CoreCompileInputs.cache
+/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/obj/Debug/netstandard2.0/library.AssemblyInfoInputs.cache
+/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/obj/Debug/netstandard2.0/library.AssemblyInfo.cs
+/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/bin/Debug/netstandard2.0/library.deps.json
+/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/bin/Debug/netstandard2.0/library.dll
+/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/bin/Debug/netstandard2.0/library.pdb
+/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/obj/Debug/netstandard2.0/library.dll
+/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/obj/Debug/netstandard2.0/library.pdb
