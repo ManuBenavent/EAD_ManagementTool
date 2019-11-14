@@ -2,13 +2,15 @@
 
 namespace library
 {
-    namespace exceptions
+    public class WrongNameException : Exception
     {
-        public class WrongNameException : Exception
+
+        private readonly string Name;
+        public override string Message { get { return "The name " + Name + " is not a valid name."; } }
+
+        public WrongNameException(string Name) : base()
         {
-            public WrongNameException()
-            {
-            }
+            this.Name = Name;
         }
     }
 }
