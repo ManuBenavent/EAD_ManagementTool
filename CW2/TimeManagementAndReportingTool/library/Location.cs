@@ -4,13 +4,20 @@ namespace library
 {
     public class Location
     {
-        private readonly int Id;
-        private string Name { get; set; }
-        private string AddressLine1 { get; set; }
-        private string AddressLine2 { get; set; }
-        private string City { get; set; }
-        private string PostCode { get; set; }
-        private string Country { get; set; }
+        private int _Id;
+        public int Id { get { return _Id; } }
+        public string Name { get; set; }
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        public string City { get; set; }
+        public string PostCode { get; set; }
+        public string Country { get; set; }
+        DAC_Location dac;
+
+        public Location()
+        {
+            this.dac = new DAC_Location();
+        }
 
         public Location(string Name, string AddressLine1, string AddressLine2, string City, string PostCode, string Country)
         {
@@ -20,11 +27,32 @@ namespace library
             this.City = City;
             this.PostCode = PostCode;
             this.Country = Country;
+            this.dac = new DAC_Location();
         }
 
-        public void GetLocation(int Id)
+        /// <summary>
+        /// Insert this instance.
+        /// </summary>
+        /// <returns>The insert.</returns>
+        public bool Insert()
         {
-            DAC_Location dac = new DAC_Location();  
+            return dac.Create(this);
+        }
+
+        public bool Update()
+        {
+            return dac.Update(this);
+        }
+
+        public bool Delete()
+        {
+            return dac.Delete(this);
+        }
+
+        public void Read(int Id)
+        {
+            this._Id = Id;
+            dac.Read(this);
         }
     }
 }

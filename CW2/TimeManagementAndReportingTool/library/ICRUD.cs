@@ -6,44 +6,37 @@ namespace library
     internal interface ICRUD
     {
         /// <summary>
-        /// Create the specified obj.
+        /// Inserts an instance of the object in the data base
         /// </summary>
-        /// <returns>The create.</returns>
-        /// <param name="obj">Object.</param>
+        /// <returns>True if succesful. False if not.</returns>
+        /// <param name="obj">Object of the table we are trying to insert into</param>
         bool Create(Object obj);
 
         /// <summary>
-        /// Read the specified Id.
+        /// Reads the object of the type implemented for the given ID
         /// </summary>
-        /// <returns>The read.</returns>
+        /// <returns>The object.</returns>
         /// <param name="Id">Identifier.</param>
-        Object Read(int Id);
+        void Read(Object obj);
 
         /// <summary>
-        /// Read this instance.
+        /// Gets a list with all the instances stored in the DDBB
         /// </summary>
-        /// <returns>The read.</returns>
+        /// <returns>List with the objects</returns>
         List<Object> Read();
 
         /// <summary>
         /// Update the specified obj.
         /// </summary>
-        /// <returns>The update.</returns>
+        /// <returns>true or false depending on the result of the operation</returns>
         /// <param name="obj">Object.</param>
         bool Update(Object obj);
 
         /// <summary>
         /// Delete the specified Id.
         /// </summary>
-        /// <returns>The delete.</returns>
+        /// <returns>True or false depending on the result of the operation</returns>
         /// <param name="Id">Identifier.</param>
-        bool Delete(int Id);
-
-        /// <summary>
-        /// Gets the identifier.
-        /// </summary>
-        /// <returns>The identifier.</returns>
-        /// <param name="obj">Object.</param>
-        int GetId(Object obj);
+        bool Delete(Object obj);
     }
 }

@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="EmptyClass.cs" />
+    <ProjectReference Include="..\library\library.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\library\library.csproj" />
+    <Compile Remove="EmptyClass.cs" />
   </ItemGroup>
 </Project>
