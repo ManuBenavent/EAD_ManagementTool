@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
+using library.exceptions;
 
 namespace library
 {
@@ -17,7 +18,7 @@ namespace library
             }
             catch(SqlException ex)
             {
-                //TODO notify somehow to the previous class that there has been an error with the connection to the DDBB
+                throw new DDBBException(ex.Source);
             }
         }
 
@@ -78,7 +79,7 @@ namespace library
             catch(SqlException ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                // TODO exception notifying the other class
+                throw new DDBBException(ex.Source);
             }
             finally
             {
@@ -107,7 +108,25 @@ namespace library
 
         public bool Update(object obj)
         {
-            throw new NotImplementedException();
+            Location location = (Location)obj;
+
+            try
+            {
+                connection.Open();
+                // TODO implement
+                SqlCommand com = new SqlCommand("", connection);
+                com.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return true;
         }
     }
 }
