@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mbena\\OneDrive - UNIVERSIDAD ALICANTE\\3º\\Cuatrimestre I - University of Westminster\\Enterprise Application Develoment\\Coursework\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj": {}
+    "C:\\Users\\mbena\\Documents\\EAD_CW\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mbena\\OneDrive - UNIVERSIDAD ALICANTE\\3º\\Cuatrimestre I - University of Westminster\\Enterprise Application Develoment\\Coursework\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj": {
+    "C:\\Users\\mbena\\Documents\\EAD_CW\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mbena\\OneDrive - UNIVERSIDAD ALICANTE\\3º\\Cuatrimestre I - University of Westminster\\Enterprise Application Develoment\\Coursework\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj",
+        "projectUniqueName": "C:\\Users\\mbena\\Documents\\EAD_CW\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj",
         "projectName": "library",
-        "projectPath": "C:\\Users\\mbena\\OneDrive - UNIVERSIDAD ALICANTE\\3º\\Cuatrimestre I - University of Westminster\\Enterprise Application Develoment\\Coursework\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj",
+        "projectPath": "C:\\Users\\mbena\\Documents\\EAD_CW\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj",
         "packagesPath": "C:\\Users\\mbena\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mbena\\OneDrive - UNIVERSIDAD ALICANTE\\3º\\Cuatrimestre I - University of Westminster\\Enterprise Application Develoment\\Coursework\\CW2\\TimeManagementAndReportingTool\\library\\obj\\",
+        "outputPath": "C:\\Users\\mbena\\Documents\\EAD_CW\\CW2\\TimeManagementAndReportingTool\\library\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\mbena\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -46,6 +43,14 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           },
           "imports": [

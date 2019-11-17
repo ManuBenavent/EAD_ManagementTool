@@ -249,10 +249,11 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/3.0.0": {
-      "sha512": "/pOb3Gn793O5UMdxIpKQH0iRJO40z9q1M1Ik3GjBlC+Ot9tU06THN6PsB+By+iTiTgt9lo5bC4mj2k7KOBZlRw==",
+      "sha512": "TsETIgVJb/AKoYfSP+iCxkuly5d3inZjTdx/ItZLk2CxY85v8083OBS3uai84kK3/baLnS5/b5XGs6zR7SuuHQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/3.0.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -265,10 +266,11 @@
       ]
     },
     "Microsoft.Win32.Registry/4.6.0": {
-      "sha512": "DGoxXIfT4XgwLnNy/AemxlYjZS0bLNXDSAv9wfzrHUGtcr7SP+J9CUTG0ZoQwMSy0z+Fnp90mB0YaAPRf/Gu8A==",
+      "sha512": "Xuqo5Lf5h1eUAbT8sJwNSEgusyEcQQQcza1R8dxJ6q/1vLSU1SG/WxtgiCPAth14dz/IjBXCxWT/+6E9glX33w==",
       "type": "package",
       "path": "microsoft.win32.registry/4.6.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -311,10 +313,11 @@
       ]
     },
     "Microsoft.Win32.SystemEvents/4.6.0": {
-      "sha512": "eFUzuY1vzn5DOFDd0Ypsx20EJsKIuJYcCxIwDYdhP1VtQoMoUf8PaNFySZOHulOWoLqq1QLrKrzfcd7IzX1Iog==",
+      "sha512": "Edg+pFW5C8WJb680Za2kTV8TqUi6Ahl/WldRVoOVJ23UQLpDHFspa+umgFjkWZw24ETsU99Cg+ErZz683M4chg==",
       "type": "package",
       "path": "microsoft.win32.systemevents/4.6.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -339,10 +342,11 @@
       ]
     },
     "runtime.native.System.Data.SqlClient.sni/4.6.0": {
-      "sha512": "riKpxqzMsJokpSjBcjx6f4hbS0GdH3vFuHwqOzqW7WHNvODE7vt8UQRz018DxySj0XRzTYYmEMuH922OnfiRWA==",
+      "sha512": "WRq11dBcJYyAbrUVguvv3BqNGl5ub60mZxUd+xaxNsSOb7tMLQxjbiyD/hF6FSl1akiom7GMttPDa3TW+UmnAQ==",
       "type": "package",
       "path": "runtime.native.system.data.sqlclient.sni/4.6.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -353,10 +357,11 @@
       ]
     },
     "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
-      "sha512": "i3DS3k1on6Qre8R0atBKu1U8aGk7wLCZwt8p0iLo1FwilMSlLhsC//1kpqfyb9AJuz0vIIHo1/KgCR1Q7+UTBQ==",
+      "sha512": "LbrynESTp3bm5O/+jGL8v0Qg5SJlTV08lpIpFesXjF6uGNMWqFnUQbYBJwZTeua6E/Y7FIM1C54Ey1btLWupdg==",
       "type": "package",
       "path": "runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -368,10 +373,11 @@
       ]
     },
     "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
-      "sha512": "nU4qKCZlA/++QR5ssYki67krFmfU5Agfq6RsFuI9T+kNrwENVlCuzvrW9Dx6uTiLDKZE9NCiqk6dj54HIINF/Q==",
+      "sha512": "38ugOfkYJqJoX9g6EYRlZB5U2ZJH51UP8ptxZgdpS07FgOEToV+lS11ouNK2PM12Pr6X/PpT5jK82G3DwH/SxQ==",
       "type": "package",
       "path": "runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -383,10 +389,11 @@
       ]
     },
     "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {
-      "sha512": "QtS6OUI6E/UbSP8/BLtrx6zgtGeMeDikM6FMPL/PKCZwid+FIFZQOyKpVMocG1PRKCxKCQ0Sbsb0t9BiXX6RuQ==",
+      "sha512": "YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "type": "package",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -398,10 +405,11 @@
       ]
     },
     "System.Configuration.ConfigurationManager/4.6.0": {
-      "sha512": "z9fW5VaBVnpA2EvdVXSCYNO0P6XunzF8qAMbx9/xNUmnFI6Yux524DWj/VOA+BItt4UJuQN+czTuAMM1srLcXg==",
+      "sha512": "gkNklXxdmB3r4SQTUzRhESZAb3MotgDz24XYi2R/bIjJ10SF0KHJ/qTEwi9CLyIAOTjmCo8Vx8+rKldLaiW7Ig==",
       "type": "package",
       "path": "system.configuration.configurationmanager/4.6.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -420,10 +428,11 @@
       ]
     },
     "System.Data.SqlClient/4.7.0": {
-      "sha512": "xTbMxbzlbSnPyK8dw52AQBUmqS58ZJ3h3QVPFsMAsrtr8llopChVYChz8j/SSD+0qtUOlDi53fegvSDVKKAWhw==",
+      "sha512": "lV3ljZeFc01DYyjcEBSxK3sy8Ow2R6AWa6o+g0t7B4hoDcA6Kzv4bTB4E4T7C/pKuZzHeBFLxe6fD4Am4q939Q==",
       "type": "package",
       "path": "system.data.sqlclient/4.7.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -504,10 +513,11 @@
       ]
     },
     "System.Drawing.Common/4.6.0": {
-      "sha512": "Yvo+d2iBMxsjNP4W8WMO6KQq0OPtewBs70qpfp7Fmc/xECbZo5zy8GCOnbSNWB9K9e5rGlMNxHuRGk1jUywp8w==",
+      "sha512": "2A3spjjoPZnvpVh/sDTzd+0H8ZqTdr+hH/6obB8MMfG81EJ85PmxCKDBxhBVQiA25PliKAZ1sKogDcq9mSnFEA==",
       "type": "package",
       "path": "system.drawing.common/4.6.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -542,10 +552,11 @@
       ]
     },
     "System.Security.AccessControl/4.6.0": {
-      "sha512": "Vsby2fY+L5wYZ1SPODYqCw+2nml/kw2gdWOa6ENdJMspx8qkmmqpVLnV5fTOr621JVk1xz92NjXKmj0mmokxjQ==",
+      "sha512": "gmlk6khICtVhiUnVBBtlsH0H/5QFDqhTZgtpp3AX14wWE6OIE+BX95NLD+X4AolXnIy/oXpNNmXYnsNfW1KuDQ==",
       "type": "package",
       "path": "system.security.accesscontrol/4.6.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -587,10 +598,11 @@
       ]
     },
     "System.Security.Cryptography.ProtectedData/4.6.0": {
-      "sha512": "atzhLwcy9zoptQMPRVz+3cBNVM/cyrn8ChK8wy6GdWKKd1Q831YgFMSz/40ife7pcAQ6eHE7Y2MYywIbD/RL5A==",
+      "sha512": "zdCsTOakmbAQVyOI6+ZadvXZgzSiFiY5nXAfGUQNGrz3ofc9sjehpXRvqYb3vWUsvloYFILSpiQCjiZVFKRBjA==",
       "type": "package",
       "path": "system.security.cryptography.protecteddata/4.6.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -631,10 +643,11 @@
       ]
     },
     "System.Security.Permissions/4.6.0": {
-      "sha512": "7IR8V0eTAxSV+IeRXFutzbcc3i+4smhdDsOc7R6JTJNSeNl1WYGJMKcHFWTKBP2i76IotjBh5bS1B7hVCkR+Og==",
+      "sha512": "W3Uxog9KCZAmGYsOFHgJnb7L2q+SDbxS3vGnFHmErUnXuIjWYpIh1KVTlua7qmPdrlRCkAcTF9dImv+jciBPOQ==",
       "type": "package",
       "path": "system.security.permissions/4.6.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -657,10 +670,11 @@
       ]
     },
     "System.Security.Principal.Windows/4.6.0": {
-      "sha512": "vFxU1zSGskh2J3pBmFWGDCN0rNOhvpBb86Tzj1CTiWNF1JDvO3skbn+87G23cOf+fWXodV/nh1fXlYuAsy/sjQ==",
+      "sha512": "Mdukseovp0YIGaz16FMH6nbfgZkrCFOJbtXQptv0aeBO9h775Ilb9+TDwLVTKikoW7y7CY7lpoXl9zmZ5G3ndA==",
       "type": "package",
       "path": "system.security.principal.windows/4.6.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -710,10 +724,11 @@
       ]
     },
     "System.Windows.Extensions/4.6.0": {
-      "sha512": "zTTEFL225KQMd+txwTZWA6sXVpM/vEWoY4S+HIEY1Iv0LJzvsGDsAe57yB2oF/pjIiw1XurARtFRTdfYsJ9t4Q==",
+      "sha512": "GL4izk0KgeyXklUOHViAk7y1IOYVYcn8nDpJZgcCqNzTGv2xd+8rgGgMKMo8G9nvfEuRCrNxWnGc74EiuYH2YA==",
       "type": "package",
       "path": "system.windows.extensions/4.6.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -741,38 +756,65 @@
     ]
   },
   "packageFolders": {
-    "/Users/w1749459/.nuget/packages/": {}
+    "C:\\Users\\mbena\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/TimeManagementTool/TimeManagementTool.csproj",
+      "projectUniqueName": "C:\\Users\\mbena\\Documents\\EAD_CW\\CW2\\TimeManagementAndReportingTool\\TimeManagementTool\\TimeManagementTool.csproj",
       "projectName": "TimeManagementTool",
-      "projectPath": "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/TimeManagementTool/TimeManagementTool.csproj",
-      "packagesPath": "/Users/w1749459/.nuget/packages/",
-      "outputPath": "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/TimeManagementTool/obj",
+      "projectPath": "C:\\Users\\mbena\\Documents\\EAD_CW\\CW2\\TimeManagementAndReportingTool\\TimeManagementTool\\TimeManagementTool.csproj",
+      "packagesPath": "C:\\Users\\mbena\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mbena\\Documents\\EAD_CW\\CW2\\TimeManagementAndReportingTool\\TimeManagementTool\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/w1749459/.config/NuGet/NuGet.Config"
+        "C:\\Users\\mbena\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/library.csproj": {
-              "projectPath": "/Users/w1749459/Downloads/EAD/EAD_CW/CW2/TimeManagementAndReportingTool/library/library.csproj"
+            "C:\\Users\\mbena\\Documents\\EAD_CW\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj": {
+              "projectPath": "C:\\Users\\mbena\\Documents\\EAD_CW\\CW2\\TimeManagementAndReportingTool\\library\\library.csproj"
             }
           }
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {
-      "netcoreapp3.0": {}
+      "netcoreapp3.0": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+      }
     }
   }
 }
