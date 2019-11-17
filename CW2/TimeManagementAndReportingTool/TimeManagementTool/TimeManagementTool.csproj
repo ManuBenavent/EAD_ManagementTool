@@ -5,10 +5,6 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="EmptyClass.cs" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\library\library.csproj" />
   </ItemGroup>
