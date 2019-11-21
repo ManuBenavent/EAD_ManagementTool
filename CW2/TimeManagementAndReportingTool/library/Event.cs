@@ -4,6 +4,7 @@ namespace library
 {
     public abstract class Location
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public bool Recurring { get; set; }
         DAC ddbb;
