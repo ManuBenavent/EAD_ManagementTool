@@ -4,12 +4,12 @@ namespace library
 {
     public class Appointment : Event
     {
-        public Event(string Name, bool Recurring)
+        public Appointment (string Name, bool Recurring)
         {
             super( Name, Recurring );
         }
         
-        public void create()
+        public void create() // TODO DRY
         {
             super.ddbb.create(this); 
         }
