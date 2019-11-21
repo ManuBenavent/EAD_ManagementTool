@@ -36,7 +36,8 @@ namespace library
         }
         
         public void read (int Id) {
-            ddbb.readContact(Id); //TODO review so DRY is applied
+            this.Id = Id;
+            ddbb.readContact(this); //TODO review so DRY is applied
         }
         
         public static List<Contact> read () {
