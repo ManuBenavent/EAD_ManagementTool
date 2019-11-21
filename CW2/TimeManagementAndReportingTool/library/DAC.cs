@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace library
 {
-    internal class DAC_Location : ICRUD
+    internal class DAC : ICRUD
     {
-        public DAC_Location()
+        public DAC()
         {
         }
 
