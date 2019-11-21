@@ -13,6 +13,9 @@ namespace library
         {
             //TODO: Connect to DDBB an create a new Location object
             throw new NotImplementedException();
+            // implement switch depending on the object type (see tutorials) and that would give the TABLE(cols)
+            // and the downcasting that needs to be perfomed to obtains the valules quoted (create a toquotedstring funcion in BE)
+            // insert into "TABLE (cols)" VALUES ("values quoted")
         }
 
         public bool Delete(int Id)
