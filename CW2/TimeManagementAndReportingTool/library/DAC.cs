@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 
 namespace library
 {
     internal class DAC : ICRUD
     {
+        private string constring;
         public DAC()
         {
+            constring = System.Configuration.ConfigurationManager.ConnectionStrings["myconnection"].ToString();
         }
 
         public bool Create(object obj)
         {
-            //TODO: Connect to DDBB an create a new Location object
             throw new NotImplementedException();
             
             /*switch(obj){

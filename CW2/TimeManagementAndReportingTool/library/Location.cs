@@ -24,7 +24,7 @@ namespace library
 
         public void GetLocation(int Id)
         {
-            DAC_Location dac = new DAC_Location();  
+            DAC dac = new DAC();  
         }
     }
 }
