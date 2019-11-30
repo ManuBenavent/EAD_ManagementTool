@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace library
 {
-    internal class DAC : ICRUD
+    public class DAC : ICRUD
     {
-        private string constring;
+        public string constring;
         public DAC()
         {
-            constring = System.Configuration.ConfigurationManager.ConnectionStrings["myconnection"].ToString();
+            constring = ConfigurationManager.ConnectionStrings["myconnection"].ToString();
         }
 
         public bool Create(object obj)

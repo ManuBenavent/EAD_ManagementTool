@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 namespace library
 {
     public class Contact
     {
-        public int Id { get; set; }
+       /* public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -32,7 +33,7 @@ namespace library
         }
         
         public void delete() {
-            ddbb.delete(this)
+            ddbb.delete(this);
         }
         
         public void read (int Id) {
@@ -41,8 +42,8 @@ namespace library
         }
         
         public static List<Contact> read () {
-            return ddbb.readContacts()
-        }
+            return ddbb.readContacts();
+        }*/
             
     }
 }

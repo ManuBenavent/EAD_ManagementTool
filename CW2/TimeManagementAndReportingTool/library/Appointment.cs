@@ -2,9 +2,9 @@ using System;
 
 namespace library
 {
-    public class Appointment : Event
+    public class Appointment //: Event
     {
-        public Appointment (string Name, bool Recurring)
+        /*public Appointment (string Name, bool Recurring)
         {
             super( Name, Recurring );
         }
@@ -28,7 +28,7 @@ namespace library
         {
             super.Id = Id;
             super.ddbb.read(this);
-        }
+        }*/
         
     }
 }

@@ -2,9 +2,9 @@ using System;
 
 namespace library
 {
-    public class Lecture : Event
+    public class Lecture //: Event
     {
-        public string Lecturer { get; set; }
+       /* public string Lecturer { get; set; }
         
         public Lecture(string Name, bool Recurring, string Lecturer)
         {
@@ -32,6 +32,6 @@ namespace library
             super.Id = Id;
             super.ddbb.read(this);
         }
-        
+     */   
     }
 }

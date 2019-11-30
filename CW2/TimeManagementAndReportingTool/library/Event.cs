@@ -17,10 +17,10 @@ namespace library
             ddbb = new DAC();
         }
         
-        public static List<Event> read ()
+        /*public static List<Event> read ()
         {
             return ddbb.readEvent();
-        }
+        }*/
          
           
     }
