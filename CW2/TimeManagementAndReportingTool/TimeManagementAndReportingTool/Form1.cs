@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using library;
 
 namespace TimeManagementAndReportingTool
 {
@@ -15,6 +16,8 @@ namespace TimeManagementAndReportingTool
         public Form1()
         {
             InitializeComponent();
+            Contact con = new Contact("Manu", "BLL", "asdf", "asdf");
+            con.Create();
         }
     }
 }

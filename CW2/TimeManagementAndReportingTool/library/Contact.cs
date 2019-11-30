@@ -5,13 +5,14 @@ namespace library
 {
     public class Contact
     {
-       /* public int Id { get; set; }
+        private int _Id;
+        public int Id { get { return _Id; } }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        DAC ddbb;
-        
+        private DAC ddbb;
+        public string SQLString { get { return "('" + FirstName + "','" + LastName + "','" + Email + "','" + Phone + "')"; } }
         public Contact () {
             ddbb = new DAC();
         }
@@ -24,11 +25,11 @@ namespace library
             ddbb = new DAC();
         }
         
-        public void create() {
-            ddbb.create(this);
+        public void Create() {
+            ddbb.Create(this);
         }
         
-        public void update() {
+        /*public void update() {
             ddbb.update(this);
         }
         
@@ -36,7 +37,7 @@ namespace library
             ddbb.delete(this);
         }
         
-        public void read (int Id) {
+        public static void read (int Id) {
             this.Id = Id;
             ddbb.readContact(this); //TODO review so DRY is applied
         }

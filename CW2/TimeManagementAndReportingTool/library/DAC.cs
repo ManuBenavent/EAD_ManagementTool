@@ -1,21 +1,44 @@
 ﻿using System;
 using System.Configuration;
 using System.Collections.Generic;
+using library.exceptions;
+using System.Data.SqlClient;
 
 namespace library
 {
-    public class DAC : ICRUD
+    internal class DAC /*: ICRUD*/ //TODO uncomment
     {
         public string constring;
         public DAC()
         {
-            constring = ConfigurationManager.ConnectionStrings["myconnection"].ToString();
+            constring = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            //constring = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\Database.mdf; Integrated Security = True";
         }
 
-        public bool Create(object obj)
+        public void Create(object obj)
         {
-            throw new NotImplementedException();
-            
+            string TABLE = "";
+            string VALUES = "";
+            switch (obj)
+            {
+                case Contact cont:
+                    TABLE = "Contact (FirstName, LastName, Email, Phone)";
+                    VALUES = cont.SQLString;
+                    break;
+                case Location loc:
+                    break;
+                case Appointment ap:
+                    break;
+                case Lecture lec:
+                    break;
+                /*case Task task:
+                    break;
+                case Tutorial tut:
+                    break;*/
+                default:
+                    throw new DDBBException("Create");
+            }
+
             /*switch(obj){
                 case Appointment ap:
                     // give TABLE(cols) SQL statement part
@@ -24,11 +47,11 @@ namespace library
                     break;
                 case Contact contact:
             }*/
-            
-            // insert into "TABLE (cols)" VALUES ("values quoted")
+            string sql_statement = "INSERT INTO " + TABLE + " VALUES " + VALUES;
+            SQLNonQuery(sql_statement);
         }
 
-        public bool Delete(int Id)
+        /*public bool Delete(int Id)
         {
             throw new NotImplementedException();
         }
@@ -52,6 +75,30 @@ namespace library
         public bool Update(object obj)
         {
             throw new NotImplementedException();
+        }*/
+
+        private void SQLNonQuery (string statement)
+        {
+            // TODO create thread
+            SqlConnection c = null;
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(statement, c);
+
+                if (com.ExecuteNonQuery() == 0)
+                    throw new DDBBException("SQLNonQuery");
+            }
+            catch (SqlException ex)
+            {
+                throw new DDBBException("SQLNonQuery " + ex.Message);
+            }
+            finally
+            {
+                c.Close();
+            }
         }
     }
 }

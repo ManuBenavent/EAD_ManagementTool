@@ -10,7 +10,7 @@ namespace library
         /// </summary>
         /// <returns>The create.</returns>
         /// <param name="obj">Object.</param>
-        bool Create(Object obj);
+        void Create(Object obj);
 
         /// <summary>
         /// Read the specified Id.

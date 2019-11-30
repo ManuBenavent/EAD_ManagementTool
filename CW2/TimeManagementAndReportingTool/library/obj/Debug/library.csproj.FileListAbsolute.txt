@@ -1,5 +1,0 @@
-C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\library\bin\Debug\library.dll
-C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\library\bin\Debug\library.pdb
-C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\library\obj\Debug\library.csprojAssemblyReference.cache
-C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\library\obj\Debug\library.dll
-C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\library\obj\Debug\library.pdb

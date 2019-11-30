@@ -45,6 +45,7 @@
     <Compile Include="Appointment.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="DAC.cs" />
+    <Compile Include="DDBBException.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="ICRUD.cs" />
     <Compile Include="Lecture.cs" />
