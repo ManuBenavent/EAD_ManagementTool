@@ -25,8 +25,11 @@ namespace library
                     VALUES = cont.SQLString;
                     break;
                 case Location loc:
+                    TABLE = "Location (Name, AddrLine1, AddrLine2, City, Postcode, Country)";
+                    VALUES = loc.SQLString;
                     break;
                 case Appointment ap:
+                    TABLE = "Appointment (Name, Recurring)";
                     break;
                 case Lecture lec:
                     break;
@@ -41,13 +44,13 @@ namespace library
             SQLNonQuery(sql_statement);
         }
 
-        /*public bool Delete(int Id)
+        public bool Delete(int Id)
         {
             throw new NotImplementedException();
         }
 
 
-        public int GetId(object obj)
+        /*public int GetId(object obj)
         {
             throw new NotImplementedException();
         }

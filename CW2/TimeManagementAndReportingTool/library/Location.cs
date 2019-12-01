@@ -12,6 +12,7 @@ namespace library
         private string PostCode { get; set; }
         private string Country { get; set; }
 
+        public string SQLString { get { return ""; } } // TODO implement
         public Location(string Name, string AddressLine1, string AddressLine2, string City, string PostCode, string Country)
         {
             this.Name = Name;
