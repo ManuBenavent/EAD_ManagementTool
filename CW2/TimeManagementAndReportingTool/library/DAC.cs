@@ -12,7 +12,6 @@ namespace library
         public DAC()
         {
             constring = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            //constring = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\Database.mdf; Integrated Security = True";
         }
 
         public void Create(object obj)
@@ -38,15 +37,6 @@ namespace library
                 default:
                     throw new DDBBException("Create");
             }
-
-            /*switch(obj){
-                case Appointment ap:
-                    // give TABLE(cols) SQL statement part
-                    // since downcasting has been already perfomerd use getSQLInsertMethod
-                    // this way the method is more generic and there is a lot of code reusability
-                    break;
-                case Contact contact:
-            }*/
             string sql_statement = "INSERT INTO " + TABLE + " VALUES " + VALUES;
             SQLNonQuery(sql_statement);
         }

@@ -18,6 +18,7 @@ namespace library
         }
         
         public Contact ( string FirstName, string LastName, string Email, string Phone ) {
+            this._Id = -1;
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.Email = Email;
@@ -30,7 +31,7 @@ namespace library
         }
         
         /*public void update() {
-            ddbb.update(this);
+            ddbb.Update(this);
         }
         
         public void delete() {
