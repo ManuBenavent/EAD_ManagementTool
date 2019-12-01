@@ -8,12 +8,15 @@ namespace library
 {
     class Tutorial : Event
     {
-        public override string SQLCreateString { get { return ""; } }
+        public override string SQLCreateString { get { return "('" + base.Name + "','" + base.Recurring + "','" + Lecturer + "','" + Lab + "')" ; } }
         public override string SQLGetString { get { return ""; } }
         public override string SQLUpdateString { get { return ""; } }
-        public Tutorial(string Name, bool Recurring) : base(Name, Recurring)
+        public string Lab { get; set; }
+        public string Lecturer { get; set; }
+        public Tutorial(string Name, bool Recurring, string Lab, string Lecturer) : base(Name, Recurring)
         {
-
+            this.Lab = Lab;
+            this.Lecturer = Lecturer;
         }
     }
 }

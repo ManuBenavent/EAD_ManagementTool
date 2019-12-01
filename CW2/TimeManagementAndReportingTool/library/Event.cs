@@ -34,13 +34,6 @@ namespace library
         public void Delete()
         {
             ddbb.Delete(this);
-        }
-
-        /*public static List<Event> read ()
-        {
-            return ddbb.readEvent();
-        }*/
-         
-          
+        } 
     }
 }
