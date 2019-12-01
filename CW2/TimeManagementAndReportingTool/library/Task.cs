@@ -8,9 +8,21 @@ namespace library
 {
     public class Task : Event
     {
-        public override string SQLCreateString { get { return "('" + base.Name + "','" + base.Recurring + "','" + Finished + "')"; } }
-        public override string SQLGetString { get { return "Task WHERE Name = '" ; } }
-        public override string SQLUpdateString { get { return ""; } }
+        internal override string SQLCreateString { 
+            get { 
+                return "('" + base.Name + "','" + base.Recurring + "','" + Finished + "')"; 
+            } 
+        }
+        internal override string SQLGetString { 
+            get { 
+                return "Task WHERE Name = '" + Name + "' and Recurring='"+Recurring + "' and Finished='" + Finished + "'"; 
+            } 
+        }
+        internal override string SQLUpdateString { 
+            get { 
+                return "Task Set Name='" + Name + "', Recurring='" + Recurring + "', Finished='" + Finished + "'"; 
+            } 
+        }
         public bool Finished { get; set; }
         public Task(string Name, bool Recurring, bool Finished) : base(Name, Recurring)
         {

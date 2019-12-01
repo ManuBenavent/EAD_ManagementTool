@@ -4,9 +4,23 @@ namespace library
 {
     public class Appointment : Event
     {
-        public override string SQLCreateString { get { return "('" + base.Name + "','" + base.Recurring + "')"; } }
-        public override string SQLGetString { get { return ""; } }
-        public override string SQLUpdateString { get { return ""; } }
+        internal override string SQLCreateString { 
+            get { 
+                return "('" + base.Name + "','" + base.Recurring + "')"; 
+            } 
+        }
+        internal override string SQLGetString
+        {
+            get
+            {
+                return "Appointment WHERE Name = '" + Name + "' and Recurring='" + Recurring + "'";
+            }
+        }
+        internal override string SQLUpdateString { 
+            get { 
+                return "Appointment Set Name='" + Name + "', Recurring='" + Recurring + "'"; 
+            } 
+        }
 
         public Appointment(string Name, bool Recurring) : base(Name, Recurring) { }
     }

@@ -11,11 +11,22 @@ namespace library
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        private DAC ddbb;
-        public string SQLCreateString { get { return "('" + FirstName + "','" + LastName + "','" + Email + "','" + Phone + "')"; } }
-        public string SQLGetString { get{ return "Contact WHERE FirstName='" + FirstName + "' and LastName='" + LastName 
-                                                + "' and Email='" + Email + "' and Phone='" + Phone+"'"; } }
-        public string SQLUpdateString { get{ return "Contact set FirstName='" + FirstName + "', LastName='" + LastName + "', Email='" + Email + "', Phone='" + Phone + "'"; } }
+        private readonly DAC ddbb;
+        internal string SQLCreateString { 
+            get {
+                return "('" + FirstName + "','" + LastName + "','" + Email + "','" + Phone + "')"; 
+            } 
+        }
+        internal string SQLGetString { 
+            get{ 
+                return "Contact WHERE FirstName='" + FirstName + "' and LastName='" + LastName + "' and Email='" + Email + "' and Phone='" + Phone+"'"; 
+            } 
+        }
+        internal string SQLUpdateString { 
+            get{ 
+                return "Contact set FirstName='" + FirstName + "', LastName='" + LastName + "', Email='" + Email + "', Phone='" + Phone + "'"; 
+            } 
+        }
         public Contact () {
             this._Id = -1;
             this.FirstName = "";

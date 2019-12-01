@@ -27,8 +27,8 @@ namespace library
         /// <param name="obj">The object to be inserted in the DDBB</param>
         public void Create(object obj)
         {
-            string TABLE = "";
-            string VALUES = "";
+            string VALUES;
+            string TABLE;
             switch (obj)
             {
                 case Contact cont:
@@ -125,7 +125,7 @@ namespace library
         /// <param name="obj">The object.</param>
         public void Delete(Object obj)
         {
-            string TABLE = "";
+            string TABLE;
             int Id = -1;
             switch (obj)
             {
