@@ -4,10 +4,14 @@ using System.Collections.Generic;
 namespace library
 {
     public abstract class Event {
-        public int Id { get; set; }
+        private int _Id;
+        public int Id { get { return _Id; } }
         public string Name { get; set; }
         public bool Recurring { get; set; }
-        DAC ddbb;
+        public abstract string SQLCreateString { get; }
+        public abstract string SQLUpdateString { get; }
+        public abstract string SQLGetString { get; }
+        private DAC ddbb;
         
         public Event (string Name, bool Recurring)
         {
@@ -16,11 +20,21 @@ namespace library
             ddbb = new DAC();
         }
 
-        public abstract void Create();
+        public void Create()
+        {
+            ddbb.Create(this);
+            _Id = ddbb.GetId(this);
+        }
 
-        public abstract void Update();
+        public void Update()
+        {
+            ddbb.Update(this);
+        }
 
-        public abstract void Delete();
+        public void Delete()
+        {
+            ddbb.Delete(this);
+        }
 
         /*public static List<Event> read ()
         {

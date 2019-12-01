@@ -8,12 +8,23 @@ namespace library
 {
     internal class DAC : ICRUD
     {
-        public string constring;
+        /// <summary>
+        /// Conection string for the DDBB.
+        /// </summary>
+        private string constring;
+
+        /// <summary>
+        /// Constructor for DAC objects. Initializes the conection string.
+        /// </summary>
         public DAC()
         {
             constring = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
         }
 
+        /// <summary>
+        /// Creates a new entry of the given object in the DDBB.
+        /// </summary>
+        /// <param name="obj">The object to be inserted in the DDBB</param>
         public void Create(object obj)
         {
             string TABLE = "";
@@ -33,7 +44,7 @@ namespace library
                     VALUES = ap.SQLCreateString;
                     break;
                 case Lecture lec:
-                    TABLE = "Lecture (Name, Recurring, Lecturer)",
+                    TABLE = "Lecture (Name, Recurring, Lecturer)";
                     VALUES = lec.SQLCreateString;
                     break;
                 case Task task:
@@ -41,7 +52,7 @@ namespace library
                     VALUES = task.SQLCreateString;
                     break;
                 case Tutorial tut:
-                    TABLE = "Tutorial (Name, Recurring, Lecturer, Lab";
+                    TABLE = "Tutorial (Name, Recurring, Lecturer, Lab)";
                     VALUES = tut.SQLCreateString;
                     break;
                 default:
@@ -51,26 +62,34 @@ namespace library
             SQLNonQuery(sql_statement);
         }
 
+        /// <summary>
+        /// Gets the Id for a set of values.
+        /// </summary>
+        /// <param name="obj">The set of values.</param>
+        /// <returns>The id.</returns>
         public int GetId(object obj)
         {
-            string TABLE = "";
+            string TABLE;
             switch (obj)
             {
                 case Contact cont:
                     TABLE = cont.SQLGetString;
                     break;
                 case Location loc:
-                    TABLE = "Location (Name, AddrLine1, AddrLine2, City, Postcode, Country)";
+                    TABLE = loc.SQLGetString;
                     break;
                 case Appointment ap:
-                    TABLE = "Appointment (Name, Recurring)";
+                    TABLE = ap.SQLGetString;
                     break;
                 case Lecture lec:
+                    TABLE = lec.SQLGetString;
                     break;
-                /*case Task task:
+                case Task task:
+                    TABLE = task.SQLGetString;
                     break;
                 case Tutorial tut:
-                    break;*/
+                    TABLE = tut.SQLGetString;
+                    break;
                 default:
                     throw new DDBBException("GetId");
             }
@@ -100,6 +119,10 @@ namespace library
             return Id;
         }
 
+        /// <summary>
+        /// Deletes the specified object from the DDBB.
+        /// </summary>
+        /// <param name="obj">The object.</param>
         public void Delete(Object obj)
         {
             string TABLE = "";
@@ -135,6 +158,10 @@ namespace library
             SQLNonQuery(statement);
         } 
 
+        /// <summary>
+        /// Updates the specified object in the DDBB.
+        /// </summary>
+        /// <param name="obj">The object.</param>
         public void Update(object obj)
         {
             string TABLE;
@@ -144,20 +171,20 @@ namespace library
                     TABLE = cont.SQLUpdateString;
                     break;
                 case Location loc:
-                    TABLE = "Location";
+                    TABLE = loc.SQLUpdateString;
                     break;
                 case Appointment ap:
-                    TABLE = "Appointment";
+                    TABLE = ap.SQLUpdateString;
                     break;
                 case Lecture lec:
-                    TABLE = "Lecture";
+                    TABLE = lec.SQLUpdateString;
                     break;
-                /*case Task task:
-                    TABLE = "Task";
+                case Task task:
+                    TABLE = task.SQLUpdateString;
                     break;
                 case Tutorial tut:
-                    TABLE = "Tutorial";
-                    break;*/
+                    TABLE = tut.SQLUpdateString;
+                    break;
                 default:
                     throw new DDBBException("Delete");
             }
@@ -175,6 +202,10 @@ namespace library
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Performs a non query SQL statement.
+        /// </summary>
+        /// <param name="statement">The SQL statement to be performed.</param>
         private void SQLNonQuery (string statement)
         {
             // TODO create thread
