@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace library
 {
-    internal class DAC /*: ICRUD*/ //TODO uncomment
+    internal class DAC : ICRUD
     {
         public string constring;
         public DAC()
@@ -22,11 +22,45 @@ namespace library
             {
                 case Contact cont:
                     TABLE = "Contact (FirstName, LastName, Email, Phone)";
-                    VALUES = cont.SQLString;
+                    VALUES = cont.SQLCreateString;
                     break;
                 case Location loc:
                     TABLE = "Location (Name, AddrLine1, AddrLine2, City, Postcode, Country)";
-                    VALUES = loc.SQLString;
+                    VALUES = loc.SQLCreateString;
+                    break;
+                case Appointment ap:
+                    TABLE = "Appointment (Name, Recurring)";
+                    VALUES = ap.SQLCreateString;
+                    break;
+                case Lecture lec:
+                    TABLE = "Lecture (Name, Recurring, Lecturer)",
+                    VALUES = lec.SQLCreateString;
+                    break;
+                case Task task:
+                    TABLE = "Task (Name, Recurring, Finished)";
+                    VALUES = task.SQLCreateString;
+                    break;
+                case Tutorial tut:
+                    TABLE = "Tutorial (Name, Recurring, Lecturer, Lab";
+                    VALUES = tut.SQLCreateString;
+                    break;
+                default:
+                    throw new DDBBException("Create");
+            }
+            string sql_statement = "INSERT INTO " + TABLE + " VALUES " + VALUES;
+            SQLNonQuery(sql_statement);
+        }
+
+        public int GetId(object obj)
+        {
+            string TABLE = "";
+            switch (obj)
+            {
+                case Contact cont:
+                    TABLE = cont.SQLGetString;
+                    break;
+                case Location loc:
+                    TABLE = "Location (Name, AddrLine1, AddrLine2, City, Postcode, Country)";
                     break;
                 case Appointment ap:
                     TABLE = "Appointment (Name, Recurring)";
@@ -38,21 +72,97 @@ namespace library
                 case Tutorial tut:
                     break;*/
                 default:
-                    throw new DDBBException("Create");
+                    throw new DDBBException("GetId");
             }
-            string sql_statement = "INSERT INTO " + TABLE + " VALUES " + VALUES;
-            SQLNonQuery(sql_statement);
+            string statement = "SELECT Id FROM " + TABLE;
+            // TODO DRY + THREADS
+            SqlConnection c = null;
+            int Id = -1;
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+                SqlCommand com = new SqlCommand(statement, c);
+                SqlDataReader reader = com.ExecuteReader();
+                if (reader.Read())
+                    Id = int.Parse(reader["Id"].ToString());
+                reader.Close();
+                if (Id == -1)
+                    throw new DDBBException("GetId: Id not found");
+            }catch(SqlException ex)
+            {
+                throw new DDBBException("GetId: " + ex.Message);
+            }
+            finally
+            {
+                c.Close();
+            }
+            return Id;
         }
 
-        public bool Delete(int Id)
+        public void Delete(Object obj)
         {
-            throw new NotImplementedException();
-        }
+            string TABLE = "";
+            int Id = -1;
+            switch (obj)
+            {
+                case Contact cont:
+                    TABLE = "Contact";
+                    Id = cont.Id;
+                    break;
+                case Location loc:
+                    TABLE = "Location";
+                    //Id = loc.Id;
+                    break;
+                case Appointment ap:
+                    TABLE = "Appointment";
+                    //Id = ap.Id;
+                    break;
+                case Lecture lec:
+                    TABLE = "Lecture";
+                    //Id = lec.Id;
+                    break;
+                /*case Task task:
+                    TABLE = "Task";
+                    break;
+                case Tutorial tut:
+                    TABLE = "Tutorial";
+                    break;*/
+                default:
+                    throw new DDBBException("Delete");
+            }
+            string statement = "Delete from " + TABLE + " where Id=" + Id;
+            SQLNonQuery(statement);
+        } 
 
-
-        /*public int GetId(object obj)
+        public void Update(object obj)
         {
-            throw new NotImplementedException();
+            string TABLE;
+            switch (obj)
+            {
+                case Contact cont:
+                    TABLE = cont.SQLUpdateString;
+                    break;
+                case Location loc:
+                    TABLE = "Location";
+                    break;
+                case Appointment ap:
+                    TABLE = "Appointment";
+                    break;
+                case Lecture lec:
+                    TABLE = "Lecture";
+                    break;
+                /*case Task task:
+                    TABLE = "Task";
+                    break;
+                case Tutorial tut:
+                    TABLE = "Tutorial";
+                    break;*/
+                default:
+                    throw new DDBBException("Delete");
+            }
+            string statement = "Update " + TABLE;
+            SQLNonQuery(statement);
         }
 
         public object Read(int Id)
@@ -64,11 +174,6 @@ namespace library
         {
             throw new NotImplementedException();
         }
-
-        public bool Update(object obj)
-        {
-            throw new NotImplementedException();
-        }*/
 
         private void SQLNonQuery (string statement)
         {

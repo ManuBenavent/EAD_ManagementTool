@@ -28,16 +28,14 @@ namespace library
         /// <summary>
         /// Update the specified obj.
         /// </summary>
-        /// <returns>The update.</returns>
         /// <param name="obj">Object.</param>
-        bool Update(Object obj);
+        void Update(Object obj);
 
         /// <summary>
-        /// Delete the specified Id.
+        /// Delete the specified object.
         /// </summary>
-        /// <returns>The delete.</returns>
-        /// <param name="Id">Identifier.</param>
-        bool Delete(int Id);
+        /// <param name="obj">Object.</param>
+        void Delete(Object obj);
 
         /// <summary>
         /// Gets the identifier.

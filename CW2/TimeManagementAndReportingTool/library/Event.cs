@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 namespace library
 {
-    public abstract class Event
-    {
+    public abstract class Event {
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Recurring { get; set; }
@@ -16,7 +15,13 @@ namespace library
             this.Recurring = Recurring;
             ddbb = new DAC();
         }
-        
+
+        public abstract void Create();
+
+        public abstract void Update();
+
+        public abstract void Delete();
+
         /*public static List<Event> read ()
         {
             return ddbb.readEvent();

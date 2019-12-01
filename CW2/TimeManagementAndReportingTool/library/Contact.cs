@@ -12,8 +12,16 @@ namespace library
         public string Email { get; set; }
         public string Phone { get; set; }
         private DAC ddbb;
-        public string SQLString { get { return "('" + FirstName + "','" + LastName + "','" + Email + "','" + Phone + "')"; } }
+        public string SQLCreateString { get { return "('" + FirstName + "','" + LastName + "','" + Email + "','" + Phone + "')"; } }
+        public string SQLGetString { get{ return "Contact WHERE FirstName='" + FirstName + "' and LastName='" + LastName 
+                                                + "' and Email='" + Email + "' and Phone='" + Phone+"'"; } }
+        public string SQLUpdateString { get{ return "Contact set FirstName='" + FirstName + "', LastName='" + LastName + "', Email='" + Email + "', Phone='" + Phone + "'"; } }
         public Contact () {
+            this._Id = -1;
+            this.FirstName = "";
+            this.LastName = "";
+            this.Email = "";
+            this.Phone = "";
             ddbb = new DAC();
         }
         
@@ -28,17 +36,18 @@ namespace library
         
         public void Create() {
             ddbb.Create(this);
+            _Id = ddbb.GetId(this);
         }
         
-        /*public void update() {
+        public void Update() {
             ddbb.Update(this);
         }
         
-        public void delete() {
-            ddbb.delete(this);
+        public void Delete() {
+            ddbb.Delete(this);
         }
         
-        public static void read (int Id) {
+        /*public static void read (int Id) {
             this.Id = Id;
             ddbb.readContact(this); //TODO review so DRY is applied
         }

@@ -18,6 +18,12 @@ namespace TimeManagementAndReportingTool
             InitializeComponent();
             Contact con = new Contact("Manu", "BLL", "asdf", "asdf");
             con.Create();
+            //con.Delete();
+            con.FirstName = "Manuel";
+            con.LastName = "Benavent";
+            con.Email = "";
+            con.Phone = "12345";
+            con.Update();
         }
     }
 }
