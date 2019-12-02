@@ -33,7 +33,6 @@
             this.ListContactsButton = new System.Windows.Forms.Button();
             this.TimeReportButton = new System.Windows.Forms.Button();
             this.ChangeViewButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
             // NewEventButton
@@ -86,27 +85,11 @@
             this.ChangeViewButton.UseVisualStyleBackColor = true;
             this.ChangeViewButton.Click += new System.EventHandler(this.ChangeViewButton_Click);
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.38153F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.61847F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 141F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 275F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 30);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(811, 482);
-            this.tableLayoutPanel1.TabIndex = 5;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(996, 539);
-            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.ChangeViewButton);
             this.Controls.Add(this.TimeReportButton);
             this.Controls.Add(this.ListContactsButton);
@@ -126,6 +109,5 @@
         private System.Windows.Forms.Button ListContactsButton;
         private System.Windows.Forms.Button TimeReportButton;
         private System.Windows.Forms.Button ChangeViewButton;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

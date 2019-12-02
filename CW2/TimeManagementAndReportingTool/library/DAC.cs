@@ -3,6 +3,9 @@ using System.Configuration;
 using System.Collections.Generic;
 using library.exceptions;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
+using System.Data;
+using System.Globalization;
 
 namespace library
 {
@@ -47,7 +50,7 @@ namespace library
                     TABLE = "Lecture (Name, Recurring, Lecturer)";
                     VALUES = lec.SQLCreateString;
                     break;
-                case Task task:
+                case TaskEvent task:
                     TABLE = "Task (Name, Recurring, Finished)";
                     VALUES = task.SQLCreateString;
                     break;
@@ -84,7 +87,7 @@ namespace library
                 case Lecture lec:
                     TABLE = lec.SQLGetString;
                     break;
-                case Task task:
+                case TaskEvent task:
                     TABLE = task.SQLGetString;
                     break;
                 case Tutorial tut:
@@ -94,8 +97,9 @@ namespace library
                     throw new DDBBException("GetId");
             }
             string statement = "SELECT Id FROM " + TABLE;
-            int Id=-1;
-            Task t = Task.Run( () => {
+            int Id = -1;
+            Task t = Task.Run(() =>
+            {
                 SqlConnection c = null;
                 try
                 {
@@ -148,28 +152,28 @@ namespace library
                     break;
                 case Location loc:
                     TABLE = "Location";
-                    //Id = loc.Id;
+                    Id = loc.Id;
                     break;
                 case Appointment ap:
                     TABLE = "Appointment";
-                    //Id = ap.Id;
+                    Id = ap.Id;
                     break;
                 case Lecture lec:
                     TABLE = "Lecture";
-                    //Id = lec.Id;
+                    Id = lec.Id;
                     break;
-                /*case Task task:
+                case TaskEvent task:
                     TABLE = "Task";
                     break;
                 case Tutorial tut:
                     TABLE = "Tutorial";
-                    break;*/
+                    break;
                 default:
                     throw new DDBBException("Delete");
             }
             string statement = "Delete from " + TABLE + " where Id=" + Id;
             SQLNonQuery(statement);
-        } 
+        }
 
         /// <summary>
         /// Updates the specified object in the DDBB.
@@ -192,7 +196,7 @@ namespace library
                 case Lecture lec:
                     TABLE = lec.SQLUpdateString;
                     break;
-                case Task task:
+                case TaskEvent task:
                     TABLE = task.SQLUpdateString;
                     break;
                 case Tutorial tut:
@@ -219,38 +223,61 @@ namespace library
         /// Performs a non query SQL statement.
         /// </summary>
         /// <param name="statement">The SQL statement to be performed.</param>
-        private void SQLNonQuery (string statement)
+        private void SQLNonQuery(string statement)
         {
             Task task = Task.Run(() =>
             {
-                  SqlConnection c = null;
-                  try
-                  {
-                      c = new SqlConnection(constring);
-                      c.Open();
+                SqlConnection c = null;
+                try
+                {
+                    c = new SqlConnection(constring);
+                    c.Open();
 
-                      SqlCommand com = new SqlCommand(statement, c);
+                    SqlCommand com = new SqlCommand(statement, c);
 
-                      if (com.ExecuteNonQuery() == 0)
-                          throw new DDBBException("SQLNonQuery");
-                  }
-                  catch (SqlException ex)
-                  {
-                      throw new DDBBException("SQLNonQuery " + ex.Message);
-                  }
-                  finally
-                  {
-                      c.Close();
-                  }
+                    if (com.ExecuteNonQuery() == 0)
+                        throw new DDBBException("SQLNonQuery");
+                }
+                catch (SqlException ex)
+                {
+                    throw new DDBBException("SQLNonQuery " + ex.Message);
+                }
+                finally
+                {
+                    c.Close();
+                }
             });
             try
             {
                 task.Wait();
             }
-            catch( AggregateException ex)
+            catch (AggregateException ex)
             {
                 throw new DDBBException("SQLNonQuery " + ex.Message);
             }
+        }
+
+        public DataTable ListContacts()
+        {
+            DataTable table = new DataTable
+            {
+                Locale = CultureInfo.InvariantCulture
+            };
+            SqlConnection c = new SqlConnection(constring);
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter("select FirstName, LastName, Email, Phone from Contact", c);
+                da.Fill(table);
+            }
+            catch (SqlException ex)
+            {
+                throw new DDBBException("ListContacts " + ex.Message);
+            }
+            finally
+            {
+                c.Close();
+            }
+            return table;
         }
     }
 }

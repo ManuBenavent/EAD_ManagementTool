@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    public class Task : Event
+    public class TaskEvent : Event
     {
         internal override string SQLCreateString { 
             get { 
@@ -24,7 +24,7 @@ namespace library
             } 
         }
         public bool Finished { get; set; }
-        public Task(string Name, bool Recurring, bool Finished) : base(Name, Recurring)
+        public TaskEvent(string Name, bool Recurring, bool Finished) : base(Name, Recurring)
         {
             this.Finished = Finished; 
         }

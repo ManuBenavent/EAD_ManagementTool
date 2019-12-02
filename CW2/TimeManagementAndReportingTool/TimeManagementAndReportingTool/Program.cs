@@ -19,7 +19,7 @@ namespace TimeManagementAndReportingTool
             AppDomain.CurrentDomain.SetData("DataDirectory", Directory.GetCurrentDirectory().Substring(0, Directory.GetCurrentDirectory().IndexOf(@"\bin\Debug")));
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CreateEventForm());
+            Application.Run(new MainForm());
         }
     }
 }

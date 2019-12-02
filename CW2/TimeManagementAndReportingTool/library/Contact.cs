@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace library
 {
@@ -58,6 +59,11 @@ namespace library
             ddbb.Delete(this);
         }
         
+        public DataTable ListContacts()
+        {
+            return ddbb.ListContacts();
+        }
+
         /*public static void read (int Id) {
             this.Id = Id;
             ddbb.readContact(this); //TODO review so DRY is applied
