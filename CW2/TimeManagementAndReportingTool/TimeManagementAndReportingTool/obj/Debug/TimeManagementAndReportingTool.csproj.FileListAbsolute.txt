@@ -6,6 +6,9 @@ C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagemen
 C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\bin\Debug\library.dll
 C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\bin\Debug\library.pdb
 C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\obj\Debug\TimeManagementAndReportingTool.csprojAssemblyReference.cache
+C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\obj\Debug\TimeManagementAndReportingTool.CreateContactForm.resources
+C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\obj\Debug\TimeManagementAndReportingTool.CreateEventForm.resources
+C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\obj\Debug\TimeManagementAndReportingTool.MainForm.resources
 C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\obj\Debug\TimeManagementAndReportingTool.Properties.Resources.resources
 C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\obj\Debug\TimeManagementAndReportingTool.csproj.GenerateResource.cache
 C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\obj\Debug\TimeManagementAndReportingTool.csproj.CopyComplete
