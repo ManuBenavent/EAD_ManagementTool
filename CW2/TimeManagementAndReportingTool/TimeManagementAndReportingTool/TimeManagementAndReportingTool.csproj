@@ -74,6 +74,12 @@
     <Compile Include="CreateEventForm.Designer.cs">
       <DependentUpon>CreateEventForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateLocationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateLocationForm.Designer.cs">
+      <DependentUpon>CreateLocationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListContactsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateEventForm.resx">
       <DependentUpon>CreateEventForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateLocationForm.resx">
+      <DependentUpon>CreateLocationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListContactsForm.resx">
       <DependentUpon>ListContactsForm.cs</DependentUpon>

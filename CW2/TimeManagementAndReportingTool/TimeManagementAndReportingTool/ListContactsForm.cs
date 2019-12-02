@@ -13,11 +13,12 @@ namespace TimeManagementAndReportingTool
 {
     public partial class ListContactsForm : Form
     {
+        BindingSource bindingSource;
         public ListContactsForm()
         {
             InitializeComponent();
             Contact contact = new Contact();
-            BindingSource bindingSource = new BindingSource();
+            bindingSource = new BindingSource();
             bindingSource.DataSource = contact.ListContacts();
             ContactsDataGrid.DataSource = bindingSource;
             ContactsDataGrid.RowHeadersVisible = false;
@@ -34,13 +35,14 @@ namespace TimeManagementAndReportingTool
         private void UpdateData(object sender, EventArgs e)
         {
             Contact contact = new Contact();
-            BindingSource bindingSource = new BindingSource();
+            bindingSource = new BindingSource();
             bindingSource.DataSource = contact.ListContacts();
             ContactsDataGrid.DataSource = bindingSource;
         }
 
         private void ContactsDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int aux = e.ColumnIndex;
             string FirstName = (string)ContactsDataGrid[1, e.RowIndex].Value;
             string LastName = (string)ContactsDataGrid[2, e.RowIndex].Value;
             string Email = (string)ContactsDataGrid[3, e.RowIndex].Value;

@@ -32,13 +32,14 @@
             this.LastNameLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.PhoneLabel = new System.Windows.Forms.Label();
-            this.FirstNameTextBox = new System.Windows.Forms.TextBox();
-            this.LastNameTextBox = new System.Windows.Forms.TextBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.PhoneTextBox = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.DismissButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
+            this.FirstNameTextBox = new System.Windows.Forms.TextBox();
+            this.LastNameTextBox = new System.Windows.Forms.TextBox();
+            this.ErrorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // FirstNameLabel
@@ -80,20 +81,6 @@
             this.PhoneLabel.Size = new System.Drawing.Size(69, 26);
             this.PhoneLabel.TabIndex = 3;
             this.PhoneLabel.Text = "Phone:";
-            // 
-            // FirstNameTextBox
-            // 
-            this.FirstNameTextBox.Location = new System.Drawing.Point(213, 77);
-            this.FirstNameTextBox.Name = "FirstNameTextBox";
-            this.FirstNameTextBox.Size = new System.Drawing.Size(464, 22);
-            this.FirstNameTextBox.TabIndex = 4;
-            // 
-            // LastNameTextBox
-            // 
-            this.LastNameTextBox.Location = new System.Drawing.Point(212, 126);
-            this.LastNameTextBox.Name = "LastNameTextBox";
-            this.LastNameTextBox.Size = new System.Drawing.Size(464, 22);
-            this.LastNameTextBox.TabIndex = 5;
             // 
             // EmailTextBox
             // 
@@ -142,18 +129,45 @@
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
+            // FirstNameTextBox
+            // 
+            this.FirstNameTextBox.Location = new System.Drawing.Point(212, 78);
+            this.FirstNameTextBox.Name = "FirstNameTextBox";
+            this.FirstNameTextBox.Size = new System.Drawing.Size(464, 22);
+            this.FirstNameTextBox.TabIndex = 11;
+            // 
+            // LastNameTextBox
+            // 
+            this.LastNameTextBox.Location = new System.Drawing.Point(212, 126);
+            this.LastNameTextBox.Name = "LastNameTextBox";
+            this.LastNameTextBox.Size = new System.Drawing.Size(464, 22);
+            this.LastNameTextBox.TabIndex = 5;
+            // 
+            // ErrorLabel
+            // 
+            this.ErrorLabel.AutoSize = true;
+            this.ErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.ErrorLabel.Location = new System.Drawing.Point(230, 351);
+            this.ErrorLabel.Name = "ErrorLabel";
+            this.ErrorLabel.Size = new System.Drawing.Size(346, 24);
+            this.ErrorLabel.TabIndex = 12;
+            this.ErrorLabel.Text = "Error: The format of the input is not valid.";
+            this.ErrorLabel.Visible = false;
+            // 
             // CreateContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(815, 421);
+            this.Controls.Add(this.ErrorLabel);
+            this.Controls.Add(this.FirstNameTextBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.DismissButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.PhoneTextBox);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.LastNameTextBox);
-            this.Controls.Add(this.FirstNameTextBox);
             this.Controls.Add(this.PhoneLabel);
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.LastNameLabel);
@@ -171,12 +185,13 @@
         private System.Windows.Forms.Label LastNameLabel;
         private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.Label PhoneLabel;
-        private System.Windows.Forms.TextBox FirstNameTextBox;
-        private System.Windows.Forms.TextBox LastNameTextBox;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.TextBox PhoneTextBox;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button DismissButton;
         private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.TextBox FirstNameTextBox;
+        private System.Windows.Forms.TextBox LastNameTextBox;
+        private System.Windows.Forms.Label ErrorLabel;
     }
 }
