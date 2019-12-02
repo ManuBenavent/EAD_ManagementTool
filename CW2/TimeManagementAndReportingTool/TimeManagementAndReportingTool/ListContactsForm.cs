@@ -31,9 +31,22 @@ namespace TimeManagementAndReportingTool
             ContactsDataGrid.CellClick += ContactsDataGrid_CellClick;
         }
 
+        private void UpdateData(object sender, EventArgs e)
+        {
+            Contact contact = new Contact();
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = contact.ListContacts();
+            ContactsDataGrid.DataSource = bindingSource;
+        }
+
         private void ContactsDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            CreateContactForm form = new CreateContactForm();
+            string FirstName = (string)ContactsDataGrid[1, e.RowIndex].Value;
+            string LastName = (string)ContactsDataGrid[2, e.RowIndex].Value;
+            string Email = (string)ContactsDataGrid[3, e.RowIndex].Value;
+            string Phone = (string)ContactsDataGrid[4, e.RowIndex].Value;
+            CreateContactForm form = new CreateContactForm(FirstName, LastName, Email, Phone);
+            form.FormClosed += UpdateData;
             form.Activate();
             form.ShowDialog();
         }

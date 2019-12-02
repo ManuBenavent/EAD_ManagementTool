@@ -1,3 +1,4 @@
+using library.exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -44,6 +45,13 @@ namespace library
             this.Email = Email;
             this.Phone = Phone;
             ddbb = new DAC();
+            try
+            {
+                _Id = ddbb.GetId(this);
+            }catch(DDBBException ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+            }
         }
         
         public void Create() {

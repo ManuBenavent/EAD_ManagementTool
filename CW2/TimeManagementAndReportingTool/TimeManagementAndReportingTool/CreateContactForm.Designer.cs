@@ -38,6 +38,7 @@
             this.PhoneTextBox = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.DismissButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // FirstNameLabel
@@ -130,11 +131,23 @@
             this.DismissButton.UseVisualStyleBackColor = true;
             this.DismissButton.Click += new System.EventHandler(this.DismissButton_Click);
             // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.DeleteButton.Location = new System.Drawing.Point(166, 285);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(108, 42);
+            this.DeleteButton.TabIndex = 10;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
             // CreateContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(815, 421);
+            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.DismissButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.PhoneTextBox);
@@ -147,7 +160,6 @@
             this.Controls.Add(this.FirstNameLabel);
             this.Name = "CreateContactForm";
             this.Text = "CreateContactForm";
-            this.Load += new System.EventHandler(this.CreateContactForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,5 +177,6 @@
         private System.Windows.Forms.TextBox PhoneTextBox;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button DismissButton;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }
