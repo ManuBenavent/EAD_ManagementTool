@@ -36,18 +36,20 @@
             // EventNameLabel
             // 
             this.EventNameLabel.AutoSize = true;
-            this.EventNameLabel.Location = new System.Drawing.Point(3, 0);
+            this.EventNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EventNameLabel.Location = new System.Drawing.Point(3, 2);
             this.EventNameLabel.Name = "EventNameLabel";
-            this.EventNameLabel.Size = new System.Drawing.Size(85, 17);
+            this.EventNameLabel.Size = new System.Drawing.Size(92, 16);
             this.EventNameLabel.TabIndex = 0;
             this.EventNameLabel.Text = "Event Name";
             // 
             // DateTimeLabel
             // 
             this.DateTimeLabel.AutoSize = true;
-            this.DateTimeLabel.Location = new System.Drawing.Point(3, 19);
+            this.DateTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateTimeLabel.Location = new System.Drawing.Point(0, 20);
             this.DateTimeLabel.Name = "DateTimeLabel";
-            this.DateTimeLabel.Size = new System.Drawing.Size(105, 17);
+            this.DateTimeLabel.Size = new System.Drawing.Size(90, 15);
             this.DateTimeLabel.TabIndex = 1;
             this.DateTimeLabel.Text = "01/01/20-00:00";
             // 

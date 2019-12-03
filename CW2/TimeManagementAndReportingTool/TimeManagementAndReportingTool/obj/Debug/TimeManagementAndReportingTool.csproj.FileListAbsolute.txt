@@ -18,3 +18,4 @@ C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagemen
 C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\obj\Debug\TimeManagementAndReportingTool.csproj.CopyComplete
 C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\obj\Debug\TimeManagementAndReportingTool.exe
 C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\obj\Debug\TimeManagementAndReportingTool.pdb
+C:\Users\mbena\Documents\EAD_CW\CW2\TimeManagementAndReportingTool\TimeManagementAndReportingTool\obj\Debug\TimeManagementAndReportingTool.EventDetailView.resources

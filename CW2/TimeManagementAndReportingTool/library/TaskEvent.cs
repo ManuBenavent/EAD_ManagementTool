@@ -10,17 +10,17 @@ namespace library
     {
         internal override string SQLCreateString { 
             get { 
-                return "('" + base.Name + "','" + base.Recurring + "','" + Finished + "','" + Date + "')"; 
+                return "('" + base.Name + "','" + base.Recurring + "','" + Finished + "','" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "')"; 
             } 
         }
         internal override string SQLGetString { 
             get { 
-                return "Task WHERE Name = '" + Name + "' and Recurring='"+Recurring + "' and Finished='" + Finished + "' and Date='" + Date+ "'"; 
+                return "Task WHERE Name = '" + Name + "' and Recurring='"+Recurring + "' and Finished='" + Finished + "' and Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'"; 
             } 
         }
         internal override string SQLUpdateString { 
             get { 
-                return "Task Set Name='" + Name + "', Recurring='" + Recurring + "', Finished='" + Finished + "', Date='" + Date + "'";
+                return "Task Set Name='" + Name + "', Recurring='" + Recurring + "', Finished='" + Finished + "', Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'";
             } 
         }
         public bool Finished { get; set; }

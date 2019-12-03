@@ -127,6 +127,9 @@
     <EmbeddedResource Include="CreateLocationForm.resx">
       <DependentUpon>CreateLocationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EventDetailView.resx">
+      <DependentUpon>EventDetailView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EventScheduleView.resx">
       <DependentUpon>EventScheduleView.cs</DependentUpon>
     </EmbeddedResource>

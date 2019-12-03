@@ -6,21 +6,21 @@ namespace library
     {
         internal override string SQLCreateString { 
             get { 
-                return "('" + base.Name + "','" + base.Recurring + "','" + Lecturer + "','" + Date + "')"; 
+                return "('" + base.Name + "','" + base.Recurring + "','" + Lecturer + "','" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "')"; 
             } 
         }
         internal override string SQLGetString
         {
             get
             {
-                return "Lecture WHERE Name = '" + Name + "' and Recurring='" + Recurring + "' and Lecturer='" + Lecturer + "' and Date='" + Date + "'";
+                return "Lecture WHERE Name = '" + Name + "' and Recurring='" + Recurring + "' and Lecturer='" + Lecturer + "' and Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'";
             }
         }
         internal override string SQLUpdateString
         {
             get
             {
-                return "Lecture Set Name='" + Name + "', Recurring='" + Recurring + "', Lecturer='" + Lecturer + "', Date='" + Date + "'";
+                return "Lecture Set Name='" + Name + "', Recurring='" + Recurring + "', Lecturer='" + Lecturer + "', Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'";
             }
         }
         public string Lecturer { get; set; }

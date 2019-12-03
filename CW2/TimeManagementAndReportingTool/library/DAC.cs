@@ -292,7 +292,13 @@ namespace library
 
         public List<EventClass> ListWeekEvents()
         {
-            throw new NotImplementedException();
+            //TODO IMPLEMENT
+            List<EventClass> lista = new List<EventClass>();
+            lista.Add(new Appointment("Name", false, new DateTime(2019, 12, 3, 15, 25, 0)));
+            lista.Add(new Lecture("Name", false, "Lecturer", new DateTime(2019, 12, 3, 15, 25, 0)));
+            lista.Add(new TaskEvent("Name", false, false, new DateTime(2019, 12, 3, 15, 25, 0)));
+            lista.Add(new Tutorial("Name", false, "LAb", "LEcturer", new DateTime(2019, 12, 3, 15, 25, 0)));
+            return lista;
         }
 
         public void ReadEvent(EventClass eventClass)
@@ -316,7 +322,7 @@ namespace library
                     c = new SqlConnection(constring);
                     c.Open();
 
-                    SqlCommand com = new SqlCommand("select * from " + table + "where Id=" + eventClass.Id);
+                    SqlCommand com = new SqlCommand("select * from " + table + " where Id=" + eventClass.Id, c);
                     SqlDataReader dr = com.ExecuteReader();
                     if (dr.Read())
                     {
