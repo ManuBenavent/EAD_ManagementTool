@@ -46,6 +46,7 @@ namespace TimeManagementAndReportingTool
             this.Controls.Add(recurring);
 
             CheckBox recurringCB = new CheckBox();
+            recurringCB.Name = "RecurringCB";
             recurringCB.Location = new Point(194, 90);
             this.Controls.Add(recurringCB);
 
@@ -55,12 +56,13 @@ namespace TimeManagementAndReportingTool
             date.Location = new Point(93, 120);
             this.Controls.Add(date);
 
-            MaskedTextBox maskedTextBox = new MaskedTextBox();
-            maskedTextBox.Location = new Point(194, 123);
-            maskedTextBox.Width = 300;
-            maskedTextBox.Mask = "00/00/00 - 00:00";
-            maskedTextBox.Select(0, 0);
-            this.Controls.Add(maskedTextBox);
+            DateTimePicker dateTime = new DateTimePicker();
+            dateTime.Name = "DateTimePicker";
+            dateTime.Location = new Point(194, 123);
+            dateTime.Width = 300;
+            dateTime.Format = DateTimePickerFormat.Custom;
+            dateTime.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            this.Controls.Add(dateTime);
         }
 
         private void EventTypesComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -73,6 +75,7 @@ namespace TimeManagementAndReportingTool
             if (EventTypesComboBox.SelectedIndex == 1)
             {
                 Label finished = new Label();
+                finished.Name = "FinishedCB";
                 finished.Text = "Finished: ";
                 finished.Location = new System.Drawing.Point(93, 150);
                 finished.Font = EventTypeTitleLabel.Font;
@@ -95,6 +98,7 @@ namespace TimeManagementAndReportingTool
 
                 TextBox LectTB = new TextBox();
                 LectTB.Location = new Point(194, 150);
+                LectTB.Name = "LecturerTB";
                 LectTB.Width = 300;
                 this.Controls.Add(LectTB);
                 controls.Add(LectTB);
@@ -110,6 +114,7 @@ namespace TimeManagementAndReportingTool
 
                     TextBox LabTB = new TextBox();
                     LabTB.Location = new Point(194, 180);
+                    LabTB.Name = "LabTB";
                     LabTB.Width = 300;
                     this.Controls.Add(LabTB);
                     controls.Add(LabTB);
@@ -120,7 +125,12 @@ namespace TimeManagementAndReportingTool
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-
+            var confirmation = MessageBox.Show("Do you want to delete this event?", "Delete confirmation", MessageBoxButtons.OKCancel);
+            if (confirmation == DialogResult.OK)
+            {
+                ObtainData().Delete();
+                this.Close();
+            }
         }
 
         private void DismissButton_Click(object sender, EventArgs e)
@@ -130,28 +140,32 @@ namespace TimeManagementAndReportingTool
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            ObtainData().Create();
+            this.Close();
+        }
+
+        private EventClass ObtainData()
+        {
+            EventClass eventClass=null;
+            string name = this.Controls.Find("NameTextBox", false)[0].Text;
+            bool recurring = ((CheckBox)this.Controls.Find("RecurringCB", false)[0]).Checked;
+            DateTime date = ((DateTimePicker)this.Controls.Find("DateTimePicker",false)[0]).Value;
             switch (EventTypesComboBox.SelectedIndex)
             {
                 case 0:
-                    string name = this.Controls.Find("NameTextBox", false)[0].Text;
-                    //int index = this.Controls.FindIndex((Control control) => { return control.Name == "NameTextBox"; });
-                    //string name = this.Controls[index].Text;
-                    Appointment ap = new Appointment(name,false, new DateTime(2019,12,3));
-                    ap.Create();
+                    eventClass = new Appointment(name, recurring, date);
                     break;
-                /*case 1:
-                    TaskEvent taskEvent = new TaskEvent();
-                    taskEvent.Create();
+                case 1:
+                    eventClass = new TaskEvent(name, recurring, ((CheckBox)this.Controls.Find("FinishedCB", false)[0]).Checked, date);
                     break;
                 case 2:
-                    Lecture l = new Lecture();
-                    l.Create();
+                    eventClass = new Lecture(name, recurring, this.Controls.Find("LecturerTB", false)[0].Text, date);
                     break;
                 case 3:
-                    Tutorial t = new Tutorial();
-                    t.Create();
-                    break;*/
+                    eventClass = new Tutorial(name, recurring, this.Controls.Find("LabTB", false)[0].Text, this.Controls.Find("LecturerTB", false)[0].Text, date);
+                    break;
             }
+            return eventClass;
         }
     }
 }
