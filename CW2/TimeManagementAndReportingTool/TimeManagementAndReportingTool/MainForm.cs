@@ -101,26 +101,8 @@ namespace TimeManagementAndReportingTool
                     this.Controls.Add(label);
                     currentView.Add(label);
                 }
-                //List<EventClass> events = EventClass.ListWeekEvents();
-                List<EventClass> events = new List<EventClass>();
-                Appointment ap = new Appointment("Ap", false);
-                ap.Date = new DateTime(2019, 12, 2, 10, 0, 0);
-                Appointment ap1 = new Appointment("Ap1", false);
-                ap1.Date = new DateTime(2019, 12, 2, 11, 0, 0);
-                Appointment ap2 = new Appointment("Ap2", false);
-                ap2.Date = new DateTime(2019, 12, 4, 10, 0, 0);
-                Appointment ap3 = new Appointment("Ap3", false);
-                ap3.Date = new DateTime(2019, 12, 3, 10, 0, 0);
-                Appointment ap4 = new Appointment("Ap4", false);
-                ap4.Date = new DateTime(2019, 12, 3, 11, 0, 0);
-                Appointment ap5 = new Appointment("Ap5", false);
-                ap5.Date = new DateTime(2019, 12, 2, 12, 0, 0);
-                events.Add(ap);
-                events.Add(ap1);
-                events.Add(ap2);
-                events.Add(ap3);
-                events.Add(ap4);
-                events.Add(ap5);
+                
+                List<EventClass> events = EventClass.ListWeekEvents();
                 int[] DayOfWeekHeight = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
                 foreach (EventClass e in events) {
                     string type="";

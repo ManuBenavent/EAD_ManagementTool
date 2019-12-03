@@ -22,6 +22,8 @@ namespace library
             } 
         }
 
-        public Appointment(string Name, bool Recurring) : base(Name, Recurring) { }
+        public Appointment(string Name, bool Recurring, DateTime Date) : base(Name, Recurring, Date) { }
+
+        public Appointment(int Id) : base(Id) { }
     }
 }

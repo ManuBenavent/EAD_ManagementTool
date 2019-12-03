@@ -1,4 +1,5 @@
-﻿using System;
+﻿using library;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,28 @@ namespace TimeManagementAndReportingTool
 {
     public partial class EventDetailView : Form
     {
-        public EventDetailView()
+        public EventDetailView(int Id, string type)
         {
             InitializeComponent();
+            EventClass eventClass;
+            switch (type)
+            {
+                case "Appointment":
+                    eventClass = new Appointment(Id);
+                    break;
+                case "Tutorial":
+                    eventClass = new Tutorial(Id);
+                    break;
+                case "Lecture":
+                    eventClass = new Lecture(Id);
+                    break;
+                case "Task":
+                    eventClass = new TaskEvent(Id);
+                    break;
+                default:
+                    throw new ArgumentException("The type of the event is not valid");
+            }
+
         }
     }
 }

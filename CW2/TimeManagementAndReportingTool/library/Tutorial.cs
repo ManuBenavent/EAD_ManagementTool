@@ -25,10 +25,12 @@ namespace library
         }
         public string Lab { get; set; }
         public string Lecturer { get; set; }
-        public Tutorial(string Name, bool Recurring, string Lab, string Lecturer) : base(Name, Recurring)
+        public Tutorial(string Name, bool Recurring, string Lab, string Lecturer, DateTime Date) : base(Name, Recurring, Date)
         {
             this.Lab = Lab;
             this.Lecturer = Lecturer;
         }
+
+        public Tutorial(int Id) : base(Id) { }
     }
 }

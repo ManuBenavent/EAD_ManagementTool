@@ -51,12 +51,21 @@ namespace library
         /// </summary>
         /// <param name="Name">Name of the event.</param>
         /// <param name="Recurring">True if the event is recurring.</param>
-        public EventClass (string Name, bool Recurring)
+        public EventClass (string Name, bool Recurring, DateTime Date)
         {
             this.Name = Name;
             this.Recurring = Recurring;
+            this.Date = Date;
             ddbb = new DAC();
         }
+
+        public EventClass(int Id)
+        {
+            this._Id = Id;
+            ddbb = new DAC();
+            ddbb.ReadEvent(this);
+        }
+
         /// <summary>
         /// Creates a new event in the DDBB.
         /// </summary>

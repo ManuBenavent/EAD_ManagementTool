@@ -24,9 +24,11 @@ namespace library
             } 
         }
         public bool Finished { get; set; }
-        public TaskEvent(string Name, bool Recurring, bool Finished) : base(Name, Recurring)
+        public TaskEvent(string Name, bool Recurring, bool Finished, DateTime Date) : base(Name, Recurring, Date)
         {
             this.Finished = Finished; 
         }
+
+        public TaskEvent(int Id) : base(Id) { }
     }
 }

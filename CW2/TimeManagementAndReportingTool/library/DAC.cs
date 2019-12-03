@@ -294,5 +294,69 @@ namespace library
         {
             throw new NotImplementedException();
         }
+
+        public void ReadEvent(EventClass eventClass)
+        {
+            string table;
+            if (eventClass is Appointment)
+                table = "Appointment";
+            else if (eventClass is Lecture)
+                table = "Lecture";
+            else if (eventClass is Tutorial)
+                table = "Tutorial";
+            else if (eventClass is TaskEvent)
+                table = "Task";
+            else
+                throw new DDBBException("ReadEvent unknown event");
+            Task t = Task.Run(() =>
+            {
+                SqlConnection c = null;
+                try
+                {
+                    c = new SqlConnection(constring);
+                    c.Open();
+
+                    SqlCommand com = new SqlCommand("select * from " + table + "where Id=" + eventClass.Id);
+                    SqlDataReader dr = com.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        eventClass.Name = dr["Name"].ToString();
+                        eventClass.Recurring = Boolean.Parse(dr["Recurring"].ToString());
+                        eventClass.Date = DateTime.Parse(dr["Date"].ToString());
+                        switch (eventClass)
+                        {
+                            case Lecture l:
+                                ((Lecture)eventClass).Lecturer = dr["Lecturer"].ToString();
+                                break;
+                            case TaskEvent taskevent:
+                                ((TaskEvent)eventClass).Finished = Boolean.Parse(dr["Finished"].ToString());
+                                break;
+                            case Tutorial tut:
+                                ((Tutorial)eventClass).Lecturer = dr["Lecturer"].ToString();
+                                ((Tutorial)eventClass).Lab = dr["Lab"].ToString();
+                                break;
+                        }
+                    }
+                    dr.Close();
+                }
+                catch (SqlException ex)
+                {
+                    throw new DDBBException("ReadEvent " + ex.Message);
+                }
+                finally
+                {
+                    c.Close();
+                }
+            });
+
+            try
+            {
+                t.Wait();
+            }
+            catch(AggregateException ex)
+            {
+                throw new DDBBException("ReadEvent " + ex.Message);
+            }
+        }
     }
 }

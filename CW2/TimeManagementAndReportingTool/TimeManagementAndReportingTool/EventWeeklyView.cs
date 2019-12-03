@@ -28,7 +28,7 @@ namespace TimeManagementAndReportingTool
 
         private void EventWeeklyView_Click(object sender, EventArgs e)
         {
-            EventDetailView view = new EventDetailView();
+            EventDetailView view = new EventDetailView(EventId, EventTypeLabel.Text);
             view.Activate();
             view.ShowDialog();
         }
