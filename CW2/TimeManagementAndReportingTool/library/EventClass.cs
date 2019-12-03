@@ -92,7 +92,7 @@ namespace library
         public static List<EventClass> ListWeekEvents()
         {
             DAC dac = new DAC();
-            return dac.ListWeekEvents();
+            return dac.ListWeekEvents("Date>='2019/12/02 00:00:00' and Date<='2019/12/08 23:59:59'");
         }
     }
 }

@@ -290,15 +290,79 @@ namespace library
 
         }
 
-        public List<EventClass> ListWeekEvents()
+        public List<EventClass> ListWeekEvents(string DatesRange)
         {
-            //TODO IMPLEMENT
-            List<EventClass> lista = new List<EventClass>();
-            lista.Add(new Appointment("Name", false, new DateTime(2019, 12, 3, 15, 25, 0)));
-            lista.Add(new Lecture("Name", false, "Lecturer", new DateTime(2019, 12, 3, 15, 25, 0)));
-            lista.Add(new TaskEvent("Name", false, false, new DateTime(2019, 12, 3, 15, 25, 0)));
-            lista.Add(new Tutorial("Name", false, "LAb", "LEcturer", new DateTime(2019, 12, 3, 15, 25, 0)));
-            return lista;
+            List<EventClass> events = new List<EventClass>();
+            Task t = Task.Run(() =>
+            {
+                SqlConnection c = null;
+                try
+                {
+                    c = new SqlConnection(constring);
+                    c.Open();
+                    for (int i=0; i<4; i++)
+                    {
+                        string table;
+                        if (i == 0)
+                            table = "Name, Recurring, Date from Appointment";
+                        else if (i == 1)
+                            table = "Name, Recurring, Date, Finished from Task";
+                        else if (i == 2)
+                            table = "Name, Recurring, Date, Lecturer from Lecture";
+                        else
+                            table = "Name, Recurring, Date, Lecturer, Lab from Tutorial";
+                        string query = "Select " + table + " where " + DatesRange;
+                        SqlCommand com = new SqlCommand(query, c);
+                        SqlDataReader da = com.ExecuteReader();
+                        while (da.Read())
+                        {
+                            string Name = da["Name"].ToString();
+                            bool Recurring = Boolean.Parse(da["Recurring"].ToString());
+                            DateTime Date = DateTime.Parse(da["Date"].ToString());
+                            switch (i)
+                            {
+                                case 0:
+                                    events.Add(new Appointment(Name, Recurring, Date));
+                                    break;
+
+                                case 1:
+                                    bool Finished = Boolean.Parse(da["Finished"].ToString());
+                                    events.Add(new TaskEvent(Name, Recurring, Finished, Date));
+                                    break;
+
+                                case 2:
+                                    string Lecturer = da["Lecturer"].ToString();
+                                    events.Add(new Lecture(Name, Recurring, Lecturer, Date));
+                                    break;
+                                
+                                case 3:
+                                    string LecturerTut = da["Lecturer"].ToString();
+                                    string Lab = da["Lab"].ToString();
+                                    events.Add(new Tutorial(Name, Recurring, Lab, LecturerTut, Date));
+                                    break;
+                            }
+                        }
+                        da.Close();
+                    }
+                }
+                catch(SqlException ex)
+                {
+                    throw new DDBBException("ListWeekEvents " + ex.Message);
+                }
+                finally
+                {
+                    c.Close();
+                }
+            });
+            try
+            {
+                t.Wait();
+            }
+            catch (AggregateException ex)
+            {
+                throw new DDBBException("ListWeekEvents " + ex.Message);
+            }
+            return events;
         }
 
         public void ReadEvent(EventClass eventClass)

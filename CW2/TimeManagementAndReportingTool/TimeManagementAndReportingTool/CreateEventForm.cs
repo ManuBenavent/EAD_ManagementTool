@@ -75,7 +75,6 @@ namespace TimeManagementAndReportingTool
             if (EventTypesComboBox.SelectedIndex == 1)
             {
                 Label finished = new Label();
-                finished.Name = "FinishedCB";
                 finished.Text = "Finished: ";
                 finished.Location = new System.Drawing.Point(93, 150);
                 finished.Font = EventTypeTitleLabel.Font;
@@ -83,6 +82,7 @@ namespace TimeManagementAndReportingTool
                 controls.Add(finished);
 
                 CheckBox checkBox = new CheckBox();
+                checkBox.Name = "FinishedCB";
                 checkBox.Location = new Point(194, 150);
                 this.Controls.Add(checkBox);
                 controls.Add(checkBox);
