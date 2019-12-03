@@ -80,6 +80,12 @@
     <Compile Include="CreateLocationForm.Designer.cs">
       <DependentUpon>CreateLocationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EventWeeklyView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EventWeeklyView.Designer.cs">
+      <DependentUpon>EventWeeklyView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListContactsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateLocationForm.resx">
       <DependentUpon>CreateLocationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventWeeklyView.resx">
+      <DependentUpon>EventWeeklyView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListContactsForm.resx">
       <DependentUpon>ListContactsForm.cs</DependentUpon>
