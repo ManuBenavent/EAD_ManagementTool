@@ -2,7 +2,7 @@ using System;
 
 namespace library
 {
-    public class Appointment : Event
+    public class Appointment : EventClass
     {
         internal override string SQLCreateString { 
             get { 

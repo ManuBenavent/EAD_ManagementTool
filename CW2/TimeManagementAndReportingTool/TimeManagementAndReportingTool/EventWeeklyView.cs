@@ -12,9 +12,25 @@ namespace TimeManagementAndReportingTool
 {
     public partial class EventWeeklyView : UserControl
     {
-        public EventWeeklyView()
+        private int EventId;
+        public EventWeeklyView(int EventId, string Name, string Datetime, string EventType)
         {
             InitializeComponent();
+            this.Click += EventWeeklyView_Click;
+            EventNameLabel.Click += EventWeeklyView_Click;
+            DateTimeLabel.Click += EventWeeklyView_Click;
+            EventTypeLabel.Click += EventWeeklyView_Click;
+            this.EventId = EventId;
+            EventNameLabel.Text = Name;
+            DateTimeLabel.Text = Datetime;
+            EventTypeLabel.Text = EventType;
+        }
+
+        private void EventWeeklyView_Click(object sender, EventArgs e)
+        {
+            EventDetailView view = new EventDetailView();
+            view.Activate();
+            view.ShowDialog();
         }
     }
 }

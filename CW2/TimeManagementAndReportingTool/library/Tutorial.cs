@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    class Tutorial : Event
+    public class Tutorial : EventClass
     {
         internal override string SQLCreateString { get { return "('" + base.Name + "','" + base.Recurring + "','" + Lecturer + "','" + Lab + "')" ; } }
         internal override string SQLGetString

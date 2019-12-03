@@ -46,12 +46,12 @@
     <Compile Include="Contact.cs" />
     <Compile Include="DAC.cs" />
     <Compile Include="DDBBException.cs" />
-    <Compile Include="Event.cs" />
+    <Compile Include="EventClass.cs" />
     <Compile Include="ICRUD.cs" />
     <Compile Include="Lecture.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Task.cs" />
+    <Compile Include="TaskEvent.cs" />
     <Compile Include="Tutorial.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

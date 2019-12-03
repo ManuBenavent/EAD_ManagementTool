@@ -286,5 +286,10 @@ namespace library
             }
             return table;
         }
+
+        public List<EventClass> ListWeekEvents()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

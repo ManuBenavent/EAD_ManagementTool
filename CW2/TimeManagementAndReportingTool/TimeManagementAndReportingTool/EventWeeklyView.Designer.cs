@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.EventName = new System.Windows.Forms.Label();
+            this.EventNameLabel = new System.Windows.Forms.Label();
             this.DateTimeLabel = new System.Windows.Forms.Label();
             this.EventTypeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // EventName
+            // EventNameLabel
             // 
-            this.EventName.AutoSize = true;
-            this.EventName.Location = new System.Drawing.Point(3, 0);
-            this.EventName.Name = "EventName";
-            this.EventName.Size = new System.Drawing.Size(85, 17);
-            this.EventName.TabIndex = 0;
-            this.EventName.Text = "Event Name";
+            this.EventNameLabel.AutoSize = true;
+            this.EventNameLabel.Location = new System.Drawing.Point(3, 0);
+            this.EventNameLabel.Name = "EventNameLabel";
+            this.EventNameLabel.Size = new System.Drawing.Size(85, 17);
+            this.EventNameLabel.TabIndex = 0;
+            this.EventNameLabel.Text = "Event Name";
             // 
             // DateTimeLabel
             // 
@@ -67,7 +67,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.Controls.Add(this.EventTypeLabel);
             this.Controls.Add(this.DateTimeLabel);
-            this.Controls.Add(this.EventName);
+            this.Controls.Add(this.EventNameLabel);
             this.Name = "EventWeeklyView";
             this.Size = new System.Drawing.Size(110, 65);
             this.ResumeLayout(false);
@@ -77,7 +77,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label EventName;
+        private System.Windows.Forms.Label EventNameLabel;
         private System.Windows.Forms.Label DateTimeLabel;
         private System.Windows.Forms.Label EventTypeLabel;
     }
