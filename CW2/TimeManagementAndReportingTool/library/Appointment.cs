@@ -6,19 +6,19 @@ namespace library
     {
         internal override string SQLCreateString { 
             get { 
-                return "('" + base.Name + "','" + base.Recurring + "')"; 
+                return "('" + base.Name + "','" + base.Recurring + "','" + Date + "')"; 
             } 
         }
         internal override string SQLGetString
         {
             get
             {
-                return "Appointment WHERE Name = '" + Name + "' and Recurring='" + Recurring + "'";
+                return "Appointment WHERE Name = '" + Name + "' and Recurring='" + Recurring + "' and Date='" + Date + "'";
             }
         }
         internal override string SQLUpdateString { 
             get { 
-                return "Appointment Set Name='" + Name + "', Recurring='" + Recurring + "'"; 
+                return "Appointment Set Name='" + Name + "', Recurring='" + Recurring + "', Date='" + Date + "'";
             } 
         }
 

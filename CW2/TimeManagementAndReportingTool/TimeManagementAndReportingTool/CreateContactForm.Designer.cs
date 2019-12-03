@@ -49,7 +49,7 @@
             this.FirstNameLabel.Location = new System.Drawing.Point(105, 73);
             this.FirstNameLabel.Name = "FirstNameLabel";
             this.FirstNameLabel.Size = new System.Drawing.Size(102, 26);
-            this.FirstNameLabel.TabIndex = 0;
+            this.FirstNameLabel.TabIndex = 7;
             this.FirstNameLabel.Text = "First name:";
             // 
             // LastNameLabel
@@ -59,7 +59,7 @@
             this.LastNameLabel.Location = new System.Drawing.Point(105, 121);
             this.LastNameLabel.Name = "LastNameLabel";
             this.LastNameLabel.Size = new System.Drawing.Size(101, 26);
-            this.LastNameLabel.TabIndex = 1;
+            this.LastNameLabel.TabIndex = 8;
             this.LastNameLabel.Text = "Last name:";
             // 
             // EmailLabel
@@ -69,7 +69,7 @@
             this.EmailLabel.Location = new System.Drawing.Point(139, 175);
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Size = new System.Drawing.Size(62, 26);
-            this.EmailLabel.TabIndex = 2;
+            this.EmailLabel.TabIndex = 9;
             this.EmailLabel.Text = "Email:";
             // 
             // PhoneLabel
@@ -79,7 +79,7 @@
             this.PhoneLabel.Location = new System.Drawing.Point(135, 226);
             this.PhoneLabel.Name = "PhoneLabel";
             this.PhoneLabel.Size = new System.Drawing.Size(69, 26);
-            this.PhoneLabel.TabIndex = 3;
+            this.PhoneLabel.TabIndex = 10;
             this.PhoneLabel.Text = "Phone:";
             // 
             // EmailTextBox
@@ -87,14 +87,14 @@
             this.EmailTextBox.Location = new System.Drawing.Point(213, 178);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(463, 22);
-            this.EmailTextBox.TabIndex = 6;
+            this.EmailTextBox.TabIndex = 2;
             // 
             // PhoneTextBox
             // 
             this.PhoneTextBox.Location = new System.Drawing.Point(213, 229);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(463, 22);
-            this.PhoneTextBox.TabIndex = 7;
+            this.PhoneTextBox.TabIndex = 3;
             // 
             // SaveButton
             // 
@@ -102,7 +102,7 @@
             this.SaveButton.Location = new System.Drawing.Point(449, 285);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(178, 42);
-            this.SaveButton.TabIndex = 8;
+            this.SaveButton.TabIndex = 6;
             this.SaveButton.Text = "Save contact";
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
@@ -113,7 +113,7 @@
             this.DismissButton.Location = new System.Drawing.Point(303, 285);
             this.DismissButton.Name = "DismissButton";
             this.DismissButton.Size = new System.Drawing.Size(114, 41);
-            this.DismissButton.TabIndex = 9;
+            this.DismissButton.TabIndex = 5;
             this.DismissButton.Text = "Dismiss";
             this.DismissButton.UseVisualStyleBackColor = true;
             this.DismissButton.Click += new System.EventHandler(this.DismissButton_Click);
@@ -124,7 +124,7 @@
             this.DeleteButton.Location = new System.Drawing.Point(166, 285);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(108, 42);
-            this.DeleteButton.TabIndex = 10;
+            this.DeleteButton.TabIndex = 4;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
@@ -134,14 +134,14 @@
             this.FirstNameTextBox.Location = new System.Drawing.Point(212, 78);
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(464, 22);
-            this.FirstNameTextBox.TabIndex = 11;
+            this.FirstNameTextBox.TabIndex = 0;
             // 
             // LastNameTextBox
             // 
             this.LastNameTextBox.Location = new System.Drawing.Point(212, 126);
             this.LastNameTextBox.Name = "LastNameTextBox";
             this.LastNameTextBox.Size = new System.Drawing.Size(464, 22);
-            this.LastNameTextBox.TabIndex = 5;
+            this.LastNameTextBox.TabIndex = 1;
             // 
             // ErrorLabel
             // 
@@ -151,7 +151,7 @@
             this.ErrorLabel.Location = new System.Drawing.Point(230, 351);
             this.ErrorLabel.Name = "ErrorLabel";
             this.ErrorLabel.Size = new System.Drawing.Size(346, 24);
-            this.ErrorLabel.TabIndex = 12;
+            this.ErrorLabel.TabIndex = 11;
             this.ErrorLabel.Text = "Error: The format of the input is not valid.";
             this.ErrorLabel.Visible = false;
             // 

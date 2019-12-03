@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace library
 {
-    internal class DAC : ICRUD
+    internal class DAC
     {
         /// <summary>
         /// Conection string for the DDBB.
@@ -43,19 +43,19 @@ namespace library
                     VALUES = loc.SQLCreateString;
                     break;
                 case Appointment ap:
-                    TABLE = "Appointment (Name, Recurring)";
+                    TABLE = "Appointment (Name, Recurring, Date)";
                     VALUES = ap.SQLCreateString;
                     break;
                 case Lecture lec:
-                    TABLE = "Lecture (Name, Recurring, Lecturer)";
+                    TABLE = "Lecture (Name, Recurring, Lecturer, Date)";
                     VALUES = lec.SQLCreateString;
                     break;
                 case TaskEvent task:
-                    TABLE = "Task (Name, Recurring, Finished)";
+                    TABLE = "Task (Name, Recurring, Finished, Date)";
                     VALUES = task.SQLCreateString;
                     break;
                 case Tutorial tut:
-                    TABLE = "Tutorial (Name, Recurring, Lecturer, Lab)";
+                    TABLE = "Tutorial (Name, Recurring, Lecturer, Lab, Date)";
                     VALUES = tut.SQLCreateString;
                     break;
                 default:
@@ -216,16 +216,6 @@ namespace library
             SQLNonQuery(statement);
         }
 
-        public object Read(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<object> Read()
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Performs a non query SQL statement.
         /// </summary>
@@ -266,25 +256,38 @@ namespace library
 
         public DataTable ListContacts()
         {
+            
             DataTable table = new DataTable
             {
                 Locale = CultureInfo.InvariantCulture
             };
-            SqlConnection c = new SqlConnection(constring);
+            Task task = Task.Run(() =>
+            {
+                SqlConnection c = new SqlConnection(constring);
+                try
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("select FirstName, LastName, Email, Phone from Contact", c);
+                    da.Fill(table);
+                }
+                catch (SqlException ex)
+                {
+                    throw new DDBBException("ListContacts " + ex.Message);
+                }
+                finally
+                {
+                    c.Close();
+                }
+            });
             try
             {
-                SqlDataAdapter da = new SqlDataAdapter("select FirstName, LastName, Email, Phone from Contact", c);
-                da.Fill(table);
+                task.Wait();
             }
-            catch (SqlException ex)
+            catch (AggregateException ex)
             {
-                throw new DDBBException("ListContacts " + ex.Message);
-            }
-            finally
-            {
-                c.Close();
+                throw new DDBBException("SQLNonQuery " + ex.Message);
             }
             return table;
+
         }
 
         public List<EventClass> ListWeekEvents()
