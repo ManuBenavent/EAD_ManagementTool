@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace library
 {
@@ -89,10 +90,18 @@ namespace library
             ddbb.Delete(this);
         }
         
-        public static List<EventClass> ListWeekEvents()
+        public static List<EventClass> ListWeekEvents(int ChangeWeek)
         {
             DAC dac = new DAC();
-            return dac.ListWeekEvents("Date>='2019/12/02 00:00:00' and Date<='2019/12/08 23:59:59'");
+            /*CultureInfo myCI = new CultureInfo("en-GB");
+            Calendar myCal = myCI.Calendar;
+            int week = myCal.GetWeekOfYear(DateTime.Now, myCI.DateTimeFormat.CalendarWeekRule, DayOfWeek.Monday);*/
+
+            int diff = ((int)DateTime.Now.DayOfWeek - (int)DayOfWeek.Monday) % 7 + 7*ChangeWeek;
+            DateTime initial = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+            initial = initial.Subtract(new TimeSpan(diff,0,0,0));
+            DateTime end = initial.Add(new TimeSpan(6, 23, 59, 59));
+            return dac.ListWeekEvents("Date>='" + initial.ToString("yyyy/MM/dd HH:mm:ss") + "' and Date<='" + end.ToString("yyyy/MM/dd HH:mm:ss") + "'");
         }
     }
 }

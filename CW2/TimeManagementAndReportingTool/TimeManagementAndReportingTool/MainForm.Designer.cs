@@ -33,6 +33,8 @@
             this.ListContactsButton = new System.Windows.Forms.Button();
             this.TimeReportButton = new System.Windows.Forms.Button();
             this.ChangeViewButton = new System.Windows.Forms.Button();
+            this.NextWeekButton = new System.Windows.Forms.Button();
+            this.PreviousWeekButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NewEventButton
@@ -85,11 +87,33 @@
             this.ChangeViewButton.UseVisualStyleBackColor = true;
             this.ChangeViewButton.Click += new System.EventHandler(this.ChangeViewButton_Click);
             // 
+            // NextWeekButton
+            // 
+            this.NextWeekButton.Location = new System.Drawing.Point(909, 265);
+            this.NextWeekButton.Name = "NextWeekButton";
+            this.NextWeekButton.Size = new System.Drawing.Size(75, 47);
+            this.NextWeekButton.TabIndex = 5;
+            this.NextWeekButton.Text = "Next week";
+            this.NextWeekButton.UseVisualStyleBackColor = true;
+            this.NextWeekButton.Click += new System.EventHandler(this.NextWeekButton_Click);
+            // 
+            // PreviousWeekButton
+            // 
+            this.PreviousWeekButton.Location = new System.Drawing.Point(829, 265);
+            this.PreviousWeekButton.Name = "PreviousWeekButton";
+            this.PreviousWeekButton.Size = new System.Drawing.Size(74, 47);
+            this.PreviousWeekButton.TabIndex = 6;
+            this.PreviousWeekButton.Text = "Previous week";
+            this.PreviousWeekButton.UseVisualStyleBackColor = true;
+            this.PreviousWeekButton.Click += new System.EventHandler(this.PreviousWeekButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(996, 539);
+            this.Controls.Add(this.PreviousWeekButton);
+            this.Controls.Add(this.NextWeekButton);
             this.Controls.Add(this.ChangeViewButton);
             this.Controls.Add(this.TimeReportButton);
             this.Controls.Add(this.ListContactsButton);
@@ -109,5 +133,7 @@
         private System.Windows.Forms.Button ListContactsButton;
         private System.Windows.Forms.Button TimeReportButton;
         private System.Windows.Forms.Button ChangeViewButton;
+        private System.Windows.Forms.Button NextWeekButton;
+        private System.Windows.Forms.Button PreviousWeekButton;
     }
 }

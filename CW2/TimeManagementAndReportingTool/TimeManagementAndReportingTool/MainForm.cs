@@ -14,25 +14,34 @@ namespace TimeManagementAndReportingTool
 {
     public partial class MainForm : Form
     {
+        private int WeekDifference;
         private bool schedule;
         private List<Control> currentView;
         public MainForm()
         {
             schedule = false;
+            WeekDifference = 0;
             currentView = new List<Control>();
             InitializeComponent();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ChangeView();
+            ChangeView(WeekDifference);
         }
 
         private void NewEventButton_Click(object sender, EventArgs e)
         {
             CreateEventForm form = new CreateEventForm();
+            form.FormClosed += Form_FormClosed;
             form.Activate();
             form.ShowDialog();
+        }
+
+        private void Form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            schedule = !schedule;
+            ChangeView(WeekDifference);
         }
 
         private void NewContactButton_Click(object sender, EventArgs e)
@@ -58,10 +67,10 @@ namespace TimeManagementAndReportingTool
 
         private void ChangeViewButton_Click(object sender, EventArgs e)
         {
-            ChangeView();
+            ChangeView(WeekDifference);
         }
 
-        private void ChangeView()
+        private void ChangeView(int WeekDiff)
         {
             foreach (Control c in currentView)
             {
@@ -69,6 +78,8 @@ namespace TimeManagementAndReportingTool
             }
             if (schedule)
             {
+                NextWeekButton.Visible = false;
+                PreviousWeekButton.Visible = false;
                 currentView.Clear();
                 Label title = new Label();
                 title.Text = "Schedule";
@@ -80,6 +91,8 @@ namespace TimeManagementAndReportingTool
             }
             else
             {
+                NextWeekButton.Visible = true;
+                PreviousWeekButton.Visible = true;
                 schedule = true;
                 List<string> weekDays = new List<string>();
                 weekDays.Add("Monday");
@@ -102,7 +115,7 @@ namespace TimeManagementAndReportingTool
                     currentView.Add(label);
                 }
                 
-                List<EventClass> events = EventClass.ListWeekEvents();
+                List<EventClass> events = EventClass.ListWeekEvents(WeekDiff);
                 int[] DayOfWeekHeight = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
                 foreach (EventClass e in events) {
                     string type="";
@@ -153,6 +166,20 @@ namespace TimeManagementAndReportingTool
                     currentView.Add(eventControl);
                 }
             }
+        }
+
+        private void PreviousWeekButton_Click(object sender, EventArgs e)
+        {
+            schedule = !schedule;
+            WeekDifference--;
+            ChangeView(WeekDifference);
+        }
+
+        private void NextWeekButton_Click(object sender, EventArgs e)
+        {
+            schedule = !schedule;
+            WeekDifference++;
+            ChangeView(WeekDifference);
         }
     }
 }
