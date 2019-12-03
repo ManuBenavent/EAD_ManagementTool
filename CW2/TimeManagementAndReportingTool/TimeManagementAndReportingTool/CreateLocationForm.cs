@@ -16,6 +16,7 @@ namespace TimeManagementAndReportingTool
         public CreateLocationForm()
         {
             InitializeComponent();
+            PostCodeTextBox.Select(0, 0);
         }
 
         private void DismissButton_Click(object sender, EventArgs e)
@@ -31,10 +32,12 @@ namespace TimeManagementAndReportingTool
             string City = CityTextBox.Text;
             string PostCode = PostCodeTextBox.Text;
             string Country = CountryTextBox.Text;
-            if (Name=="" || AddrLine1=="" || City == "" || PostCode == "" || Country == "")
+            if (Name == "" || AddrLine1 == "" || City == "" || PostCode == "" || Country == "")
             {
                 ErrorLabel.Visible = true;
+                return;
             }
+
             Location location = new Location(Name,AddrLine1,AddrLine2,City,PostCode,Country);
             location.Create();
             this.Close();

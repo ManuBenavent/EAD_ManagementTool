@@ -158,7 +158,7 @@
             // PostCodeTextBox
             // 
             this.PostCodeTextBox.Location = new System.Drawing.Point(284, 248);
-            this.PostCodeTextBox.Mask = "00 000";
+            this.PostCodeTextBox.Mask = "aa aaa";
             this.PostCodeTextBox.Name = "PostCodeTextBox";
             this.PostCodeTextBox.Size = new System.Drawing.Size(344, 22);
             this.PostCodeTextBox.TabIndex = 12;
