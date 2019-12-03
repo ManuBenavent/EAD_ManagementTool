@@ -182,30 +182,37 @@ namespace library
         public void Update(object obj)
         {
             string TABLE;
+            int Id;
             switch (obj)
             {
                 case Contact cont:
                     TABLE = cont.SQLUpdateString;
+                    Id = cont.Id;
                     break;
                 case Location loc:
                     TABLE = loc.SQLUpdateString;
+                    Id = loc.Id;
                     break;
                 case Appointment ap:
                     TABLE = ap.SQLUpdateString;
+                    Id = ap.Id;
                     break;
                 case Lecture lec:
                     TABLE = lec.SQLUpdateString;
+                    Id = lec.Id;
                     break;
                 case TaskEvent task:
                     TABLE = task.SQLUpdateString;
+                    Id = task.Id;
                     break;
                 case Tutorial tut:
                     TABLE = tut.SQLUpdateString;
+                    Id = tut.Id;
                     break;
                 default:
                     throw new DDBBException("Delete");
             }
-            string statement = "Update " + TABLE;
+            string statement = "Update " + TABLE + "where Id=" + Id;
             SQLNonQuery(statement);
         }
 
