@@ -1,3 +1,4 @@
+using library.exceptions;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -54,6 +55,23 @@ namespace library
         /// <param name="Recurring">True if the event is recurring.</param>
         public EventClass (string Name, bool Recurring, DateTime Date)
         {
+            this.Name = Name;
+            this.Recurring = Recurring;
+            this.Date = Date;
+            ddbb = new DAC();
+            try
+            {
+                _Id = ddbb.GetId(this);
+            }
+            catch (DDBBException ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+            }
+        }
+
+        internal EventClass(int Id, string Name, bool Recurring, DateTime Date)
+        {
+            this._Id = Id;
             this.Name = Name;
             this.Recurring = Recurring;
             this.Date = Date;

@@ -13,10 +13,10 @@ namespace TimeManagementAndReportingTool
 {
     public partial class EventDetailView : Form
     {
+        private EventClass eventClass;
         public EventDetailView(int Id, string type)
         {
             InitializeComponent();
-            EventClass eventClass;
             switch (type)
             {
                 case "Appointment":
@@ -56,7 +56,7 @@ namespace TimeManagementAndReportingTool
             }
             TypeLabel.Text = type;
             NameLabel.Text = "Event name: " + eventClass.Name;
-            DateLabel.Text = "Date: " + eventClass.DateTimeString;
+            DateLabel.Text = "Date: " + eventClass.Date.ToString("MM/dd/yyyy h:mm tt");
             RecurringLabel.Text = "Recurring: " + (eventClass.Recurring ? "Yes" : "No");
 
         }
@@ -66,11 +66,23 @@ namespace TimeManagementAndReportingTool
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void EditButton_Click(object sender, EventArgs e)
         {
-            CreateEventForm createEventForm = new CreateEventForm();
+            CreateEventForm createEventForm = new CreateEventForm(eventClass);
+            createEventForm.FormClosed += CreateEventForm_FormClosed;
             createEventForm.Activate();
             createEventForm.ShowDialog();
+        }
+
+        private void CreateEventForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void DeleteEventButton_Click(object sender, EventArgs e)
+        {
+            this.eventClass.Delete();
+            this.Close();
         }
     }
 }

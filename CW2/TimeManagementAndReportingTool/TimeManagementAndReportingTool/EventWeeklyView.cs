@@ -13,6 +13,7 @@ namespace TimeManagementAndReportingTool
     public partial class EventWeeklyView : UserControl
     {
         private int EventId;
+        public event EventHandler DetailViewClosed;
         public EventWeeklyView(int EventId, string Name, string Datetime, string EventType)
         {
             InitializeComponent();
@@ -29,8 +30,14 @@ namespace TimeManagementAndReportingTool
         private void EventWeeklyView_Click(object sender, EventArgs e)
         {
             EventDetailView view = new EventDetailView(EventId, EventTypeLabel.Text);
+            view.FormClosed += View_FormClosed;
             view.Activate();
             view.ShowDialog();
+        }
+
+        private void View_FormClosed(object sender, EventArgs e)
+        {
+             DetailViewClosed.Invoke(this, e);
         }
     }
 }

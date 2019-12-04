@@ -15,7 +15,47 @@ namespace TimeManagementAndReportingTool
     {
         List<Control> controls;
         List<Control> recurringControls;
+        private bool updating;
+        private EventClass eventClass;
         public CreateEventForm()
+        {
+            Initialize();
+            updating = false;
+        }
+
+        public CreateEventForm(EventClass eventClass)
+        {
+            this.eventClass = eventClass;
+            updating = true;
+            Initialize();
+            EventTypesComboBox.Enabled = false;
+            ((CheckBox)this.Controls.Find("RecurringCB", false)[0]).Enabled=false;
+            SaveButton.Text = "Update";
+            ((CheckBox)this.Controls.Find("RecurringCB", false)[0]).Checked = eventClass.Recurring;
+            this.Controls.Find("NameTextBox", false)[0].Text = eventClass.Name;
+            ((DateTimePicker)this.Controls.Find("DateTimePicker", false)[0]).Value = eventClass.Date;
+            switch (eventClass)
+            {
+                case Appointment ap:
+                    EventTypesComboBox.SelectedIndex = 0;
+                    break;
+                case Lecture lec:
+                    EventTypesComboBox.SelectedIndex = 2;
+                    this.Controls.Find("LecturerTB", false)[0].Text = lec.Lecturer;
+                    break;
+                case Tutorial tut:
+                    this.Controls.Find("LabTB", false)[0].Text = tut.Lab;
+                    this.Controls.Find("LecturerTB", false)[0].Text = tut.Lecturer;
+                    EventTypesComboBox.SelectedIndex = 3;
+                    break;
+                case TaskEvent t:
+                    ((CheckBox)this.Controls.Find("FinishedCB", false)[0]).Checked = t.Finished;
+                    EventTypesComboBox.SelectedIndex = 1;
+                    break;
+            }
+        }
+
+        private void Initialize()
         {
             controls = new List<Control>();
             recurringControls = new List<Control>();
@@ -27,7 +67,7 @@ namespace TimeManagementAndReportingTool
             EventTypesComboBox.Items.Add("Tutorial");
             EventTypesComboBox.SelectedIndexChanged += EventTypesComboBox_SelectedIndexChanged;
             EventTypesComboBox.SelectedIndex = 0;
-            
+
             Label name = new Label();
             name.Text = "Event name:";
             name.Font = EventTypeTitleLabel.Font;
@@ -70,7 +110,7 @@ namespace TimeManagementAndReportingTool
 
         private void RecurringCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (((CheckBox)sender).Checked)
+            if (!updating && ((CheckBox)sender).Checked)
             {
                 Label label = new Label();
                 label.Text = "Recurrent for:";
@@ -167,16 +207,6 @@ namespace TimeManagementAndReportingTool
 
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            var confirmation = MessageBox.Show("Do you want to delete this event?", "Delete confirmation", MessageBoxButtons.OKCancel);
-            if (confirmation == DialogResult.OK)
-            {
-                ObtainData().Delete();
-                this.Close();
-            }
-        }
-
         private void DismissButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -184,9 +214,29 @@ namespace TimeManagementAndReportingTool
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if(((CheckBox)this.Controls.Find("RecurringCB", false)[0]).Checked)
+            if (updating)
             {
-                int times = Int32.Parse(this.Controls.Find("RecurringTimesTB",false)[0].Text);
+                EventClass data = ObtainData();
+                eventClass.Name = data.Name;
+                eventClass.Date = data.Date;
+                switch (data)
+                {
+                    case Lecture l:
+                        ((Lecture)eventClass).Lecturer = l.Lecturer;
+                        break;
+                    case Tutorial t:
+                        ((Tutorial)eventClass).Lecturer = t.Lecturer;
+                        ((Tutorial)eventClass).Lab = t.Lab;
+                        break;
+                    case TaskEvent task:
+                        ((TaskEvent)eventClass).Finished = task.Finished;
+                        break;
+                }
+                eventClass.Update();
+            }
+            else if (((CheckBox)this.Controls.Find("RecurringCB", false)[0]).Checked)
+            {
+                int times = Int32.Parse(this.Controls.Find("RecurringTimesTB", false)[0].Text);
                 for (int i = 0; i < times; i++)
                 {
                     EventClass eventClass = ObtainData();

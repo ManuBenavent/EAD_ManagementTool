@@ -38,7 +38,7 @@ namespace TimeManagementAndReportingTool
             form.ShowDialog();
         }
 
-        private void Form_FormClosed(object sender, FormClosedEventArgs e)
+        private void Form_FormClosed(object sender,EventArgs e)
         {
             schedule = !schedule;
             ChangeView(WeekDifference);
@@ -162,6 +162,7 @@ namespace TimeManagementAndReportingTool
                     }
                     eventControl.Location = new Point(XPositions[i], 40 + 58*DayOfWeekHeight[i]);
                     DayOfWeekHeight[i]++;
+                    eventControl.DetailViewClosed += Form_FormClosed;
                     this.Controls.Add(eventControl);
                     currentView.Add(eventControl);
                 }

@@ -33,7 +33,8 @@
             this.DateLabel = new System.Windows.Forms.Label();
             this.RecurringLabel = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
+            this.DeleteEventButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TypeLabel
@@ -79,7 +80,7 @@
             // CloseButton
             // 
             this.CloseButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.CloseButton.Location = new System.Drawing.Point(271, 323);
+            this.CloseButton.Location = new System.Drawing.Point(290, 323);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 31);
             this.CloseButton.TabIndex = 4;
@@ -87,23 +88,35 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
-            // button1
+            // EditButton
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.button1.Location = new System.Drawing.Point(362, 323);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 31);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Edit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.EditButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.EditButton.Location = new System.Drawing.Point(400, 323);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(75, 31);
+            this.EditButton.TabIndex = 5;
+            this.EditButton.Text = "Edit";
+            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // DeleteEventButton
+            // 
+            this.DeleteEventButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.DeleteEventButton.Location = new System.Drawing.Point(178, 323);
+            this.DeleteEventButton.Name = "DeleteEventButton";
+            this.DeleteEventButton.Size = new System.Drawing.Size(75, 31);
+            this.DeleteEventButton.TabIndex = 6;
+            this.DeleteEventButton.Text = "Delete";
+            this.DeleteEventButton.UseVisualStyleBackColor = true;
+            this.DeleteEventButton.Click += new System.EventHandler(this.DeleteEventButton_Click);
             // 
             // EventDetailView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.DeleteEventButton);
+            this.Controls.Add(this.EditButton);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.RecurringLabel);
             this.Controls.Add(this.DateLabel);
@@ -123,6 +136,7 @@
         private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.Label RecurringLabel;
         private System.Windows.Forms.Button CloseButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.Button DeleteEventButton;
     }
 }

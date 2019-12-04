@@ -29,6 +29,11 @@ namespace library
             this.Finished = Finished; 
         }
 
+        internal TaskEvent(int Id, string Name, bool Recurring, bool Finished, DateTime Date) : base(Id, Name, Recurring, Date)
+        {
+            this.Finished = Finished;
+        }
+
         public TaskEvent(int Id) : base(Id) { }
     }
 }

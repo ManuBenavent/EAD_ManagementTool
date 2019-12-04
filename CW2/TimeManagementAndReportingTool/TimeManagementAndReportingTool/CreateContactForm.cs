@@ -16,6 +16,7 @@ namespace TimeManagementAndReportingTool
     public partial class CreateContactForm : Form
     {
         private bool update;
+        private Contact contact;
         public CreateContactForm()
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace TimeManagementAndReportingTool
             SaveButton.Text = "Update";
             DeleteButton.Visible = true;
             update = true;
+            contact = new Contact(FirstName, LastName, Email, Phone);
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -46,7 +48,10 @@ namespace TimeManagementAndReportingTool
                 ErrorLabel.Visible = true;
                 return;
             }
-            Contact contact = new Contact(FirstNameTextBox.Text, LastNameTextBox.Text, EmailTextBox.Text, PhoneTextBox.Text);
+            contact.FirstName = FirstNameTextBox.Text;
+            contact.LastName = LastNameTextBox.Text;
+            contact.Email = EmailTextBox.Text;
+            contact.Phone = PhoneTextBox.Text;
             if (update)
                 contact.Update();
             else

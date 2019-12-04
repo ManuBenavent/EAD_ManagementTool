@@ -212,7 +212,7 @@ namespace library
                 default:
                     throw new DDBBException("Delete");
             }
-            string statement = "Update " + TABLE + "where Id=" + Id;
+            string statement = "Update " + TABLE + " where Id=" + Id;
             SQLNonQuery(statement);
         }
 
@@ -233,7 +233,7 @@ namespace library
                     SqlCommand com = new SqlCommand(statement, c);
 
                     if (com.ExecuteNonQuery() == 0)
-                        throw new DDBBException("SQLNonQuery");
+                        throw new DDBBException("SQLNonQuery: Rows affected = 0");
                 }
                 catch (SqlException ex)
                 {
@@ -304,41 +304,42 @@ namespace library
                     {
                         string table;
                         if (i == 0)
-                            table = "Name, Recurring, Date from Appointment";
+                            table = "Id, Name, Recurring, Date from Appointment";
                         else if (i == 1)
-                            table = "Name, Recurring, Date, Finished from Task";
+                            table = "Id, Name, Recurring, Date, Finished from Task";
                         else if (i == 2)
-                            table = "Name, Recurring, Date, Lecturer from Lecture";
+                            table = "Id, Name, Recurring, Date, Lecturer from Lecture";
                         else
-                            table = "Name, Recurring, Date, Lecturer, Lab from Tutorial";
+                            table = "Id, Name, Recurring, Date, Lecturer, Lab from Tutorial";
                         string query = "Select " + table + " where " + DatesRange;
                         SqlCommand com = new SqlCommand(query, c);
                         SqlDataReader da = com.ExecuteReader();
                         while (da.Read())
                         {
+                            int Id = Int32.Parse(da["Id"].ToString());
                             string Name = da["Name"].ToString();
                             bool Recurring = Boolean.Parse(da["Recurring"].ToString());
                             DateTime Date = DateTime.Parse(da["Date"].ToString());
                             switch (i)
                             {
                                 case 0:
-                                    events.Add(new Appointment(Name, Recurring, Date));
+                                    events.Add(new Appointment(Id, Name, Recurring, Date));
                                     break;
 
                                 case 1:
                                     bool Finished = Boolean.Parse(da["Finished"].ToString());
-                                    events.Add(new TaskEvent(Name, Recurring, Finished, Date));
+                                    events.Add(new TaskEvent(Id, Name, Recurring, Finished, Date));
                                     break;
 
                                 case 2:
                                     string Lecturer = da["Lecturer"].ToString();
-                                    events.Add(new Lecture(Name, Recurring, Lecturer, Date));
+                                    events.Add(new Lecture(Id, Name, Recurring, Lecturer, Date));
                                     break;
                                 
                                 case 3:
                                     string LecturerTut = da["Lecturer"].ToString();
                                     string Lab = da["Lab"].ToString();
-                                    events.Add(new Tutorial(Name, Recurring, Lab, LecturerTut, Date));
+                                    events.Add(new Tutorial(Id, Name, Recurring, Lab, LecturerTut, Date));
                                     break;
                             }
                         }

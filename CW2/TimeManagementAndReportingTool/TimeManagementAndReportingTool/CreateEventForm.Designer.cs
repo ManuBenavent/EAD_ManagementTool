@@ -30,7 +30,6 @@
         {
             this.EventTypesComboBox = new System.Windows.Forms.ComboBox();
             this.EventTypeTitleLabel = new System.Windows.Forms.Label();
-            this.DeleteButton = new System.Windows.Forms.Button();
             this.DismissButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -52,16 +51,6 @@
             this.EventTypeTitleLabel.Size = new System.Drawing.Size(143, 24);
             this.EventTypeTitleLabel.TabIndex = 1;
             this.EventTypeTitleLabel.Text = "Select event type:";
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Location = new System.Drawing.Point(221, 341);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(89, 41);
-            this.DeleteButton.TabIndex = 2;
-            this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // DismissButton
             // 
@@ -90,7 +79,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.DismissButton);
-            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EventTypeTitleLabel);
             this.Controls.Add(this.EventTypesComboBox);
             this.Name = "CreateEventForm";
@@ -104,7 +92,6 @@
 
         private System.Windows.Forms.ComboBox EventTypesComboBox;
         private System.Windows.Forms.Label EventTypeTitleLabel;
-        private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button DismissButton;
         private System.Windows.Forms.Button SaveButton;
     }
