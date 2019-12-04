@@ -78,6 +78,7 @@ namespace TimeManagementAndReportingTool
             }
             if (schedule)
             {
+                TodayButton.Visible = false;
                 NextWeekButton.Visible = false;
                 PreviousWeekButton.Visible = false;
                 currentView.Clear();
@@ -91,6 +92,7 @@ namespace TimeManagementAndReportingTool
             }
             else
             {
+                TodayButton.Visible = true;
                 NextWeekButton.Visible = true;
                 PreviousWeekButton.Visible = true;
                 schedule = true;
@@ -188,6 +190,13 @@ namespace TimeManagementAndReportingTool
         {
             schedule = !schedule;
             WeekDifference++;
+            ChangeView(WeekDifference);
+        }
+
+        private void TodayButton_Click(object sender, EventArgs e)
+        {
+            schedule = !schedule;
+            WeekDifference = 0;
             ChangeView(WeekDifference);
         }
     }

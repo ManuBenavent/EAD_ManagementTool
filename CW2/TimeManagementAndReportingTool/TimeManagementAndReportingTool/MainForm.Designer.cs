@@ -35,6 +35,7 @@
             this.ChangeViewButton = new System.Windows.Forms.Button();
             this.NextWeekButton = new System.Windows.Forms.Button();
             this.PreviousWeekButton = new System.Windows.Forms.Button();
+            this.TodayButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NewEventButton
@@ -107,11 +108,22 @@
             this.PreviousWeekButton.UseVisualStyleBackColor = true;
             this.PreviousWeekButton.Click += new System.EventHandler(this.PreviousWeekButton_Click);
             // 
+            // TodayButton
+            // 
+            this.TodayButton.Location = new System.Drawing.Point(870, 318);
+            this.TodayButton.Name = "TodayButton";
+            this.TodayButton.Size = new System.Drawing.Size(74, 47);
+            this.TodayButton.TabIndex = 7;
+            this.TodayButton.Text = "Today";
+            this.TodayButton.UseVisualStyleBackColor = true;
+            this.TodayButton.Click += new System.EventHandler(this.TodayButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(996, 539);
+            this.Controls.Add(this.TodayButton);
             this.Controls.Add(this.PreviousWeekButton);
             this.Controls.Add(this.NextWeekButton);
             this.Controls.Add(this.ChangeViewButton);
@@ -135,5 +147,6 @@
         private System.Windows.Forms.Button ChangeViewButton;
         private System.Windows.Forms.Button NextWeekButton;
         private System.Windows.Forms.Button PreviousWeekButton;
+        private System.Windows.Forms.Button TodayButton;
     }
 }
