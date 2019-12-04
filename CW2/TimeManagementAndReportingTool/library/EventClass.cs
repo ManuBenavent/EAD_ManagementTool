@@ -123,7 +123,7 @@ namespace library
             return 0;
         }
 
-        public static List<double> TimeUsageReport()
+        public static List<double> TimeUsageReport(out double slope, out double intercept)
         {
             DAC dac = new DAC();
             DateTime initial = DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0));
@@ -134,11 +134,17 @@ namespace library
 
             var dictionary = new Dictionary<DateTime, int>();
             var dates = new List<DateTime>();
-            for(int i=0; i<30; i++)
+            for(int i = 0; i < 30; i++)
             {
-                DateTime dateTime = DateTime.Now.Subtract(new TimeSpan(i, 0, 0, 0));
-                dates.Add(new DateTime(dateTime.Year, dateTime.Month, dateTime.Day,0,0,0));
-                dictionary.Add(new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0), 0);
+                DateTime dateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                dateTime = dateTime.Subtract(new TimeSpan(i, 0, 0, 0));
+                int diff = ((int)dateTime.DayOfWeek - (int)DayOfWeek.Monday) % 7;
+                dateTime = dateTime.Subtract(new TimeSpan(diff, 0, 0, 0));
+                if (!dates.Contains(dateTime))
+                {
+                    dates.Add(dateTime);
+                    dictionary.Add(dateTime, 0);
+                }
             }
             foreach(EventClass e in events)
             {
@@ -148,23 +154,25 @@ namespace library
                 int aux = dictionary[FirstDayOfWeek];
                 dictionary.Remove(FirstDayOfWeek);
                 dictionary.Add(FirstDayOfWeek, aux + 1);
+
             }
-            /*int total = dates.Where(dictionary.ContainsKey).Sum(s => dictionary[s]);
-            float avg = (float)total / 4;
-            return avg;*/
-            double[] xValues = new double[] { -3.0, -2.0, -1.0, 0.0 };
-            double[] yValues = new double[] { dictionary[dates[3]], dictionary[dates[2]], dictionary[dates[1]], dictionary[dates[0]] };
-            double rSquared, intercept, slope;
-            LinearRegression(xValues, yValues, out rSquared, out intercept, out slope);
+            dates.Sort();
             List<double> results = new List<double>();
-            results.Add(dictionary[dates[3]]);
-            results.Add(dictionary[dates[2]]);
-            results.Add(dictionary[dates[1]]);
-            results.Add(dictionary[dates[0]]);
-            results.Add((slope * 1.0) + intercept);
-            results.Add((slope * 2.0) + intercept);
-            results.Add((slope * 3.0) + intercept);
-            results.Add((slope * 4.0) + intercept);
+            double[] xValues = new double[dictionary.Count];
+            for(int i = 0; i < dictionary.Count; i++)
+            {
+                xValues[i] = i;
+            }
+            double[] yValues = new double[dictionary.Count];
+            for(int i = 0; i < dictionary.Count; i++)
+            {
+                yValues[i] = dictionary[dates[i]];
+                results.Add(dictionary[dates[i]]);
+            }
+            
+            double rSquared;
+            LinearRegression(xValues, yValues, out rSquared, out intercept, out slope);
+
             return results;
 
         }

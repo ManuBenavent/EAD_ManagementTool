@@ -18,20 +18,38 @@ namespace TimeManagementAndReportingTool
         public TimeReportForm()
         {
             InitializeComponent();
-            ReportChart.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
-            ReportChart.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+            ReportChart.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.DashDotDot;
+            ReportChart.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.DashDotDot;
+            ReportChart.ChartAreas[0].AxisY.Title = "Hours";
+            ReportChart.ChartAreas[0].AxisX.Title = "Weeks";
+            ReportChart.ChartAreas[0].AxisX.TitleFont = new System.Drawing.Font("Arial Narrow", 12F);
+            ReportChart.ChartAreas[0].AxisY.TitleFont = new System.Drawing.Font("Arial Narrow", 12F);
+            ReportChart.ChartAreas[0].AxisY.LineWidth = 2;
+            ReportChart.ChartAreas[0].AxisX.LineWidth = 2;
+            ReportChart.ChartAreas[0].AxisX.LabelStyle.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            ReportChart.ChartAreas[0].AxisY.LabelStyle.Font = new System.Drawing.Font("Arial Narrow", 12F);
             ReportChart.Series.Clear();
-            ReportChart.Series.Add("Next Weeks");
-            ReportChart.Series["Next Weeks"].ChartType = SeriesChartType.Line;
-            ReportChart.Series["Next Weeks"].SetDefault(true);
-
+            ReportChart.Series.Add("Regression line");
+            ReportChart.Series["Regression line"].ChartType = SeriesChartType.Line;
+            ReportChart.Series["Regression line"].BorderWidth = 3;
+            ReportChart.Series["Regression line"].SetDefault(true);
+            ReportChart.Series.Add("Previous Weeks");
+            ReportChart.Series["Previous Weeks"].BorderWidth = 5;
+            ReportChart.Series["Previous Weeks"].ChartType = SeriesChartType.Point;
+            Title title = new Title();
+            title.Font = new Font("Arial Bold", 15);
+            title.Text = "Expected hours per week";
+            ReportChart.Titles.Add(title);
             List<double> aux;
             try
             {
-                aux = EventClass.TimeUsageReport();
-                for(int i=-3; i < 4; i++)
+                double intercept, slope;
+                aux = EventClass.TimeUsageReport(out slope, out intercept);//TODO ADD POINTS
+                for (int i = 0; i < aux.Count+4; i++)
                 {
-                    ReportChart.Series["Next Weeks"].Points.AddXY(i, aux[i+3]);
+                    ReportChart.Series["Regression line"].Points.AddXY(i - aux.Count + 1, (slope*i) + intercept);
+                    if (i < aux.Count)
+                        ReportChart.Series["Previous Weeks"].Points.AddXY(i - aux.Count + 1, aux[i]);
                 }
             }
             catch (NoDataException) { }

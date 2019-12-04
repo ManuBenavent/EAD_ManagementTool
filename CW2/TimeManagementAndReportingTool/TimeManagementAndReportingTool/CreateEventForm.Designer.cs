@@ -95,7 +95,10 @@
             this.Controls.Add(this.DismissButton);
             this.Controls.Add(this.EventTypeTitleLabel);
             this.Controls.Add(this.EventTypesComboBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "CreateEventForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Event";
             this.ResumeLayout(false);
             this.PerformLayout();

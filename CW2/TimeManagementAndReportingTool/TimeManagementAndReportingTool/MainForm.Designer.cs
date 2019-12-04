@@ -131,7 +131,10 @@
             this.Controls.Add(this.ListContactsButton);
             this.Controls.Add(this.NewContactButton);
             this.Controls.Add(this.NewEventButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main View";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);

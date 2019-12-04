@@ -41,13 +41,13 @@
             this.ReportChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.ReportChart.Legends.Add(legend1);
-            this.ReportChart.Location = new System.Drawing.Point(28, 22);
+            this.ReportChart.Location = new System.Drawing.Point(-1, 0);
             this.ReportChart.Name = "ReportChart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.ReportChart.Series.Add(series1);
-            this.ReportChart.Size = new System.Drawing.Size(474, 402);
+            this.ReportChart.Size = new System.Drawing.Size(800, 451);
             this.ReportChart.TabIndex = 0;
             this.ReportChart.Text = "chart1";
             // 
@@ -57,7 +57,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ReportChart);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "TimeReportForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Time Report";
             ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).EndInit();
             this.ResumeLayout(false);

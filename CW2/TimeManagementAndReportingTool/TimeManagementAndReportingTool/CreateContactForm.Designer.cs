@@ -172,7 +172,10 @@
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.LastNameLabel);
             this.Controls.Add(this.FirstNameLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "CreateContactForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Contact";
             this.ResumeLayout(false);
             this.PerformLayout();

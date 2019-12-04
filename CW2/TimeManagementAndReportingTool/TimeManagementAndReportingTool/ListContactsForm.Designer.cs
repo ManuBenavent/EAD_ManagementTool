@@ -43,16 +43,19 @@
             this.ContactsDataGrid.ReadOnly = true;
             this.ContactsDataGrid.RowHeadersWidth = 51;
             this.ContactsDataGrid.RowTemplate.Height = 24;
-            this.ContactsDataGrid.Size = new System.Drawing.Size(800, 450);
+            this.ContactsDataGrid.Size = new System.Drawing.Size(674, 450);
             this.ContactsDataGrid.TabIndex = 0;
             // 
             // ListContactsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(674, 450);
             this.Controls.Add(this.ContactsDataGrid);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ListContactsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contacts List";
             ((System.ComponentModel.ISupportInitialize)(this.ContactsDataGrid)).EndInit();
             this.ResumeLayout(false);

@@ -122,7 +122,10 @@
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.TypeLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "EventDetailView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Event Details";
             this.ResumeLayout(false);
             this.PerformLayout();
