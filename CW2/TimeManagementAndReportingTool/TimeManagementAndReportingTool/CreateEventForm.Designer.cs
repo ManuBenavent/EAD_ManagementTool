@@ -96,7 +96,7 @@
             this.Controls.Add(this.EventTypeTitleLabel);
             this.Controls.Add(this.EventTypesComboBox);
             this.Name = "CreateEventForm";
-            this.Text = "CreateEventForm";
+            this.Text = "Create Event";
             this.ResumeLayout(false);
             this.PerformLayout();
 

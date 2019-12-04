@@ -47,7 +47,7 @@
     <Compile Include="DAC.cs" />
     <Compile Include="DDBBException.cs" />
     <Compile Include="EventClass.cs" />
-    <Compile Include="ICRUD.cs" />
+    <Compile Include="ISQLAccess.cs" />
     <Compile Include="Lecture.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

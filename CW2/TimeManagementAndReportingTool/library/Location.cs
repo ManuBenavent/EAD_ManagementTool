@@ -2,7 +2,7 @@
 
 namespace library
 {
-    public class Location
+    public class Location : ISQLAccess
     {
         private int _Id;
         public int Id { get { return _Id; } }
@@ -13,18 +13,18 @@ namespace library
         public string PostCode { get; set; }
         public string Country { get; set; }
         private readonly DAC ddbb;
-        internal string SQLCreateString { 
+        public string SQLCreateString { 
             get {
                 return "('" + Name + "','" + AddressLine1 + "','" + AddressLine2 + "','" + City + "','" + PostCode + "','" + Country + "')";
             }
         }
-        internal string SQLGetString { 
+        public string SQLGetString { 
             get {
                 return "Location WHERE Name='" + Name + "' and AddrLine1='" + AddressLine1 + "' and AddrLine2='" + AddressLine2
                     + "' and City='" + City + "' and Postcode='" + PostCode + "' and Country='" + Country + "'";
             } 
         }
-        internal string SQLUpdateString { 
+        public string SQLUpdateString { 
             get { 
                 return "Location set Name = '" + Name + "',AddrLine1 = '" + AddressLine1 + "',AddrLine2='" + AddressLine2
                         + "',City='" + City + "',Postcode='" + PostCode + "',Country='" + Country + "'";

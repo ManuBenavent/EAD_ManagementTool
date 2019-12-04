@@ -203,7 +203,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "CreateLocationForm";
-            this.Text = "CreateLocationForm";
+            this.Text = "Create Location";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -4,19 +4,19 @@ namespace library
 {
     public class Lecture : EventClass
     {
-        internal override string SQLCreateString { 
+        public override string SQLCreateString { 
             get { 
                 return "('" + base.Name + "','" + base.Recurring + "','" + Lecturer + "','" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "')"; 
             } 
         }
-        internal override string SQLGetString
+        public override string SQLGetString
         {
             get
             {
                 return "Lecture WHERE Name = '" + Name + "' and Recurring='" + Recurring + "' and Lecturer='" + Lecturer + "' and Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'";
             }
         }
-        internal override string SQLUpdateString
+        public override string SQLUpdateString
         {
             get
             {

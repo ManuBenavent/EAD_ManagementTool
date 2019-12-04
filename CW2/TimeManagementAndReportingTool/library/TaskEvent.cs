@@ -8,17 +8,17 @@ namespace library
 {
     public class TaskEvent : EventClass
     {
-        internal override string SQLCreateString { 
+        public override string SQLCreateString { 
             get { 
                 return "('" + base.Name + "','" + base.Recurring + "','" + Finished + "','" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "')"; 
             } 
         }
-        internal override string SQLGetString { 
+        public override string SQLGetString { 
             get { 
                 return "Task WHERE Name = '" + Name + "' and Recurring='"+Recurring + "' and Finished='" + Finished + "' and Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'"; 
             } 
         }
-        internal override string SQLUpdateString { 
+        public override string SQLUpdateString { 
             get { 
                 return "Task Set Name='" + Name + "', Recurring='" + Recurring + "', Finished='" + Finished + "', Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'";
             } 

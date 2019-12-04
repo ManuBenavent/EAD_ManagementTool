@@ -5,7 +5,7 @@ using System.Data;
 
 namespace library
 {
-    public class Contact
+    public class Contact : ISQLAccess
     {
         private int _Id;
         public int Id { get { return _Id; } }
@@ -14,17 +14,17 @@ namespace library
         public string Email { get; set; }
         public string Phone { get; set; }
         private readonly DAC ddbb;
-        internal string SQLCreateString { 
+        public string SQLCreateString { 
             get {
                 return "('" + FirstName + "','" + LastName + "','" + Email + "','" + Phone + "')"; 
             } 
         }
-        internal string SQLGetString { 
+        public string SQLGetString { 
             get{ 
                 return "Contact WHERE FirstName='" + FirstName + "' and LastName='" + LastName + "' and Email='" + Email + "' and Phone='" + Phone+"'"; 
             } 
         }
-        internal string SQLUpdateString { 
+        public string SQLUpdateString { 
             get{ 
                 return "Contact set FirstName='" + FirstName + "', LastName='" + LastName + "', Email='" + Email + "', Phone='" + Phone + "'"; 
             } 

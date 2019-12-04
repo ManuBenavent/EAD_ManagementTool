@@ -8,15 +8,15 @@ namespace library
 {
     public class Tutorial : EventClass
     {
-        internal override string SQLCreateString { get { return "('" + base.Name + "','" + base.Recurring + "','" + Lecturer + "','" + Lab + "','" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "')" ; } }
-        internal override string SQLGetString
+        public override string SQLCreateString { get { return "('" + base.Name + "','" + base.Recurring + "','" + Lecturer + "','" + Lab + "','" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "')" ; } }
+        public override string SQLGetString
         {
             get
             {
                 return "Tutorial WHERE Name = '" + Name + "' and Recurring='" + Recurring + "' and Lecturer='" + Lecturer + "' and Lab='" + Lab + "' and Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'";
             }
         }
-        internal override string SQLUpdateString
+        public override string SQLUpdateString
         {
             get
             {

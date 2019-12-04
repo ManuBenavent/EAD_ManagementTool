@@ -123,7 +123,7 @@
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.TypeLabel);
             this.Name = "EventDetailView";
-            this.Text = "EventDetailView";
+            this.Text = "Event Details";
             this.ResumeLayout(false);
             this.PerformLayout();
 

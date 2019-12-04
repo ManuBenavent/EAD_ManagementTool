@@ -53,7 +53,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ContactsDataGrid);
             this.Name = "ListContactsForm";
-            this.Text = "ListContactsForm";
+            this.Text = "Contacts List";
             ((System.ComponentModel.ISupportInitialize)(this.ContactsDataGrid)).EndInit();
             this.ResumeLayout(false);
 

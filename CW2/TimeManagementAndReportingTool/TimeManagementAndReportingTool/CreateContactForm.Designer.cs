@@ -173,7 +173,7 @@
             this.Controls.Add(this.LastNameLabel);
             this.Controls.Add(this.FirstNameLabel);
             this.Name = "CreateContactForm";
-            this.Text = "CreateContactForm";
+            this.Text = "Create Contact";
             this.ResumeLayout(false);
             this.PerformLayout();
 

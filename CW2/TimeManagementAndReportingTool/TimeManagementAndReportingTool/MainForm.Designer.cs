@@ -120,7 +120,7 @@
             this.Controls.Add(this.NewContactButton);
             this.Controls.Add(this.NewEventButton);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Main View";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 

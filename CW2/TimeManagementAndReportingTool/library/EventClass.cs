@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace library
 {
-    public abstract class EventClass {
+    public abstract class EventClass : ISQLAccess {
         /// <summary>
         /// DDBB row Id.
         /// </summary>
@@ -25,10 +25,8 @@ namespace library
         /// <summary>
         /// String used for inserting the values of the object into the DDBB.
         /// </summary>
-        internal abstract string SQLCreateString { get; }
-        /// <summary>
-        /// Date and time of the event.
-        /// </summary>
+        public abstract string SQLCreateString { get; }
+
         public DateTime Date { get; set; }
         public string DateTimeString { 
             get 
@@ -36,14 +34,10 @@ namespace library
                 return Date.Day + "/" + Date.Month + "/" + Date.Year + "-" + Date.Hour + ":" + Date.Minute;
             } 
         }
-        /// <summary>
-        /// String used for updating the values of the object in the DDBB.
-        /// </summary>
-        internal abstract string SQLUpdateString { get; }
-        /// <summary>
-        /// String used as getter for the Id in the SQL statements.
-        /// </summary>
-        internal abstract string SQLGetString { get; }
+
+        public abstract string SQLUpdateString { get; }
+
+        public abstract string SQLGetString { get; }
         /// <summary>
         /// Data Access Component object.
         /// </summary>
