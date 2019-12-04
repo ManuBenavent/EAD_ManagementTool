@@ -53,14 +53,14 @@ namespace library
             this.Recurring = Recurring;
             this.Date = Date;
             ddbb = new DAC();
-            try
+            /*try
             {
                 _Id = ddbb.GetId(this);
             }
             catch (DDBBException ex)
             {
                 Console.Error.WriteLine(ex.Message);
-            }
+            }*/
         }
 
         internal EventClass(int Id, string Name, bool Recurring, DateTime Date)
@@ -111,6 +111,15 @@ namespace library
             initial = initial.Add(new TimeSpan(ChangeWeek * 7, 0, 0, 0));
             DateTime end = initial.Add(new TimeSpan(6, 23, 59, 59));
             return dac.ListWeekEvents("Date>='" + initial.ToString("yyyy/MM/dd HH:mm:ss") + "' and Date<='" + end.ToString("yyyy/MM/dd HH:mm:ss") + "'");
+        }
+
+        public static int CompareByDate(EventClass event1, EventClass event2)
+        {
+            if (event1.Date > event2.Date)
+                return 1;
+            else if (event1.Date < event2.Date)
+                return -1;
+            return 0;
         }
     }
 }

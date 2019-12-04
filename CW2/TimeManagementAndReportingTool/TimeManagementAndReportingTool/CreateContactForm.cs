@@ -39,7 +39,6 @@ namespace TimeManagementAndReportingTool
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            bool asd = Regex.IsMatch(PhoneTextBox.Text, @"^\d$");
             if ( FirstNameTextBox.Text == "" || FirstNameTextBox.Text == "" || !Regex.IsMatch(FirstNameTextBox.Text, @"^[a-zA-Z]+$") 
                 || !Regex.IsMatch(LastNameTextBox.Text, @"^[a-zA-Z]+$")
                 || (EmailTextBox.Text!="" && !EmailIsValid(EmailTextBox.Text)) 
@@ -48,15 +47,20 @@ namespace TimeManagementAndReportingTool
                 ErrorLabel.Visible = true;
                 return;
             }
-            contact.FirstName = FirstNameTextBox.Text;
-            contact.LastName = LastNameTextBox.Text;
-            contact.Email = EmailTextBox.Text;
-            contact.Phone = PhoneTextBox.Text;
-            if (update)
-                contact.Update();
-            else
-                contact.Create();
             this.Close();
+            if (update)
+            {
+                contact.FirstName = FirstNameTextBox.Text;
+                contact.LastName = LastNameTextBox.Text;
+                contact.Email = EmailTextBox.Text;
+                contact.Phone = PhoneTextBox.Text;
+                contact.Update();
+            }
+            else
+            {
+                contact = new Contact(FirstNameTextBox.Text, LastNameTextBox.Text, EmailTextBox.Text, PhoneTextBox.Text);
+                contact.Create();
+            }
         }
 
         private void DismissButton_Click(object sender, EventArgs e)

@@ -234,16 +234,18 @@ namespace TimeManagementAndReportingTool
                         ((TaskEvent)eventClass).Finished = task.Finished;
                         break;
                 }
+                this.Close();
                 eventClass.Update();
             }
             else if (((CheckBox)this.Controls.Find("RecurringCB", false)[0]).Checked)
             {
+                EventClass eventClass = ObtainData();
+                if (eventClass == null)
+                    return;
+                this.Close();
                 int times = Int32.Parse(this.Controls.Find("RecurringTimesTB", false)[0].Text);
                 for (int i = 0; i < times; i++)
                 {
-                    EventClass eventClass = ObtainData();
-                    if (eventClass == null)
-                        return;
                     if (i + 1 == times)
                         eventClass.Recurring = false;
                     if (i != 0)
@@ -274,21 +276,22 @@ namespace TimeManagementAndReportingTool
                 EventClass data = ObtainData();
                 if (data == null)
                     return;
+                this.Close();
                 data.Create();
             }
-            this.Close();
         }
 
         private EventClass ObtainData()
         {
             EventClass eventClass=null;
             string name = this.Controls.Find("NameTextBox", false)[0].Text;
-            if (name == "")
+            bool recurring = ((CheckBox)this.Controls.Find("RecurringCB", false)[0]).Checked;
+            if (name == "" || (recurring && !NumberIsValid(this.Controls.Find("RecurringTimesTB", false)[0].Text)))
             {
                 ErrorLabel.Visible = true;
                 return null;
             }
-            bool recurring = ((CheckBox)this.Controls.Find("RecurringCB", false)[0]).Checked;
+           
             DateTime date = ((DateTimePicker)this.Controls.Find("DateTimePicker",false)[0]).Value;
             switch (EventTypesComboBox.SelectedIndex)
             {
@@ -306,6 +309,19 @@ namespace TimeManagementAndReportingTool
                     break;
             }
             return eventClass;
+        }
+
+        private bool NumberIsValid(string phone)
+        {
+            try
+            {
+                Int32.Parse(phone);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

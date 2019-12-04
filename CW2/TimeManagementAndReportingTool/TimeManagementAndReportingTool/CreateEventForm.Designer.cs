@@ -78,11 +78,11 @@
             this.ErrorLabel.AutoSize = true;
             this.ErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.ErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.ErrorLabel.Location = new System.Drawing.Point(310, 385);
+            this.ErrorLabel.Location = new System.Drawing.Point(206, 385);
             this.ErrorLabel.Name = "ErrorLabel";
-            this.ErrorLabel.Size = new System.Drawing.Size(278, 24);
+            this.ErrorLabel.Size = new System.Drawing.Size(462, 24);
             this.ErrorLabel.TabIndex = 5;
-            this.ErrorLabel.Text = "Error: Events must have a name";
+            this.ErrorLabel.Text = "Input data error. Please review you input and try again.";
             this.ErrorLabel.Visible = false;
             // 
             // CreateEventForm

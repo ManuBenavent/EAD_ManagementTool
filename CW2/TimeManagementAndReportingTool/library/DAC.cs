@@ -63,6 +63,16 @@ namespace library
             }
             string sql_statement = "INSERT INTO " + TABLE + " VALUES " + VALUES;
             SQLNonQuery(sql_statement);
+            Task t = Task.Run(() =>
+            {
+                GetId(obj);
+            });
+            try
+            {
+                t.Wait();
+            }
+            catch (AggregateException) { }
+            
         }
 
         /// <summary>
@@ -365,6 +375,7 @@ namespace library
             {
                 throw new DDBBException("ListWeekEvents " + ex.Message);
             }
+            events.Sort(EventClass.CompareByDate);
             return events;
         }
 
