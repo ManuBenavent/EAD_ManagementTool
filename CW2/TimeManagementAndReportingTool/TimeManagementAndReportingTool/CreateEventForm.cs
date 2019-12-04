@@ -14,10 +14,11 @@ namespace TimeManagementAndReportingTool
     public partial class CreateEventForm : Form
     {
         List<Control> controls;
-
+        List<Control> recurringControls;
         public CreateEventForm()
         {
             controls = new List<Control>();
+            recurringControls = new List<Control>();
             InitializeComponent();
             EventTypesComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             EventTypesComboBox.Items.Add("Appointment");
@@ -47,7 +48,9 @@ namespace TimeManagementAndReportingTool
 
             CheckBox recurringCB = new CheckBox();
             recurringCB.Name = "RecurringCB";
+            recurringCB.CheckedChanged += RecurringCB_CheckedChanged;
             recurringCB.Location = new Point(194, 90);
+            recurringCB.Size = new Size(20, 20);
             this.Controls.Add(recurringCB);
 
             Label date = new Label();
@@ -63,6 +66,47 @@ namespace TimeManagementAndReportingTool
             dateTime.Format = DateTimePickerFormat.Custom;
             dateTime.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             this.Controls.Add(dateTime);
+        }
+
+        private void RecurringCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((CheckBox)sender).Checked)
+            {
+                Label label = new Label();
+                label.Text = "Recurrent for:";
+                label.Font = EventTypeTitleLabel.Font;
+                label.Location = new Point(210, 90);
+                this.Controls.Add(label);
+                recurringControls.Add(label);
+
+                TextBox textBox = new TextBox();
+                textBox.Location = new Point(310, 90);
+                textBox.Width = 35;
+                textBox.Text = "0";
+                textBox.Name = "RecurringTimesTB";
+                this.Controls.Add(textBox);
+                recurringControls.Add(textBox);
+
+                ComboBox comboBox = new ComboBox();
+                comboBox.Location = new Point(350, 90);
+                comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+                comboBox.Items.Add("Days");
+                comboBox.Items.Add("Weeks");
+                comboBox.Items.Add("Months");
+                comboBox.Name = "RecurringComboBox";
+                comboBox.Width = 90;
+                comboBox.SelectedIndex = 0;
+                this.Controls.Add(comboBox);
+                recurringControls.Add(comboBox);
+            }
+            else
+            {
+                foreach (Control c in recurringControls)
+                {
+                    this.Controls.Remove(c);
+                }
+            }
+            
         }
 
         private void EventTypesComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,7 +184,41 @@ namespace TimeManagementAndReportingTool
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            ObtainData().Create();
+            if(((CheckBox)this.Controls.Find("RecurringCB", false)[0]).Checked)
+            {
+                int times = Int32.Parse(this.Controls.Find("RecurringTimesTB",false)[0].Text);
+                for (int i = 0; i < times; i++)
+                {
+                    EventClass eventClass = ObtainData();
+                    if (i + 1 == times)
+                        eventClass.Recurring = false;
+                    if (i != 0)
+                    {
+                        TimeSpan timeSpan;
+                        switch (((ComboBox)this.Controls.Find("RecurringComboBox", false)[0]).SelectedIndex)
+                        {
+                            case 0:
+                                timeSpan = new TimeSpan(i * 1, 0, 0, 0);
+                                break;
+                            case 1:
+                                timeSpan = new TimeSpan(i * 7, 0, 0, 0);
+                                break;
+                            case 2:
+                                timeSpan = new TimeSpan(i * 30, 0, 0, 0);
+                                break;
+                            default:
+                                timeSpan = new TimeSpan(0, 0, 0, 0);
+                                break;
+                        }
+                        eventClass.Date = eventClass.Date.Add(timeSpan);
+                    }
+                    eventClass.Create();
+                }
+            }
+            else
+            {
+                ObtainData().Create();
+            }
             this.Close();
         }
 
