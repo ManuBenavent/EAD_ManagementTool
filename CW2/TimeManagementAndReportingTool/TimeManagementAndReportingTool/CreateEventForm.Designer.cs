@@ -32,6 +32,7 @@
             this.EventTypeTitleLabel = new System.Windows.Forms.Label();
             this.DismissButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
+            this.ErrorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // EventTypesComboBox
@@ -72,11 +73,24 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+            // ErrorLabel
+            // 
+            this.ErrorLabel.AutoSize = true;
+            this.ErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.ErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.ErrorLabel.Location = new System.Drawing.Point(310, 385);
+            this.ErrorLabel.Name = "ErrorLabel";
+            this.ErrorLabel.Size = new System.Drawing.Size(278, 24);
+            this.ErrorLabel.TabIndex = 5;
+            this.ErrorLabel.Text = "Error: Events must have a name";
+            this.ErrorLabel.Visible = false;
+            // 
             // CreateEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ErrorLabel);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.DismissButton);
             this.Controls.Add(this.EventTypeTitleLabel);
@@ -94,5 +108,6 @@
         private System.Windows.Forms.Label EventTypeTitleLabel;
         private System.Windows.Forms.Button DismissButton;
         private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Label ErrorLabel;
     }
 }

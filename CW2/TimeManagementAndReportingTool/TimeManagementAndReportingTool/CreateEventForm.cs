@@ -217,6 +217,8 @@ namespace TimeManagementAndReportingTool
             if (updating)
             {
                 EventClass data = ObtainData();
+                if (data == null)
+                    return;
                 eventClass.Name = data.Name;
                 eventClass.Date = data.Date;
                 switch (data)
@@ -240,6 +242,8 @@ namespace TimeManagementAndReportingTool
                 for (int i = 0; i < times; i++)
                 {
                     EventClass eventClass = ObtainData();
+                    if (eventClass == null)
+                        return;
                     if (i + 1 == times)
                         eventClass.Recurring = false;
                     if (i != 0)
@@ -267,7 +271,10 @@ namespace TimeManagementAndReportingTool
             }
             else
             {
-                ObtainData().Create();
+                EventClass data = ObtainData();
+                if (data == null)
+                    return;
+                data.Create();
             }
             this.Close();
         }
@@ -276,6 +283,11 @@ namespace TimeManagementAndReportingTool
         {
             EventClass eventClass=null;
             string name = this.Controls.Find("NameTextBox", false)[0].Text;
+            if (name == "")
+            {
+                ErrorLabel.Visible = true;
+                return null;
+            }
             bool recurring = ((CheckBox)this.Controls.Find("RecurringCB", false)[0]).Checked;
             DateTime date = ((DateTimePicker)this.Controls.Find("DateTimePicker",false)[0]).Value;
             switch (EventTypesComboBox.SelectedIndex)
