@@ -44,17 +44,23 @@ namespace TimeManagementAndReportingTool
             try
             {
                 double intercept, slope;
-                aux = EventClass.TimeUsageReport(out slope, out intercept);//TODO ADD POINTS
+                aux = EventClass.TimeUsageReport(out slope, out intercept);
                 for (int i = 0; i < aux.Count+4; i++)
                 {
                     ReportChart.Series["Regression line"].Points.AddXY(i - aux.Count + 1, (slope*i) + intercept);
                     if (i < aux.Count)
                         ReportChart.Series["Previous Weeks"].Points.AddXY(i - aux.Count + 1, aux[i]);
                 }
+                ReportChart.Show();
+                Controls.Add(ReportChart);
             }
-            catch (NoDataException) { }
-            ReportChart.Show();
-            Controls.Add(ReportChart);
+            catch (NoDataException ex)  
+            {
+                this.Controls.Clear();
+                var confirmation = MessageBox.Show(ex.Message, "No Data", MessageBoxButtons.OK);
+                this.Close();
+            }
+            
         }
     }
 }

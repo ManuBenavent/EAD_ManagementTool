@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).BeginInit();
             this.SuspendLayout();
             // 
             // ReportChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.ReportChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.ReportChart.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.ReportChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.ReportChart.Legends.Add(legend3);
             this.ReportChart.Location = new System.Drawing.Point(-1, 0);
             this.ReportChart.Name = "ReportChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.ReportChart.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.ReportChart.Series.Add(series3);
             this.ReportChart.Size = new System.Drawing.Size(800, 451);
             this.ReportChart.TabIndex = 0;
             this.ReportChart.Text = "chart1";

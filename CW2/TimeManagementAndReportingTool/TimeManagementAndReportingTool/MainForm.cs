@@ -61,8 +61,16 @@ namespace TimeManagementAndReportingTool
         private void TimeReportButton_Click(object sender, EventArgs e)
         {
             TimeReportForm form = new TimeReportForm();
-            form.Activate();
-            form.ShowDialog();
+            try
+            {
+                form.Activate();
+                form.ShowDialog();
+            }
+            catch(Exception)
+            {
+                Console.Error.WriteLine("There was no data to calculate the time usage.");
+            }
+                
         }
 
         private void ChangeViewButton_Click(object sender, EventArgs e)

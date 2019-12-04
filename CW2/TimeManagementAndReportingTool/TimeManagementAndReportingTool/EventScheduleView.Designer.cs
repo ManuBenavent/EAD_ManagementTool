@@ -35,7 +35,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "EventScheduleView";
-            this.Size = new System.Drawing.Size(567, 103);
+            this.Size = new System.Drawing.Size(800, 100);
             this.ResumeLayout(false);
 
         }

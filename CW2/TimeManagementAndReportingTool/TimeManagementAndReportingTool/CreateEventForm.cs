@@ -254,13 +254,13 @@ namespace TimeManagementAndReportingTool
                         switch (((ComboBox)this.Controls.Find("RecurringComboBox", false)[0]).SelectedIndex)
                         {
                             case 0:
-                                timeSpan = new TimeSpan(i * 1, 0, 0, 0);
+                                timeSpan = new TimeSpan(1, 0, 0, 0);
                                 break;
                             case 1:
-                                timeSpan = new TimeSpan(i * 7, 0, 0, 0);
+                                timeSpan = new TimeSpan(7, 0, 0, 0);
                                 break;
                             case 2:
-                                timeSpan = new TimeSpan(i * 30, 0, 0, 0);
+                                timeSpan = new TimeSpan(30, 0, 0, 0);
                                 break;
                             default:
                                 timeSpan = new TimeSpan(0, 0, 0, 0);
@@ -311,11 +311,12 @@ namespace TimeManagementAndReportingTool
             return eventClass;
         }
 
-        private bool NumberIsValid(string phone)
+        private bool NumberIsValid(string number)
         {
             try
             {
-                Int32.Parse(phone);
+                if (Int32.Parse(number) == 0)
+                    return false;
             }
             catch (Exception)
             {

@@ -8,7 +8,7 @@ namespace library.exceptions
 {
     public class NoDataException : Exception
     {
-        public override string Message { get { return "No data stored. Unable to predict time usage"; } }
+        public override string Message { get { return "No data stored. Unable to predict time usage."; } }
         public NoDataException() : base() { }
     }
 }
