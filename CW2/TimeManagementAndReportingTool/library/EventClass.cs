@@ -123,7 +123,7 @@ namespace library
             return 0;
         }
 
-        public static float TimeUsageReport()
+        public static List<double> TimeUsageReport()
         {
             DAC dac = new DAC();
             DateTime initial = DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0));
@@ -138,26 +138,81 @@ namespace library
             {
                 DateTime dateTime = DateTime.Now.Subtract(new TimeSpan(i, 0, 0, 0));
                 dates.Add(new DateTime(dateTime.Year, dateTime.Month, dateTime.Day,0,0,0));
+                dictionary.Add(new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0), 0);
             }
             foreach(EventClass e in events)
             {
                 int diff = ((int)e.Date.DayOfWeek - (int)DayOfWeek.Monday) % 7;
                 DateTime FirstDayOfWeek = new DateTime(e.Date.Year, e.Date.Month, e.Date.Day, 0, 0, 0);
                 FirstDayOfWeek = FirstDayOfWeek.Subtract(new TimeSpan(diff, 0, 0, 0));
-                if (!dictionary.ContainsKey(FirstDayOfWeek))
-                {
-                    dictionary.Add(FirstDayOfWeek, 1);
-                }
-                else
-                {
-                    int aux = dictionary[FirstDayOfWeek];
-                    dictionary.Remove(FirstDayOfWeek);
-                    dictionary.Add(FirstDayOfWeek, aux + 1);
-                }
+                int aux = dictionary[FirstDayOfWeek];
+                dictionary.Remove(FirstDayOfWeek);
+                dictionary.Add(FirstDayOfWeek, aux + 1);
             }
-            int total = dates.Where(dictionary.ContainsKey).Sum(s => dictionary[s]);
+            /*int total = dates.Where(dictionary.ContainsKey).Sum(s => dictionary[s]);
             float avg = (float)total / 4;
-            return avg;
+            return avg;*/
+            double[] xValues = new double[] { -3.0, -2.0, -1.0, 0.0 };
+            double[] yValues = new double[] { dictionary[dates[3]], dictionary[dates[2]], dictionary[dates[1]], dictionary[dates[0]] };
+            double rSquared, intercept, slope;
+            LinearRegression(xValues, yValues, out rSquared, out intercept, out slope);
+            List<double> results = new List<double>();
+            results.Add(dictionary[dates[3]]);
+            results.Add(dictionary[dates[2]]);
+            results.Add(dictionary[dates[1]]);
+            results.Add(dictionary[dates[0]]);
+            results.Add((slope * 1.0) + intercept);
+            results.Add((slope * 2.0) + intercept);
+            results.Add((slope * 3.0) + intercept);
+            results.Add((slope * 4.0) + intercept);
+            return results;
+
+        }
+
+        private static void LinearRegression(
+            double[] xVals,
+            double[] yVals,
+            out double rSquared,
+            out double yIntercept,
+            out double slope)
+        {
+            if (xVals.Length != yVals.Length)
+            {
+                throw new Exception("Input values should be with the same length.");
+            }
+
+            double sumOfX = 0;
+            double sumOfY = 0;
+            double sumOfXSq = 0;
+            double sumOfYSq = 0;
+            double sumCodeviates = 0;
+
+            for (var i = 0; i < xVals.Length; i++)
+            {
+                var x = xVals[i];
+                var y = yVals[i];
+                sumCodeviates += x * y;
+                sumOfX += x;
+                sumOfY += y;
+                sumOfXSq += x * x;
+                sumOfYSq += y * y;
+            }
+
+            var count = xVals.Length;
+            var ssX = sumOfXSq - ((sumOfX * sumOfX) / count);
+            var ssY = sumOfYSq - ((sumOfY * sumOfY) / count);
+
+            var rNumerator = (count * sumCodeviates) - (sumOfX * sumOfY);
+            var rDenom = (count * sumOfXSq - (sumOfX * sumOfX)) * (count * sumOfYSq - (sumOfY * sumOfY));
+            var sCo = sumCodeviates - ((sumOfX * sumOfY) / count);
+
+            var meanX = sumOfX / count;
+            var meanY = sumOfY / count;
+            var dblR = rNumerator / Math.Sqrt(rDenom);
+
+            rSquared = dblR * dblR;
+            yIntercept = meanY - ((sCo / ssX) * meanX);
+            slope = sCo / ssX;
         }
     }
 }
