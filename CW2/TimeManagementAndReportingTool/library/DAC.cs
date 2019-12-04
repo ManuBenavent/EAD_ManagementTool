@@ -302,7 +302,7 @@ namespace library
 
         }
 
-        public List<EventClass> ListWeekEvents(string DatesRange)
+        public List<EventClass> ListEvents(string DatesRange)
         {
             List<EventClass> events = new List<EventClass>();
             Task t = Task.Run(() =>

@@ -2,6 +2,7 @@ using library.exceptions;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace library
 {
@@ -110,7 +111,7 @@ namespace library
             initial = initial.Subtract(new TimeSpan(diff,0,0,0));
             initial = initial.Add(new TimeSpan(ChangeWeek * 7, 0, 0, 0));
             DateTime end = initial.Add(new TimeSpan(6, 23, 59, 59));
-            return dac.ListWeekEvents("Date>='" + initial.ToString("yyyy/MM/dd HH:mm:ss") + "' and Date<='" + end.ToString("yyyy/MM/dd HH:mm:ss") + "'");
+            return dac.ListEvents("Date>='" + initial.ToString("yyyy/MM/dd HH:mm:ss") + "' and Date<='" + end.ToString("yyyy/MM/dd HH:mm:ss") + "'");
         }
 
         public static int CompareByDate(EventClass event1, EventClass event2)
@@ -120,6 +121,43 @@ namespace library
             else if (event1.Date < event2.Date)
                 return -1;
             return 0;
+        }
+
+        public static float TimeUsageReport()
+        {
+            DAC dac = new DAC();
+            DateTime initial = DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0));
+            string datesRange = "Date>='" + initial.ToString("yyyy/MM/dd HH:mm:ss") + "' and Date<='" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + "'";
+            List<EventClass> events = dac.ListEvents(datesRange);
+            if (events.Count == 0)
+                throw new NoDataException();
+
+            var dictionary = new Dictionary<DateTime, int>();
+            var dates = new List<DateTime>();
+            for(int i=0; i<30; i++)
+            {
+                DateTime dateTime = DateTime.Now.Subtract(new TimeSpan(i, 0, 0, 0));
+                dates.Add(new DateTime(dateTime.Year, dateTime.Month, dateTime.Day,0,0,0));
+            }
+            foreach(EventClass e in events)
+            {
+                int diff = ((int)e.Date.DayOfWeek - (int)DayOfWeek.Monday) % 7;
+                DateTime FirstDayOfWeek = new DateTime(e.Date.Year, e.Date.Month, e.Date.Day, 0, 0, 0);
+                FirstDayOfWeek = FirstDayOfWeek.Subtract(new TimeSpan(diff, 0, 0, 0));
+                if (!dictionary.ContainsKey(FirstDayOfWeek))
+                {
+                    dictionary.Add(FirstDayOfWeek, 1);
+                }
+                else
+                {
+                    int aux = dictionary[FirstDayOfWeek];
+                    dictionary.Remove(FirstDayOfWeek);
+                    dictionary.Add(FirstDayOfWeek, aux + 1);
+                }
+            }
+            int total = dates.Where(dictionary.ContainsKey).Sum(s => dictionary[s]);
+            float avg = (float)total / 4;
+            return avg;
         }
     }
 }
