@@ -41,6 +41,17 @@ namespace library
             this.ddbb = new DAC();
         }
 
+        public Location()
+        {
+            this.Name = null;
+            this.AddressLine1 = null;
+            this.AddressLine2 = null;
+            this.City = null;
+            this.PostCode = null;
+            this.Country = null;
+            this.ddbb = new DAC();
+        }
+
         public void Create()
         {
             ddbb.Create(this);
@@ -55,6 +66,24 @@ namespace library
         public void Delete()
         {
             ddbb.Delete(this);
+        }
+
+        public bool IsNull()
+        {
+            return Name == null && AddressLine1 == null && AddressLine2 == null && City == null && Country == null && PostCode == null;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Location location &&
+                   _Id == location._Id &&
+                   Id == location.Id &&
+                   Name == location.Name &&
+                   AddressLine1 == location.AddressLine1 &&
+                   AddressLine2 == location.AddressLine2 &&
+                   City == location.City &&
+                   PostCode == location.PostCode &&
+                   Country == location.Country;
         }
     }
 }

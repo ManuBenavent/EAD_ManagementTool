@@ -43,19 +43,19 @@ namespace library
                     VALUES = loc.SQLCreateString;
                     break;
                 case Appointment ap:
-                    TABLE = "Appointment (Name, Recurring, Date)";
+                    TABLE = "Appointment (Name, Recurring, Date, FK_Location)";
                     VALUES = ap.SQLCreateString;
                     break;
                 case Lecture lec:
-                    TABLE = "Lecture (Name, Recurring, Lecturer, Date)";
+                    TABLE = "Lecture (Name, Recurring, Lecturer, Date, FK_Location)";
                     VALUES = lec.SQLCreateString;
                     break;
                 case TaskEvent task:
-                    TABLE = "Task (Name, Recurring, Finished, Date)";
+                    TABLE = "Task (Name, Recurring, Finished, Date, FK_Location)";
                     VALUES = task.SQLCreateString;
                     break;
                 case Tutorial tut:
-                    TABLE = "Tutorial (Name, Recurring, Lecturer, Lab, Date)";
+                    TABLE = "Tutorial (Name, Recurring, Lecturer, Lab, Date, FK_Location)";
                     VALUES = tut.SQLCreateString;
                     break;
                 default:
@@ -222,7 +222,7 @@ namespace library
                     Id = tut.Id;
                     break;
                 default:
-                    throw new DDBBException("Delete");
+                    throw new DDBBException("Update");
             }
             string statement = "Update " + TABLE + " where Id=" + Id;
             SQLNonQuery(statement);

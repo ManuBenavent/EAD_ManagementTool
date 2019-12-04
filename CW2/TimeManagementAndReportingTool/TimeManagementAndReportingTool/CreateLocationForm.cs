@@ -13,9 +13,20 @@ namespace TimeManagementAndReportingTool
 {
     public partial class CreateLocationForm : Form
     {
-        public CreateLocationForm()
+        private Location location;
+        public CreateLocationForm(Location location)
         {
             InitializeComponent();
+            this.location = location;
+            if (!location.IsNull())
+            {
+                NameTextBox.Text = location.Name;
+                AddrLine1TextBox.Text = location.AddressLine1;
+                AddrLine2TextBox.Text = location.AddressLine2;
+                CityTextBox.Text = location.City;
+                PostCodeTextBox.Text = location.PostCode;
+                CountryTextBox.Text = location.Country;
+            }
             PostCodeTextBox.Select(0, 0);
         }
 
@@ -38,8 +49,12 @@ namespace TimeManagementAndReportingTool
                 return;
             }
 
-            Location location = new Location(Name,AddrLine1,AddrLine2,City,PostCode,Country);
-            location.Create();
+            location.Name = Name;
+            location.AddressLine1 = AddrLine1;
+            location.AddressLine2 = AddrLine2;
+            location.Country = Country;
+            location.City = City;
+            location.PostCode = PostCode;
             this.Close();
         }
     }

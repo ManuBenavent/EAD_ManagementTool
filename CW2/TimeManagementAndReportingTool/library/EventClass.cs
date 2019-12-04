@@ -23,6 +23,9 @@ namespace library
         /// Recurring property: true if there are equal events in future dates.
         /// </summary>
         public bool Recurring { get; set; }
+
+        public Location location { get; set; }
+
         /// <summary>
         /// String used for inserting the values of the object into the DDBB.
         /// </summary>

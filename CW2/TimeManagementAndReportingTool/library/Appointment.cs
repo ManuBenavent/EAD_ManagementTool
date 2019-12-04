@@ -6,19 +6,19 @@ namespace library
     {
         public override string SQLCreateString { 
             get {
-                return "('" + base.Name + "','" + base.Recurring + "','" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "')"; 
+                return "('" + base.Name + "','" + base.Recurring + "','" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "','" + (location == null ? "NULL" : location.Id.ToString()) + "')"; 
             } 
         }
         public override string SQLGetString
         {
             get
             {
-                return "Appointment WHERE Name = '" + Name + "' and Recurring='" + Recurring + "' and Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'";
+                return "Appointment WHERE Name = '" + Name + "' and Recurring='" + Recurring + "' and Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "' and FK_Location=" + (location == null ? "NULL" : location.Id.ToString());
             }
         }
         public override string SQLUpdateString { 
             get { 
-                return "Appointment Set Name='" + Name + "', Recurring='" + Recurring + "', Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'";
+                return "Appointment Set Name='" + Name + "', Recurring='" + Recurring + "', Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "', FK_Location=" + (location == null ? "NULL" : location.Id.ToString());
             } 
         }
 

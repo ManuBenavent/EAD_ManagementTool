@@ -33,6 +33,7 @@
             this.DismissButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ErrorLabel = new System.Windows.Forms.Label();
+            this.AddLocationButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EventTypesComboBox
@@ -85,11 +86,22 @@
             this.ErrorLabel.Text = "Input data error. Please review you input and try again.";
             this.ErrorLabel.Visible = false;
             // 
+            // AddLocationButton
+            // 
+            this.AddLocationButton.Location = new System.Drawing.Point(685, 13);
+            this.AddLocationButton.Name = "AddLocationButton";
+            this.AddLocationButton.Size = new System.Drawing.Size(89, 58);
+            this.AddLocationButton.TabIndex = 6;
+            this.AddLocationButton.Text = "Add Location";
+            this.AddLocationButton.UseVisualStyleBackColor = true;
+            this.AddLocationButton.Click += new System.EventHandler(this.AddLocationButton_Click);
+            // 
             // CreateEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AddLocationButton);
             this.Controls.Add(this.ErrorLabel);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.DismissButton);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.Button DismissButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Label ErrorLabel;
+        private System.Windows.Forms.Button AddLocationButton;
     }
 }

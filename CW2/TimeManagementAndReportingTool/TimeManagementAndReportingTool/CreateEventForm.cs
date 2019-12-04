@@ -17,6 +17,8 @@ namespace TimeManagementAndReportingTool
         List<Control> recurringControls;
         private bool updating;
         private EventClass eventClass;
+        private Location location;
+
         public CreateEventForm()
         {
             Initialize();
@@ -26,6 +28,7 @@ namespace TimeManagementAndReportingTool
         public CreateEventForm(EventClass eventClass)
         {
             this.eventClass = eventClass;
+            this.location = eventClass.location;
             updating = true;
             Initialize();
             EventTypesComboBox.Enabled = false;
@@ -214,13 +217,20 @@ namespace TimeManagementAndReportingTool
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            EventClass data = ObtainData();
+
+            if (location.IsNull() || !location.Equals(data.location))
+            {
+                location.Create();
+                data.location = location;
+            }
             if (updating)
             {
-                EventClass data = ObtainData();
                 if (data == null)
                     return;
                 eventClass.Name = data.Name;
                 eventClass.Date = data.Date;
+                eventClass.location = data.location;
                 switch (data)
                 {
                     case Lecture l:
@@ -239,15 +249,14 @@ namespace TimeManagementAndReportingTool
             }
             else if (((CheckBox)this.Controls.Find("RecurringCB", false)[0]).Checked)
             {
-                EventClass eventClass = ObtainData();
-                if (eventClass == null)
+                if (data == null)
                     return;
                 this.Close();
                 int times = Int32.Parse(this.Controls.Find("RecurringTimesTB", false)[0].Text);
                 for (int i = 0; i < times; i++)
                 {
                     if (i + 1 == times)
-                        eventClass.Recurring = false;
+                        data.Recurring = false;
                     if (i != 0)
                     {
                         TimeSpan timeSpan;
@@ -266,14 +275,13 @@ namespace TimeManagementAndReportingTool
                                 timeSpan = new TimeSpan(0, 0, 0, 0);
                                 break;
                         }
-                        eventClass.Date = eventClass.Date.Add(timeSpan);
+                        data.Date = data.Date.Add(timeSpan);
                     }
-                    eventClass.Create();
+                    data.Create();
                 }
             }
             else
             {
-                EventClass data = ObtainData();
                 if (data == null)
                     return;
                 this.Close();
@@ -323,6 +331,15 @@ namespace TimeManagementAndReportingTool
                 return false;
             }
             return true;
+        }
+
+        private void AddLocationButton_Click(object sender, EventArgs e)
+        {
+            if (location == null)
+                location = new Location();
+            CreateLocationForm createLocationForm = new CreateLocationForm(location);
+            createLocationForm.Activate();
+            createLocationForm.ShowDialog();
         }
     }
 }
