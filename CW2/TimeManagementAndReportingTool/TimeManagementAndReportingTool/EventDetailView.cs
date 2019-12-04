@@ -81,8 +81,12 @@ namespace TimeManagementAndReportingTool
 
         private void DeleteEventButton_Click(object sender, EventArgs e)
         {
-            this.eventClass.Delete();
-            this.Close();
+            var confirmation = MessageBox.Show("Do you want to delete this event?", "Delete confirmation", MessageBoxButtons.OKCancel);
+            if (confirmation == DialogResult.OK)
+            {
+                this.eventClass.Delete();
+                this.Close();
+            }
         }
     }
 }

@@ -164,9 +164,11 @@ namespace library
                     break;
                 case TaskEvent task:
                     TABLE = "Task";
+                    Id = task.Id;
                     break;
                 case Tutorial tut:
                     TABLE = "Tutorial";
+                    Id = tut.Id;
                     break;
                 default:
                     throw new DDBBException("Delete");

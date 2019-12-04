@@ -44,13 +44,13 @@ namespace TimeManagementAndReportingTool
                     this.Controls.Find("LecturerTB", false)[0].Text = lec.Lecturer;
                     break;
                 case Tutorial tut:
+                    EventTypesComboBox.SelectedIndex = 3;
                     this.Controls.Find("LabTB", false)[0].Text = tut.Lab;
                     this.Controls.Find("LecturerTB", false)[0].Text = tut.Lecturer;
-                    EventTypesComboBox.SelectedIndex = 3;
                     break;
                 case TaskEvent t:
-                    ((CheckBox)this.Controls.Find("FinishedCB", false)[0]).Checked = t.Finished;
                     EventTypesComboBox.SelectedIndex = 1;
+                    ((CheckBox)this.Controls.Find("FinishedCB", false)[0]).Checked = t.Finished;
                     break;
             }
         }

@@ -18,6 +18,9 @@ namespace TimeManagementAndReportingTool
         {
             InitializeComponent();
             this.Click += EventWeeklyView_Click;
+            EventNameLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            DateTimeLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
+            EventTypeLabel.BackColor = Color.FromArgb(0, 0, 0, 0);
             EventNameLabel.Click += EventWeeklyView_Click;
             DateTimeLabel.Click += EventWeeklyView_Click;
             EventTypeLabel.Click += EventWeeklyView_Click;
