@@ -107,7 +107,7 @@ namespace TimeManagementAndReportingTool
             dateTime.Location = new Point(194, 123);
             dateTime.Width = 300;
             dateTime.Format = DateTimePickerFormat.Custom;
-            dateTime.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            dateTime.CustomFormat = "dd/MM/yyyy hh:mm";
             this.Controls.Add(dateTime);
         }
 
@@ -219,7 +219,7 @@ namespace TimeManagementAndReportingTool
         {
             EventClass data = ObtainData();
 
-            if (location.IsNull() || !location.Equals(data.location))
+            if (location!=null && (location.IsNull() || !location.Equals(data.location)))
             {
                 location.Create();
                 data.location = location;

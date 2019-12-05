@@ -43,19 +43,19 @@ namespace library
                     VALUES = loc.SQLCreateString;
                     break;
                 case Appointment ap:
-                    TABLE = "Appointment (Name, Recurring, Date, FK_Location)";
+                    TABLE = "Appointment (Name, Recurring, Date" + (ap.location==null? ")" : ", FK_Location)");
                     VALUES = ap.SQLCreateString;
                     break;
                 case Lecture lec:
-                    TABLE = "Lecture (Name, Recurring, Lecturer, Date, FK_Location)";
+                    TABLE = "Lecture (Name, Recurring, Lecturer, Date" + (lec.location == null ? ")" : ", FK_Location)");
                     VALUES = lec.SQLCreateString;
                     break;
                 case TaskEvent task:
-                    TABLE = "Task (Name, Recurring, Finished, Date, FK_Location)";
+                    TABLE = "Task (Name, Recurring, Finished, Date" + (task.location == null ? ")" : ", FK_Location)");
                     VALUES = task.SQLCreateString;
                     break;
                 case Tutorial tut:
-                    TABLE = "Tutorial (Name, Recurring, Lecturer, Lab, Date, FK_Location)";
+                    TABLE = "Tutorial (Name, Recurring, Lecturer, Lab, Date" + (tut.location == null ? ")" : ", FK_Location)");
                     VALUES = tut.SQLCreateString;
                     break;
                 default:

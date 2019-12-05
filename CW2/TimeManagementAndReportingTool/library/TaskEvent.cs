@@ -10,17 +10,17 @@ namespace library
     {
         public override string SQLCreateString { 
             get { 
-                return "('" + base.Name + "','" + base.Recurring + "','" + Finished + "','" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "','" + (location == null ? "NULL" : location.Id.ToString()) + "')"; 
+                return "('" + base.Name + "','" + base.Recurring + "','" + Finished + "','" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'" + (location == null ? ")" : "," + location.Id.ToString() + ")");
             } 
         }
         public override string SQLGetString { 
             get { 
-                return "Task WHERE Name = '" + Name + "' and Recurring='"+Recurring + "' and Finished='" + Finished + "' and Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "' and FK_Location=" + (location == null ? "NULL" : location.Id.ToString());
+                return "Task WHERE Name = '" + Name + "' and Recurring='"+Recurring + "' and Finished='" + Finished + "' and Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'" + (location == null ? "" : " and FK_Location=" + location.Id.ToString());
             } 
         }
         public override string SQLUpdateString { 
             get { 
-                return "Task Set Name='" + Name + "', Recurring='" + Recurring + "', Finished='" + Finished + "', Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "', FK_Location=" + (location == null ? "NULL" : location.Id.ToString());
+                return "Task Set Name='" + Name + "', Recurring='" + Recurring + "', Finished='" + Finished + "', Date='" + Date.ToString("yyyy/MM/dd HH:mm:ss") + "'" + (location == null ? "" : ", FK_Location=" + location.Id.ToString());
             } 
         }
         public bool Finished { get; set; }
