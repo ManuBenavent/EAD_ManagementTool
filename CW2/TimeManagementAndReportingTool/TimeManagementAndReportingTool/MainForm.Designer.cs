@@ -122,7 +122,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(996, 539);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1012, 539);
             this.Controls.Add(this.TodayButton);
             this.Controls.Add(this.PreviousWeekButton);
             this.Controls.Add(this.NextWeekButton);

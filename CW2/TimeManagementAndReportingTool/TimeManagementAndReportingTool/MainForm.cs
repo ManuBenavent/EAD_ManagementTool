@@ -97,6 +97,40 @@ namespace TimeManagementAndReportingTool
                 this.Controls.Add(title);
                 currentView.Add(title);
                 schedule = false;
+                List<EventClass> events = EventClass.ListComingEvents();
+                Color color = new Color();
+                foreach (EventClass e in events)
+                {
+                    string type = "";
+                    switch (e)
+                    {
+                        case Appointment a:
+                            type = "Appointment";
+                            color = Color.FromArgb(220, 0, 102, 255);
+                            break;
+                        case Lecture l:
+                            type = "Lecture";
+                            color = Color.FromArgb(220, 0, 204, 153);
+                            break;
+                        case TaskEvent t:
+                            type = "Task";
+                            color = Color.FromArgb(220, 102, 0, 204);
+                            if (t.Finished)
+                                color = Color.FromArgb(220, 102, 102, 153);
+                            break;
+                        case Tutorial t:
+                            type = "Tutorial";
+                            color = Color.FromArgb(220, 51, 204, 51);
+                            break;
+                    }
+                    EventScheduleView eventControl = new EventScheduleView(e.Id,e.Name, e.Date.ToString("dd/MM/yyyy - HH:mm"), type);
+                    eventControl.BackColor = color;
+                    eventControl.Location = new Point(80, 45 + 50*events.IndexOf(e));
+                    eventControl.DetailViewClosed += Form_FormClosed;
+                    this.Controls.Add(eventControl);
+                    currentView.Add(eventControl);
+                }
+
             }
             else
             {

@@ -180,12 +180,7 @@ namespace library
 
         }
 
-        private static void LinearRegression(
-            double[] xVals,
-            double[] yVals,
-            out double rSquared,
-            out double yIntercept,
-            out double slope)
+        private static void LinearRegression(double[] xVals, double[] yVals, out double rSquared, out double yIntercept, out double slope)
         {
             if (xVals.Length != yVals.Length)
             {
@@ -224,6 +219,13 @@ namespace library
             rSquared = dblR * dblR;
             yIntercept = meanY - ((sCo / ssX) * meanX);
             slope = sCo / ssX;
+        }
+
+        public static List<EventClass> ListComingEvents()
+        {
+            DAC dac = new DAC();
+            DateTime dateTime = DateTime.Now.Add(new TimeSpan(30, 0, 0, 0));
+            return dac.ListEvents("Date>='" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + "' and Date<='" + dateTime.ToString("yyyy/MM/dd HH:mm:ss") + "'");
         }
     }
 }

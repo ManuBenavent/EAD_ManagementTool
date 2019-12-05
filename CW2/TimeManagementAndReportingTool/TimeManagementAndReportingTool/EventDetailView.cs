@@ -56,7 +56,7 @@ namespace TimeManagementAndReportingTool
             }
             TypeLabel.Text = type;
             NameLabel.Text = "Event name: " + eventClass.Name;
-            DateLabel.Text = "Date: " + eventClass.Date.ToString("MM/dd/yyyy h:mm tt");
+            DateLabel.Text = "Date: " + eventClass.Date.ToString("dd/MM/yyyy - HH:mm");
             RecurringLabel.Text = "Recurring: " + (eventClass.Recurring ? "Yes" : "No");
 
         }
