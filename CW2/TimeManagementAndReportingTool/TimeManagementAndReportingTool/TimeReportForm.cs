@@ -28,31 +28,38 @@ namespace TimeManagementAndReportingTool
             ReportChart.ChartAreas[0].AxisX.LineWidth = 2;
             ReportChart.ChartAreas[0].AxisX.LabelStyle.Font = new System.Drawing.Font("Arial Narrow", 12F);
             ReportChart.ChartAreas[0].AxisY.LabelStyle.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            ReportChart.Series.Clear();
             ReportChart.Series.Add("Regression line");
             ReportChart.Series["Regression line"].ChartType = SeriesChartType.Line;
             ReportChart.Series["Regression line"].BorderWidth = 3;
             ReportChart.Series["Regression line"].SetDefault(true);
             ReportChart.Series.Add("Previous Weeks");
-            ReportChart.Series["Previous Weeks"].BorderWidth = 5;
+            ReportChart.Series["Previous Weeks"].BorderWidth = 8;
+            ReportChart.Series["Previous Weeks"].BorderColor = Color.Red;
+            ReportChart.Series["Previous Weeks"].Color = Color.Red;
             ReportChart.Series["Previous Weeks"].ChartType = SeriesChartType.Point;
             Title title = new Title();
             title.Font = new Font("Arial Bold", 15);
-            title.Text = "Expected hours per week";
+            title.Text = "Expected total worked hours per week";
             ReportChart.Titles.Add(title);
+            DetailsLabel.Text = "Expected for:\n";
             List<double> aux;
             try
             {
                 double intercept, slope;
                 aux = EventClass.TimeUsageReport(out slope, out intercept);
+                ReportChart.ChartAreas[0].AxisX.Minimum = aux.Count * -1;
+                ReportChart.ChartAreas[0].AxisY.Minimum = 0;
                 for (int i = 0; i < aux.Count+4; i++)
                 {
                     ReportChart.Series["Regression line"].Points.AddXY(i - aux.Count + 1, (slope*i) + intercept);
                     if (i < aux.Count)
                         ReportChart.Series["Previous Weeks"].Points.AddXY(i - aux.Count + 1, aux[i]);
+                    else
+                        DetailsLabel.Text += "\t\t ·Week " + (i - aux.Count + 1) + ": " + ((slope * i) + intercept).ToString() + " worked hours\n";
                 }
                 ReportChart.Show();
                 Controls.Add(ReportChart);
+                DetailsLabel.BackColor = Color.White;
             }
             catch (NoDataException ex)  
             {
