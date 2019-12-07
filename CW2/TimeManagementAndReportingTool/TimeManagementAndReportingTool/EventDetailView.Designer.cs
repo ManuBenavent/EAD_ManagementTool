@@ -35,6 +35,8 @@
             this.CloseButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.DeleteEventButton = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.LocationLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TypeLabel
@@ -80,7 +82,7 @@
             // CloseButton
             // 
             this.CloseButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.CloseButton.Location = new System.Drawing.Point(290, 323);
+            this.CloseButton.Location = new System.Drawing.Point(598, 360);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 31);
             this.CloseButton.TabIndex = 4;
@@ -91,7 +93,7 @@
             // EditButton
             // 
             this.EditButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.EditButton.Location = new System.Drawing.Point(400, 323);
+            this.EditButton.Location = new System.Drawing.Point(598, 323);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(75, 31);
             this.EditButton.TabIndex = 5;
@@ -102,7 +104,7 @@
             // DeleteEventButton
             // 
             this.DeleteEventButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.DeleteEventButton.Location = new System.Drawing.Point(178, 323);
+            this.DeleteEventButton.Location = new System.Drawing.Point(598, 286);
             this.DeleteEventButton.Name = "DeleteEventButton";
             this.DeleteEventButton.Size = new System.Drawing.Size(75, 31);
             this.DeleteEventButton.TabIndex = 6;
@@ -110,11 +112,32 @@
             this.DeleteEventButton.UseVisualStyleBackColor = true;
             this.DeleteEventButton.Click += new System.EventHandler(this.DeleteEventButton_Click);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(20, 306);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBox1.Size = new System.Drawing.Size(233, 116);
+            this.listBox1.TabIndex = 7;
+            // 
+            // LocationLabel
+            // 
+            this.LocationLabel.AutoSize = true;
+            this.LocationLabel.Location = new System.Drawing.Point(310, 313);
+            this.LocationLabel.Name = "LocationLabel";
+            this.LocationLabel.Size = new System.Drawing.Size(89, 17);
+            this.LocationLabel.TabIndex = 8;
+            this.LocationLabel.Text = "Location info";
+            // 
             // EventDetailView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 450);
+            this.Controls.Add(this.LocationLabel);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.DeleteEventButton);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.CloseButton);
@@ -141,5 +164,7 @@
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button DeleteEventButton;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label LocationLabel;
     }
 }

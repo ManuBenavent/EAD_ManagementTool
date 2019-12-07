@@ -32,6 +32,7 @@ namespace TimeManagementAndReportingTool
 
         private void DismissButton_Click(object sender, EventArgs e)
         {
+            location = null;
             this.Close();
         }
 

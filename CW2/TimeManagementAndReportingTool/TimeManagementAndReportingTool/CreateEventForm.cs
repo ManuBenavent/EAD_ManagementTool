@@ -338,8 +338,35 @@ namespace TimeManagementAndReportingTool
             if (location == null)
                 location = new Location();
             CreateLocationForm createLocationForm = new CreateLocationForm(location);
+            createLocationForm.FormClosing += CreateLocationForm_FormClosing;
             createLocationForm.Activate();
             createLocationForm.ShowDialog();
+        }
+
+        private void CreateLocationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //TODO FIX
+            /*else if (string.Equals((sender as Button).Name, @"CloseButton"))
+                location = null;*/
+        }
+
+        private void NewContactButton_Click(object sender, EventArgs e)
+        {
+            CreateContactForm createContactForm = new CreateContactForm();
+            createContactForm.FormClosed += CreateContactForm_FormClosed;
+            createContactForm.Activate();
+            createContactForm.ShowDialog();
+
+        }
+
+        private void CreateContactForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            UpdateContacts();
+        }
+
+        private void UpdateContacts()
+        {
+
         }
     }
 }
