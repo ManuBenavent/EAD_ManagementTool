@@ -16,6 +16,7 @@ namespace TimeManagementAndReportingTool
     {
         private bool saved;
         private CreateEventForm form;
+        private bool delete;
         public CreateLocationForm(CreateEventForm form)
         {
             this.form = form;
@@ -29,6 +30,7 @@ namespace TimeManagementAndReportingTool
                 CityTextBox.Text = form.location.City;
                 PostCodeTextBox.Text = form.location.PostCode;
                 CountryTextBox.Text = form.location.Country;
+                DeleteButton.Visible = true;
             }
             PostCodeTextBox.Select(0, 0);
             this.FormClosing += CreateLocationForm_FormClosing;
@@ -61,6 +63,8 @@ namespace TimeManagementAndReportingTool
             form.location.City = City;
             form.location.PostCode = PostCode;
             saved = true;
+            if (form.updating)
+                form.location.Update();
             this.Close();
         }
 
@@ -68,10 +72,20 @@ namespace TimeManagementAndReportingTool
         {
             if (!saved)
                 form.location = new Location();
-            if(form.updating && form.eventClass.location != null)
+            else if (!saved && form.updating && form.eventClass.location != null)
             {
                 form.location = form.eventClass.location;
             }
+            else if (delete)
+                form.location = null;
+
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            delete = true;
+            form.location.Delete();
+            this.Close();
         }
     }
 }

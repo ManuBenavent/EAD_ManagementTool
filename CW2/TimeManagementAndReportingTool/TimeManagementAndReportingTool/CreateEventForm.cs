@@ -230,7 +230,7 @@ namespace TimeManagementAndReportingTool
         {
             EventClass data = ObtainData();
 
-            if (location!=null && (location.IsNull() || !location.Equals(data.location)))
+            if (!updating && location!=null && !location.IsNull())
             {
                 location.Create();
                 data.location = location;
@@ -239,9 +239,17 @@ namespace TimeManagementAndReportingTool
             {
                 if (data == null)
                     return;
+
+                if (eventClass.location == null && location != null && !location.IsNull())
+                {
+                    location.Create();
+                    eventClass.location = location;
+                }
+                else if ((location == null || location.IsNull()) && eventClass.location != null)
+                    eventClass.location = null;
+
                 eventClass.Name = data.Name;
                 eventClass.Date = data.Date;
-                eventClass.location = data.location;
                 eventClass.contacts = data.contacts;
                 switch (data)
                 {

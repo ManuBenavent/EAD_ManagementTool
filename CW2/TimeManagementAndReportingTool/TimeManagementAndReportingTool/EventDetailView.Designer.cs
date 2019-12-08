@@ -126,7 +126,7 @@
             // 
             this.LocationLabel.AutoSize = true;
             this.LocationLabel.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.LocationLabel.Location = new System.Drawing.Point(302, 295);
+            this.LocationLabel.Location = new System.Drawing.Point(276, 286);
             this.LocationLabel.Name = "LocationLabel";
             this.LocationLabel.Size = new System.Drawing.Size(89, 22);
             this.LocationLabel.TabIndex = 8;
