@@ -86,6 +86,16 @@ namespace library
             DAC dac = new DAC();
             return dac.ListContacts();
         }
-            
+
+        public override bool Equals(object obj)
+        {
+            return obj is Contact contact &&
+                   _Id == contact._Id &&
+                   Id == contact.Id &&
+                   FirstName == contact.FirstName &&
+                   LastName == contact.LastName &&
+                   Email == contact.Email &&
+                   Phone == contact.Phone;
+        }
     }
 }

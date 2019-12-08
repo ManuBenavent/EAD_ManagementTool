@@ -36,7 +36,7 @@ namespace TimeManagementAndReportingTool
         public CreateEventForm(EventClass eventClass)
         {
             this.eventClass = eventClass;
-            this.location = eventClass.location;
+            //this.location = eventClass.location;
             updating = true;
             Initialize();
             EventTypesComboBox.Enabled = false;
@@ -386,6 +386,9 @@ namespace TimeManagementAndReportingTool
             foreach (Contact con in AllContacts)
             {
                 ContactsListBox.Items.Add(con.LastName + ", " + con.FirstName);
+                bool asf = eventClass.contacts.Contains(con);
+                if (updating && eventClass.contacts.Contains(con))
+                    ContactsListBox.SelectedIndices.Add(AllContacts.IndexOf(con));
             }
         }
     }
