@@ -97,6 +97,7 @@ namespace library
         public void Update()
         {
             ddbb.Update(this);
+            ddbb.UpdateContactsEvent(this);
         }
         /// <summary>
         /// Deletes the current event in the DDBB.

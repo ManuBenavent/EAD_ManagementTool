@@ -241,6 +241,7 @@ namespace TimeManagementAndReportingTool
                 eventClass.Name = data.Name;
                 eventClass.Date = data.Date;
                 eventClass.location = data.location;
+                eventClass.contacts = data.contacts;
                 switch (data)
                 {
                     case Lecture l:
@@ -326,7 +327,7 @@ namespace TimeManagementAndReportingTool
                     eventClass = new Tutorial(name, recurring, this.Controls.Find("LabTB", false)[0].Text, this.Controls.Find("LecturerTB", false)[0].Text, date);
                     break;
             }
-
+            eventClass.contacts.Clear();
             foreach (int i in ContactsListBox.SelectedIndices)
             {
                 eventClass.contacts.Add(AllContacts[i]);

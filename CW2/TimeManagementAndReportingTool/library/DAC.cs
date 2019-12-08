@@ -266,6 +266,10 @@ namespace library
             }
         }
 
+        /// <summary>
+        /// Gets all the contacts from the database.
+        /// </summary>
+        /// <returns>A DataTable containing all the contacts.</returns>
         public DataTable ContactsIntoTable()
         {
             
@@ -302,6 +306,11 @@ namespace library
 
         }
 
+        /// <summary>
+        /// Gets all the events between the given range of dates.
+        /// </summary>
+        /// <param name="DatesRange">The range of dates string with SQL format.</param>
+        /// <returns>A list containing all the events</returns>
         public List<EventClass> ListEvents(string DatesRange)
         {
             List<EventClass> events = new List<EventClass>();
@@ -383,6 +392,10 @@ namespace library
             return events;
         }
 
+        /// <summary>
+        /// Reads the information for a given event.
+        /// </summary>
+        /// <param name="eventClass">The event to be read.</param>
         public void ReadEvent(EventClass eventClass)
         {
             string table;
@@ -480,8 +493,12 @@ namespace library
             }
             catch (AggregateException) { }
             return location;
-        }
+        } // TODO FINISH
 
+        /// <summary>
+        /// Gets all the contacts in a list.
+        /// </summary>
+        /// <returns>A list of contacts.</returns>
         public List<Contact> ListContacts()
         {
             List<Contact> contacts = new List<Contact>();
@@ -516,6 +533,10 @@ namespace library
             return contacts;
         }
 
+        /// <summary>
+        /// Inserts into the data base the relation of the contacts belonging to an event.
+        /// </summary>
+        /// <param name="eventClass"></param>
         public void AddContactsToEvent(EventClass eventClass)
         {
             string TABLE="";
@@ -542,6 +563,10 @@ namespace library
             }
 }
 
+        /// <summary>
+        /// Gets the contacts associated to the given event.
+        /// </summary>
+        /// <param name="eventClass">The event.</param>
         private void GetContactsForEvent(EventClass eventClass)
         {
             string TABLE = "", ID="";
@@ -595,6 +620,37 @@ namespace library
                 t.Wait();
             }
             catch (AggregateException) { }
+        }
+
+        public void UpdateContactsEvent(EventClass eventClass)
+        {
+            string TABLE = "";
+            switch (eventClass)
+            {
+                case Appointment ap:
+                    TABLE = "ContactAppointment WHERE Appointment_Id=" + eventClass.Id;
+                    break;
+                case Tutorial tut:
+                    TABLE = "ContactTutorial WHERE Tutorial_Id=" + eventClass.Id;
+                    break;
+                case TaskEvent task:
+                    TABLE = "ContactTask WHERE Task_Id=" + eventClass.Id;
+                    break;
+                case Lecture lec:
+                    TABLE = "ContactLecture WHERE Lecture_Id=" + eventClass.Id;
+                    break;
+                default:
+                    throw new DDBBException("UpdateContactsEventDefault");
+            }
+            try
+            {
+                SQLNonQuery("Delete from " + TABLE);
+            }catch(DDBBException)
+            {
+                System.Console.Error.WriteLine("There were no contacts associated to that event");
+            }
+            System.Threading.Thread.Sleep(300);
+            AddContactsToEvent(eventClass);
         }
     }
 }
