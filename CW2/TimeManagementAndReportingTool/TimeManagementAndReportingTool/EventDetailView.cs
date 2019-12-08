@@ -58,7 +58,7 @@ namespace TimeManagementAndReportingTool
             NameLabel.Text = "Event name: " + eventClass.Name;
             DateLabel.Text = "Date: " + eventClass.Date.ToString("dd/MM/yyyy - HH:mm");
             RecurringLabel.Text = "Recurring: " + (eventClass.Recurring ? "Yes" : "No");
-
+            LocationLabel.Text = "Location: " + (eventClass.location == null ? "The event has no location." : eventClass.location.EventDetailLocationString);
             foreach(Contact c in eventClass.contacts)
             {
                 ContactsLB.Items.Add(c.LastName + "," + c.FirstName);

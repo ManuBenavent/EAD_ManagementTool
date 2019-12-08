@@ -429,6 +429,14 @@ namespace library
                         eventClass.Name = dr["Name"].ToString();
                         eventClass.Recurring = Boolean.Parse(dr["Recurring"].ToString());
                         eventClass.Date = DateTime.Parse(dr["Date"].ToString());
+                        try
+                        {
+                            eventClass.location = ReadLocation(Int32.Parse(dr["FK_Location"].ToString()));
+                        }
+                        catch (FormatException)
+                        {
+                            System.Console.Error.WriteLine("Location_Id was null in DDBB");
+                        }
                         switch (eventClass)
                         {
                             case Lecture l:
@@ -487,6 +495,7 @@ namespace library
                     {
                         location = new Location
                         {
+                            Id = id,
                             Name = reader["Name"].ToString(),
                             AddressLine1 = reader["AddrLine1"].ToString(),
                             AddressLine2 = reader["AddrLine2"].ToString(),

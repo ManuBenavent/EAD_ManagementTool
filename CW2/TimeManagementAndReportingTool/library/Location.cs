@@ -4,8 +4,7 @@ namespace library
 {
     public class Location : ISQLAccess
     {
-        private int _Id;
-        public int Id { get { return _Id; } }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
@@ -29,6 +28,14 @@ namespace library
                 return "Location set Name = '" + Name + "',AddrLine1 = '" + AddressLine1 + "',AddrLine2='" + AddressLine2
                         + "',City='" + City + "',Postcode='" + PostCode + "',Country='" + Country + "'";
             } 
+        }
+
+        public string EventDetailLocationString
+        {
+            get
+            {
+                return Name + "\n" + AddressLine1 + "\n" + (AddressLine2 == "" ? "" : AddressLine2 + "\n") + PostCode + "\n" + City + ", " + Country;
+            }
         }
         public Location(string Name, string AddressLine1, string AddressLine2, string City, string PostCode, string Country)
         {
@@ -55,7 +62,7 @@ namespace library
         public void Create()
         {
             ddbb.Create(this);
-            _Id = ddbb.GetId(this);
+            Id = ddbb.GetId(this);
         }
 
         public void Update()
@@ -76,7 +83,7 @@ namespace library
         public override bool Equals(object obj)
         {
             return obj is Location location &&
-                   _Id == location._Id &&
+                   Id == location.Id &&
                    Id == location.Id &&
                    Name == location.Name &&
                    AddressLine1 == location.AddressLine1 &&

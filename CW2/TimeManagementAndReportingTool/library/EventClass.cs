@@ -77,9 +77,9 @@ namespace library
         {
             this._Id = Id;
             contacts = new List<Contact>();
+            location = null;
             ddbb = new DAC();
             ddbb.ReadEvent(this);
-            //location = ddbb.ReadLocation(this.Lo)
         }
 
         /// <summary>
@@ -105,6 +105,8 @@ namespace library
         /// </summary>
         public void Delete()
         {
+            if (location != null)
+                ddbb.Delete(location);
             ddbb.Delete(this);
         }
         
