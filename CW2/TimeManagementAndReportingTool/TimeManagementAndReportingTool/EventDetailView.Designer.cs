@@ -35,7 +35,7 @@
             this.CloseButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.DeleteEventButton = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.ContactsLB = new System.Windows.Forms.ListBox();
             this.LocationLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -112,15 +112,15 @@
             this.DeleteEventButton.UseVisualStyleBackColor = true;
             this.DeleteEventButton.Click += new System.EventHandler(this.DeleteEventButton_Click);
             // 
-            // listBox1
+            // ContactsLB
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(20, 306);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBox1.Size = new System.Drawing.Size(233, 116);
-            this.listBox1.TabIndex = 7;
+            this.ContactsLB.FormattingEnabled = true;
+            this.ContactsLB.ItemHeight = 16;
+            this.ContactsLB.Location = new System.Drawing.Point(20, 306);
+            this.ContactsLB.Name = "ContactsLB";
+            this.ContactsLB.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.ContactsLB.Size = new System.Drawing.Size(233, 116);
+            this.ContactsLB.TabIndex = 7;
             // 
             // LocationLabel
             // 
@@ -137,7 +137,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 450);
             this.Controls.Add(this.LocationLabel);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.ContactsLB);
             this.Controls.Add(this.DeleteEventButton);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.CloseButton);
@@ -164,7 +164,7 @@
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button DeleteEventButton;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox ContactsLB;
         private System.Windows.Forms.Label LocationLabel;
     }
 }

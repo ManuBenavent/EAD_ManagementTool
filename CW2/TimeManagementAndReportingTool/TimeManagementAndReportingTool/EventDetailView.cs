@@ -59,6 +59,12 @@ namespace TimeManagementAndReportingTool
             DateLabel.Text = "Date: " + eventClass.Date.ToString("dd/MM/yyyy - HH:mm");
             RecurringLabel.Text = "Recurring: " + (eventClass.Recurring ? "Yes" : "No");
 
+            foreach(Contact c in eventClass.contacts)
+            {
+                ContactsLB.Items.Add(c.LastName + "," + c.FirstName);
+            }
+            if (eventClass.contacts.Count == 0)
+                ContactsLB.Items.Add("No contacts for this event.");
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

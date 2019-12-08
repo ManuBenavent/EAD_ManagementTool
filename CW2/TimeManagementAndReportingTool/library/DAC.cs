@@ -376,6 +376,10 @@ namespace library
                 throw new DDBBException("ListWeekEvents " + ex.Message);
             }
             events.Sort(EventClass.CompareByDate);
+            foreach(EventClass e in events)
+            {
+                GetContactsForEvent(e);
+            }
             return events;
         }
 
@@ -441,6 +445,7 @@ namespace library
             {
                 throw new DDBBException("ReadEvent " + ex.Message);
             }
+            GetContactsForEvent(eventClass);
         }
 
         public Location ReadLocation(int id)
@@ -536,5 +541,60 @@ namespace library
                 SQLNonQuery("INSERT INTO " + TABLE + " VALUES (" + cont.Id + "," + eventClass.Id + ")");
             }
 }
+
+        private void GetContactsForEvent(EventClass eventClass)
+        {
+            string TABLE = "", ID="";
+            switch (eventClass)
+            {
+                case Appointment ap:
+                    TABLE = "ContactAppointment";
+                    ID = "ContactAppointment.Appointment_Id";
+                    break;
+                case Lecture lec:
+                    TABLE = "ContactLecture";
+                    ID = "ContactLecture.Lecture_Id";
+                    break;
+                case TaskEvent task:
+                    TABLE = "ContactTask";
+                    ID = "ContactTask.Task_Id";
+                    break;
+                case Tutorial tut:
+                    TABLE = "ContactTutorial";
+                    ID = "ContactTutorial.Tutorial_Id";
+                    break;
+                default:
+                    throw new DDBBException("GetContactsForEventDefault");
+            }
+            eventClass.contacts = new List<Contact>();
+            Task t = Task.Run(() =>
+            {
+                SqlConnection c = null;
+                try
+                {
+                    c = new SqlConnection(constring);
+                    c.Open();
+                    SqlCommand com = new SqlCommand("Select Contact.* from Contact, " + TABLE + " WHERE Contact.Id=" + TABLE + ".Contact_Id and " + ID + "=" + eventClass.Id,c);
+                    SqlDataReader reader = com.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Contact contact = new Contact(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString());
+                        eventClass.contacts.Add(contact);
+                    }
+                    reader.Close();
+                }
+                catch (SqlException) { }
+                finally
+                {
+                    c.Close();
+                }
+            });
+
+            try
+            {
+                t.Wait();
+            }
+            catch (AggregateException) { }
+        }
     }
 }
