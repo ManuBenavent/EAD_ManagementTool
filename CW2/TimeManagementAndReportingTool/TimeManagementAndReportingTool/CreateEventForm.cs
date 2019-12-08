@@ -116,7 +116,7 @@ namespace TimeManagementAndReportingTool
             dateTime.Location = new Point(194, 123);
             dateTime.Width = 300;
             dateTime.Format = DateTimePickerFormat.Custom;
-            dateTime.CustomFormat = "dd/MM/yyyy hh:mm";
+            dateTime.CustomFormat = "dd/MM/yyyy HH:mm";
             this.Controls.Add(dateTime);
 
             UpdateContacts();

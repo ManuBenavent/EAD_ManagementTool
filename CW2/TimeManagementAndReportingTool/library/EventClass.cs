@@ -146,7 +146,7 @@ namespace library
                 DateTime dateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
                 dateTime = dateTime.Subtract(new TimeSpan(i, 0, 0, 0));
                 int diff = ((int)dateTime.DayOfWeek - (int)DayOfWeek.Monday) % 7;
-                dateTime = dateTime.Subtract(new TimeSpan(diff, 0, 0, 0));
+                dateTime = dateTime.Subtract(new TimeSpan((diff == -1) ? 6 : diff, 0, 0, 0));
                 if (!dates.Contains(dateTime))
                 {
                     dates.Add(dateTime);
@@ -157,7 +157,7 @@ namespace library
             {
                 int diff = ((int)e.Date.DayOfWeek - (int)DayOfWeek.Monday) % 7;
                 DateTime FirstDayOfWeek = new DateTime(e.Date.Year, e.Date.Month, e.Date.Day, 0, 0, 0);
-                FirstDayOfWeek = FirstDayOfWeek.Subtract(new TimeSpan(diff, 0, 0, 0));
+                FirstDayOfWeek = FirstDayOfWeek.Subtract(new TimeSpan((diff == -1) ? 6 : diff, 0, 0, 0));
                 int aux = dictionary[FirstDayOfWeek];
                 dictionary.Remove(FirstDayOfWeek);
                 dictionary.Add(FirstDayOfWeek, aux + 1);
