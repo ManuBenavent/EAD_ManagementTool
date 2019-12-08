@@ -28,6 +28,7 @@ namespace TimeManagementAndReportingTool
                     lecturer.Text = "Lecturer: " + ((Tutorial)eventClass).Lecturer;
                     lecturer.Font = NameLabel.Font;
                     lecturer.Location = new Point(NameLabel.Location.X, RecurringLabel.Location.Y + 35);
+                    lecturer.Width = 200;
                     this.Controls.Add(lecturer);
                     Label lab = new Label();
                     lab.Text = "Lab: " + ((Tutorial)eventClass).Lab;
@@ -40,6 +41,7 @@ namespace TimeManagementAndReportingTool
                     Label lecturer2 = new Label();
                     lecturer2.Text = "Lecturer: " + ((Lecture)eventClass).Lecturer;
                     lecturer2.Font = NameLabel.Font;
+                    lecturer2.Width = 200;
                     lecturer2.Location = new Point(NameLabel.Location.X, RecurringLabel.Location.Y + 35);
                     this.Controls.Add(lecturer2);
                     break;
