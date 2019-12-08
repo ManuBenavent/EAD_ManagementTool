@@ -30,7 +30,7 @@ namespace library
             this.Lecturer = Lecturer;
         }
 
-        internal Lecture(int Id, string Name, bool Recurring, string Lecturer, DateTime Date) : base(Id, Name, Recurring, Date)
+        internal Lecture(int Id, string Name, bool Recurring, string Lecturer, DateTime Date, Location location) : base(Id, Name, Recurring, Date, location)
         {
             this.Lecturer = Lecturer;
         }

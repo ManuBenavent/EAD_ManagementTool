@@ -24,7 +24,7 @@ namespace library
 
         public Appointment(string Name, bool Recurring, DateTime Date) : base(Name, Recurring, Date) { }
 
-        public Appointment(int Id, string Name, bool Recurring, DateTime Date) : base(Id, Name, Recurring, Date) { }
+        public Appointment(int Id, string Name, bool Recurring, DateTime Date, Location location) : base(Id, Name, Recurring, Date, location) { }
 
         public Appointment(int Id) : base(Id) { }
     }

@@ -325,13 +325,13 @@ namespace library
                     {
                         string table;
                         if (i == 0)
-                            table = "Id, Name, Recurring, Date from Appointment";
+                            table = "Id, Name, Recurring, Date, FK_Location from Appointment";
                         else if (i == 1)
-                            table = "Id, Name, Recurring, Date, Finished from Task";
+                            table = "Id, Name, Recurring, Date, Finished, FK_Location from Task";
                         else if (i == 2)
-                            table = "Id, Name, Recurring, Date, Lecturer from Lecture";
+                            table = "Id, Name, Recurring, Date, Lecturer, FK_Location from Lecture";
                         else
-                            table = "Id, Name, Recurring, Date, Lecturer, Lab from Tutorial";
+                            table = "Id, Name, Recurring, Date, Lecturer, Lab, FK_Location from Tutorial";
                         string query = "Select " + table + " where " + DatesRange;
                         SqlCommand com = new SqlCommand(query, c);
                         SqlDataReader da = com.ExecuteReader();
@@ -341,26 +341,35 @@ namespace library
                             string Name = da["Name"].ToString();
                             bool Recurring = Boolean.Parse(da["Recurring"].ToString());
                             DateTime Date = DateTime.Parse(da["Date"].ToString());
+                            Location location = null;
+                            try
+                            {
+                                location = ReadLocation(Int32.Parse(da["FK_Location"].ToString()));
+                            }
+                            catch (FormatException)
+                            {
+                                System.Console.Error.WriteLine("Location_Id was null in DDBB");
+                            }
                             switch (i)
                             {
                                 case 0:
-                                    events.Add(new Appointment(Id, Name, Recurring, Date));
+                                    events.Add(new Appointment(Id, Name, Recurring, Date, location));
                                     break;
 
                                 case 1:
                                     bool Finished = Boolean.Parse(da["Finished"].ToString());
-                                    events.Add(new TaskEvent(Id, Name, Recurring, Finished, Date));
+                                    events.Add(new TaskEvent(Id, Name, Recurring, Finished, Date, location));
                                     break;
 
                                 case 2:
                                     string Lecturer = da["Lecturer"].ToString();
-                                    events.Add(new Lecture(Id, Name, Recurring, Lecturer, Date));
+                                    events.Add(new Lecture(Id, Name, Recurring, Lecturer, Date, location));
                                     break;
                                 
                                 case 3:
                                     string LecturerTut = da["Lecturer"].ToString();
                                     string Lab = da["Lab"].ToString();
-                                    events.Add(new Tutorial(Id, Name, Recurring, Lab, LecturerTut, Date));
+                                    events.Add(new Tutorial(Id, Name, Recurring, Lab, LecturerTut, Date, location));
                                     break;
                             }
                         }
@@ -385,10 +394,6 @@ namespace library
                 throw new DDBBException("ListWeekEvents " + ex.Message);
             }
             events.Sort(EventClass.CompareByDate);
-            foreach(EventClass e in events)
-            {
-                GetContactsForEvent(e);
-            }
             return events;
         }
 
@@ -461,6 +466,11 @@ namespace library
             GetContactsForEvent(eventClass);
         }
 
+        /// <summary>
+        /// Reads the location for the given Id.
+        /// </summary>
+        /// <param name="id">The id of the location.</param>
+        /// <returns></returns>
         public Location ReadLocation(int id)
         {
             Location location = null;
@@ -499,7 +509,7 @@ namespace library
             }
             catch (AggregateException) { }
             return location;
-        } // TODO FINISH
+        }
 
         /// <summary>
         /// Gets all the contacts in a list.

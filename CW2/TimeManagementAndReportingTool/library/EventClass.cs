@@ -62,13 +62,14 @@ namespace library
             contacts = new List<Contact>();
         }
 
-        internal EventClass(int Id, string Name, bool Recurring, DateTime Date)
+        internal EventClass(int Id, string Name, bool Recurring, DateTime Date, Location location)
         {
             contacts = new List<Contact>();
             this._Id = Id;
             this.Name = Name;
             this.Recurring = Recurring;
             this.Date = Date;
+            this.location = location;
             ddbb = new DAC();
         }
 
