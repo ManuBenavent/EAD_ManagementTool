@@ -15,8 +15,8 @@ namespace TimeManagementAndReportingTool
     {
         private List<Control> controls;
         private List<Control> recurringControls;
-        private bool updating;
-        private EventClass eventClass;
+        public bool updating;
+        public EventClass eventClass;
         public Location location;
         private List<Contact> AllContacts;
 
@@ -36,7 +36,6 @@ namespace TimeManagementAndReportingTool
         public CreateEventForm(EventClass eventClass)
         {
             this.eventClass = eventClass;
-            //this.location = eventClass.location;
             updating = true;
             Initialize();
             EventTypesComboBox.Enabled = false;
@@ -64,6 +63,8 @@ namespace TimeManagementAndReportingTool
                     ((CheckBox)this.Controls.Find("FinishedCB", false)[0]).Checked = t.Finished;
                     break;
             }
+            location = eventClass.location;
+            AddLocationButton.Text = "Edit Location";
         }
 
         private void Initialize()

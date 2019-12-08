@@ -68,6 +68,10 @@ namespace TimeManagementAndReportingTool
         {
             if (!saved)
                 form.location = new Location();
+            if(form.updating && form.eventClass.location != null)
+            {
+                form.location = form.eventClass.location;
+            }
         }
     }
 }
