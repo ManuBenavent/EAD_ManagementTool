@@ -470,6 +470,7 @@ namespace library
                 try
                 {
                     c = new SqlConnection(constring);
+                    c.Open();
                     SqlCommand com = new SqlCommand("Select * from Location where Id=" + id,c);
                     SqlDataReader reader = com.ExecuteReader();
                     if (reader.Read())
@@ -484,8 +485,13 @@ namespace library
                             Country = reader["Country"].ToString()
                         };
                     }
+                    reader.Close();
                 }
                 catch (SqlException) { }
+                finally
+                {
+                    c.Close();
+                }
             });
             try
             {

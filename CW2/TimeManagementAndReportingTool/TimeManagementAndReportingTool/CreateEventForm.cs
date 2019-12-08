@@ -17,7 +17,7 @@ namespace TimeManagementAndReportingTool
         private List<Control> recurringControls;
         private bool updating;
         private EventClass eventClass;
-        private Location location;
+        public Location location;
         private List<Contact> AllContacts;
 
         /// <summary>
@@ -353,16 +353,9 @@ namespace TimeManagementAndReportingTool
         {
             if (location == null)
                 location = new Location();
-            CreateLocationForm createLocationForm = new CreateLocationForm(location);
-            createLocationForm.FormClosing += CreateLocationForm_FormClosing;
+            CreateLocationForm createLocationForm = new CreateLocationForm(this);
             createLocationForm.Activate();
             createLocationForm.ShowDialog();
-        }
-
-        private void CreateLocationForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-                location = null;
         }
 
         private void NewContactButton_Click(object sender, EventArgs e)
@@ -387,7 +380,6 @@ namespace TimeManagementAndReportingTool
             foreach (Contact con in AllContacts)
             {
                 ContactsListBox.Items.Add(con.LastName + ", " + con.FirstName);
-                bool asf = eventClass.contacts.Contains(con);
                 if (updating && eventClass.contacts.Contains(con))
                     ContactsListBox.SelectedIndices.Add(AllContacts.IndexOf(con));
             }

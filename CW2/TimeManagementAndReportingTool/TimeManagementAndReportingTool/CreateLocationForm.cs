@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,26 +14,29 @@ namespace TimeManagementAndReportingTool
 {
     public partial class CreateLocationForm : Form
     {
-        private Location location;
-        public CreateLocationForm(Location location)
+        private bool saved;
+        private CreateEventForm form;
+        public CreateLocationForm(CreateEventForm form)
         {
+            this.form = form;
             InitializeComponent();
-            this.location = location;
-            if (!location.IsNull())
+            saved = false;
+            if (!form.location.IsNull())
             {
-                NameTextBox.Text = location.Name;
-                AddrLine1TextBox.Text = location.AddressLine1;
-                AddrLine2TextBox.Text = location.AddressLine2;
-                CityTextBox.Text = location.City;
-                PostCodeTextBox.Text = location.PostCode;
-                CountryTextBox.Text = location.Country;
+                NameTextBox.Text = form.location.Name;
+                AddrLine1TextBox.Text = form.location.AddressLine1;
+                AddrLine2TextBox.Text = form.location.AddressLine2;
+                CityTextBox.Text = form.location.City;
+                PostCodeTextBox.Text = form.location.PostCode;
+                CountryTextBox.Text = form.location.Country;
             }
             PostCodeTextBox.Select(0, 0);
+            this.FormClosing += CreateLocationForm_FormClosing;
         }
 
         private void DismissButton_Click(object sender, EventArgs e)
         {
-            location = null;
+            saved = false;
             this.Close();
         }
 
@@ -44,19 +48,26 @@ namespace TimeManagementAndReportingTool
             string City = CityTextBox.Text;
             string PostCode = PostCodeTextBox.Text;
             string Country = CountryTextBox.Text;
-            if (Name == "" || AddrLine1 == "" || City == "" || PostCode == "" || Country == "")
+            if (Name == "" || AddrLine1 == "" || City == "" || PostCode == "" || Country == "" || !Regex.IsMatch(PostCodeTextBox.Text, @"^[a-zA-Z0-9][a-zA-Z0-9]\s[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]"))
             {
                 ErrorLabel.Visible = true;
                 return;
             }
 
-            location.Name = Name;
-            location.AddressLine1 = AddrLine1;
-            location.AddressLine2 = AddrLine2;
-            location.Country = Country;
-            location.City = City;
-            location.PostCode = PostCode;
+            form.location.Name = Name;
+            form.location.AddressLine1 = AddrLine1;
+            form.location.AddressLine2 = AddrLine2;
+            form.location.Country = Country;
+            form.location.City = City;
+            form.location.PostCode = PostCode;
+            saved = true;
             this.Close();
+        }
+
+        private void CreateLocationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!saved)
+                form.location = new Location();
         }
     }
 }
