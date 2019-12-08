@@ -13,18 +13,26 @@ namespace TimeManagementAndReportingTool
 {
     public partial class CreateEventForm : Form
     {
-        List<Control> controls;
-        List<Control> recurringControls;
+        private List<Control> controls;
+        private List<Control> recurringControls;
         private bool updating;
         private EventClass eventClass;
         private Location location;
+        private List<Contact> AllContacts;
 
+        /// <summary>
+        /// Constructor used when creating new events.
+        /// </summary>
         public CreateEventForm()
         {
             Initialize();
             updating = false;
         }
 
+        /// <summary>
+        /// Constructor using when editing events.
+        /// </summary>
+        /// <param name="eventClass">The event to be edited.</param>
         public CreateEventForm(EventClass eventClass)
         {
             this.eventClass = eventClass;
@@ -109,6 +117,8 @@ namespace TimeManagementAndReportingTool
             dateTime.Format = DateTimePickerFormat.Custom;
             dateTime.CustomFormat = "dd/MM/yyyy hh:mm";
             this.Controls.Add(dateTime);
+
+            UpdateContacts();
         }
 
         private void RecurringCB_CheckedChanged(object sender, EventArgs e)
@@ -316,6 +326,11 @@ namespace TimeManagementAndReportingTool
                     eventClass = new Tutorial(name, recurring, this.Controls.Find("LabTB", false)[0].Text, this.Controls.Find("LecturerTB", false)[0].Text, date);
                     break;
             }
+
+            foreach (int i in ContactsListBox.SelectedIndices)
+            {
+                eventClass.contacts.Add(AllContacts[i]);
+            }
             return eventClass;
         }
 
@@ -345,9 +360,8 @@ namespace TimeManagementAndReportingTool
 
         private void CreateLocationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //TODO FIX
-            /*else if (string.Equals((sender as Button).Name, @"CloseButton"))
-                location = null;*/
+            if (e.CloseReason == CloseReason.UserClosing)
+                location = null;
         }
 
         private void NewContactButton_Click(object sender, EventArgs e)
@@ -366,7 +380,13 @@ namespace TimeManagementAndReportingTool
 
         private void UpdateContacts()
         {
-
+            if(AllContacts != null)
+                ContactsListBox.Items.Clear();
+            AllContacts = Contact.Read();
+            foreach (Contact con in AllContacts)
+            {
+                ContactsListBox.Items.Add(con.LastName + ", " + con.FirstName);
+            }
         }
     }
 }

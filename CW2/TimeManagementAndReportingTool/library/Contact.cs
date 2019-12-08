@@ -53,7 +53,17 @@ namespace library
                 Console.Error.WriteLine(ex.Message);
             }
         }
-        
+
+        public Contact(int Id,  string FirstName, string LastName, string Email, string Phone)
+        {
+            this._Id = Id;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Email = Email;
+            this.Phone = Phone;
+            ddbb = new DAC();
+        }
+
         public void Create() {
             ddbb.Create(this);
             _Id = ddbb.GetId(this);
@@ -69,17 +79,13 @@ namespace library
         
         public DataTable ListContacts()
         {
-            return ddbb.ListContacts();
-        }
-
-        /*public static void read (int Id) {
-            this.Id = Id;
-            ddbb.readContact(this); //TODO review so DRY is applied
+            return ddbb.ContactsIntoTable();
         }
         
-        public static List<Contact> read () {
-            return ddbb.readContacts();
-        }*/
+        public static List<Contact> Read () {
+            DAC dac = new DAC();
+            return dac.ListContacts();
+        }
             
     }
 }

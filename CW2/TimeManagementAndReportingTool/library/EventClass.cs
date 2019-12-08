@@ -26,6 +26,8 @@ namespace library
 
         public Location location { get; set; }
 
+        public List<Contact> contacts { get; set; }
+
         /// <summary>
         /// String used for inserting the values of the object into the DDBB.
         /// </summary>
@@ -57,18 +59,12 @@ namespace library
             this.Recurring = Recurring;
             this.Date = Date;
             ddbb = new DAC();
-            /*try
-            {
-                _Id = ddbb.GetId(this);
-            }
-            catch (DDBBException ex)
-            {
-                Console.Error.WriteLine(ex.Message);
-            }*/
+            contacts = new List<Contact>();
         }
 
         internal EventClass(int Id, string Name, bool Recurring, DateTime Date)
         {
+            contacts = new List<Contact>();
             this._Id = Id;
             this.Name = Name;
             this.Recurring = Recurring;
@@ -79,8 +75,10 @@ namespace library
         public EventClass(int Id)
         {
             this._Id = Id;
+            contacts = new List<Contact>();
             ddbb = new DAC();
             ddbb.ReadEvent(this);
+            //location = ddbb.ReadLocation(this.Lo)
         }
 
         /// <summary>
@@ -90,6 +88,8 @@ namespace library
         {
             ddbb.Create(this);
             _Id = ddbb.GetId(this);
+            if (contacts.Count != 0)
+                ddbb.AddContactsToEvent(this);
         }
         /// <summary>
         /// Updates the current event in the DDBB.

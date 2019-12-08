@@ -36,7 +36,7 @@
             this.AddLocationButton = new System.Windows.Forms.Button();
             this.NewContactButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.ContactsListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // EventTypesComboBox
@@ -121,22 +121,22 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Select contacts:";
             // 
-            // listBox1
+            // ContactsListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(16, 298);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox1.Size = new System.Drawing.Size(308, 132);
-            this.listBox1.TabIndex = 10;
+            this.ContactsListBox.FormattingEnabled = true;
+            this.ContactsListBox.ItemHeight = 16;
+            this.ContactsListBox.Location = new System.Drawing.Point(16, 298);
+            this.ContactsListBox.Name = "ContactsListBox";
+            this.ContactsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.ContactsListBox.Size = new System.Drawing.Size(308, 132);
+            this.ContactsListBox.TabIndex = 10;
             // 
             // CreateEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.ContactsListBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NewContactButton);
             this.Controls.Add(this.AddLocationButton);
@@ -165,6 +165,6 @@
         private System.Windows.Forms.Button AddLocationButton;
         private System.Windows.Forms.Button NewContactButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox ContactsListBox;
     }
 }

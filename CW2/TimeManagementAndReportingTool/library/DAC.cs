@@ -266,7 +266,7 @@ namespace library
             }
         }
 
-        public DataTable ListContacts()
+        public DataTable ContactsIntoTable()
         {
             
             DataTable table = new DataTable
@@ -442,5 +442,99 @@ namespace library
                 throw new DDBBException("ReadEvent " + ex.Message);
             }
         }
+
+        public Location ReadLocation(int id)
+        {
+            Location location = null;
+            Task t = Task.Run(() =>
+            {
+                SqlConnection c = null;
+                try
+                {
+                    c = new SqlConnection(constring);
+                    SqlCommand com = new SqlCommand("Select * from Location where Id=" + id,c);
+                    SqlDataReader reader = com.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        location = new Location
+                        {
+                            Name = reader["Name"].ToString(),
+                            AddressLine1 = reader["AddrLine1"].ToString(),
+                            AddressLine2 = reader["AddrLine2"].ToString(),
+                            City = reader["City"].ToString(),
+                            PostCode = reader["PostCode"].ToString(),
+                            Country = reader["Country"].ToString()
+                        };
+                    }
+                }
+                catch (SqlException) { }
+            });
+            try
+            {
+                t.Wait();
+            }
+            catch (AggregateException) { }
+            return location;
+        }
+
+        public List<Contact> ListContacts()
+        {
+            List<Contact> contacts = new List<Contact>();
+            Task t = Task.Run(() =>
+            {
+                SqlConnection c = null;
+                try
+                {
+                    c = new SqlConnection(constring);
+                    c.Open();
+                    SqlCommand com = new SqlCommand("Select * from Contact", c);
+                    SqlDataReader reader = com.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Contact contact = new Contact(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString());
+                        contacts.Add(contact);
+                    }
+                    reader.Close();
+
+                }
+                catch (SqlException) { }
+                finally
+                {
+                    c.Close();
+                }
+            });
+            try
+            {
+                t.Wait();
+            }
+            catch (AggregateException) { }
+            return contacts;
+        }
+
+        public void AddContactsToEvent(EventClass eventClass)
+        {
+            string TABLE="";
+            switch (eventClass)
+            {
+                case Appointment ap:
+                    TABLE = "ContactAppointment (Contact_Id,Appointment_Id)";
+                    break;
+                case Lecture lec:
+                    TABLE = "ContactLecture (Contact_Id,Lecture_Id)";
+                    break;
+                case TaskEvent task:
+                    TABLE = "ContactTask (Contact_Id,Task_Id)";
+                    break;
+                case Tutorial tut:
+                    TABLE = "ContactTutorial (Contact_Id,Tutorial_Id)";
+                    break;
+                default:
+                    throw new DDBBException("AddContactsToEventDefault");
+            }
+            foreach (Contact cont in eventClass.contacts)
+            {
+                SQLNonQuery("INSERT INTO " + TABLE + " VALUES (" + cont.Id + "," + eventClass.Id + ")");
+            }
+}
     }
 }
