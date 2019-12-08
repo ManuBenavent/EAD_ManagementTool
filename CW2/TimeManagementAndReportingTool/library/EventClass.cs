@@ -111,7 +111,7 @@ namespace library
             DAC dac = new DAC();
             int diff = ((int)DateTime.Now.DayOfWeek - (int)DayOfWeek.Monday) % 7;
             DateTime initial = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-            initial = initial.Subtract(new TimeSpan(diff,0,0,0));
+            initial = initial.Subtract(new TimeSpan((diff==-1)? 6 : diff,0,0,0));
             initial = initial.Add(new TimeSpan(ChangeWeek * 7, 0, 0, 0));
             DateTime end = initial.Add(new TimeSpan(6, 23, 59, 59));
             return dac.ListEvents("Date>='" + initial.ToString("yyyy/MM/dd HH:mm:ss") + "' and Date<='" + end.ToString("yyyy/MM/dd HH:mm:ss") + "'");
